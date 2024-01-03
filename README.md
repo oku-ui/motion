@@ -8,9 +8,6 @@
 
 **A tiny, performant animation library for VueJS. Powered by [Motion One](https://motion.dev/).**
 
-> [!WARNING]
-> Soon NPM packages will be released.
-
 ## Introduction
 
 Motion One for Vue is a 5kb animation library for Vue 3. Built on Motion One, it's capable of springs, independent transforms, and hardware accelerated animations.
@@ -37,6 +34,23 @@ npm install @oku-ui/motion-nuxt
 pnpm add @oku-ui/motion-nuxt
 # or
 yarn add @oku-ui/motion-nuxt
+```
+
+## NuxtJS
+
+Add `@oku-ui/motion-nuxt` to the `modules` section of `nuxt.config.ts`:
+
+```ts
+export default defineNuxtConfig({
+  modules: [
+    '@oku-ui/motion-nuxt',
+  ],
+
+  motion: {
+    //  autoImportComponents?: boolean
+    //  prefix?: string
+  },
+})
 ```
 
 ## Create an animation
