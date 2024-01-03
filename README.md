@@ -14,7 +14,7 @@ By the end of this quick guide, you'll have installed Motion One for Vue and cre
 
 ## Installation
 
-Motion One for Solid can be installed via npm:
+Motion One for VueJS can be installed via npm:
 
 ```bash
 npm install @oku-ui/motionone
@@ -22,6 +22,16 @@ npm install @oku-ui/motionone
 pnpm add @oku-ui/motionone
 # or
 yarn add @oku-ui/motionone
+```
+
+Motion One for NuxtJS can be installed via npm:
+
+```bash
+npm install @oku-ui/motionone-nuxt
+# or
+pnpm add @oku-ui/motionone-nuxt
+# or
+yarn add @oku-ui/motionone-nuxt
 ```
 
 ## Create an animation
