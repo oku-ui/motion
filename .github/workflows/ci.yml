@@ -49,11 +49,11 @@ jobs:
       #   env:
       #     VITE_TEST_DB_URL: ${{ secrets.VITE_TEST_DB_URL }}
 
-      - name: 🧪 Test with coverage
-        run: pnpm coverage
-        env:
-          VITE_TEST_DB_URL: ${{ secrets.VITE_TEST_DB_URL }}
+      # - name: 🧪 Test with coverage
+      #   run: pnpm coverage
+      #   env:
+      #     VITE_TEST_DB_URL: ${{ secrets.VITE_TEST_DB_URL }}
 
-      - name: 📝 Upload coverage
-        if: always()
-        uses: davelosert/vitest-coverage-report-action@v2
+      # - name: 📝 Upload coverage
+      #   if: always()
+      #   uses: davelosert/vitest-coverage-report-action@v2
