@@ -120,6 +120,9 @@ importers:
         specifier: ^3.4.3
         version: 3.4.3(typescript@5.3.3)
     devDependencies:
+      '@oku-ui/motion':
+        specifier: workspace:^
+        version: link:..
       '@vitejs/plugin-vue':
         specifier: ^5.0.2
         version: 5.0.2(vite@5.0.10)(vue@3.4.3)
@@ -129,9 +132,6 @@ importers:
       vite:
         specifier: ^5.0.10
         version: 5.0.10(@types/node@20.10.6)
-      vue-bundle-template:
-        specifier: workspace:^
-        version: link:..
       vue-tsc:
         specifier: ^1.8.27
         version: 1.8.27(typescript@5.3.3)

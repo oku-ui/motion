@@ -6,6 +6,9 @@
 
 **A tiny, performant animation library for VueJS. Powered by [Motion One](https://motion.dev/).**
 
+> [!WARNING]
+> Soon NPM packages will be released.
+
 ## Introduction
 
 Motion One for Vue is a 5kb animation library for Vue 3. Built on Motion One, it's capable of springs, independent transforms, and hardware accelerated animations.

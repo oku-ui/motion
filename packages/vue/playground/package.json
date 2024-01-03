@@ -12,10 +12,10 @@
     "vue": "^3.4.3"
   },
   "devDependencies": {
+    "@oku-ui/motion": "workspace:^",
     "@vitejs/plugin-vue": "^5.0.2",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
-    "vue-bundle-template": "workspace:^",
     "vue-tsc": "^1.8.27"
   }
 }
