@@ -1,8 +1,10 @@
 # Vue and Nuxt MotionOne
 
-[![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-cc00ff.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
-[![npm](https://img.shields.io/npm/v/@oku-ui/motionone?style=for-the-badge)](https://www.npmjs.com/package/@oku-ui/motionone)
-[![downloads](https://img.shields.io/npm/dw/@oku-ui/motionone?color=blue&style=for-the-badge)](https://www.npmjs.com/package/@oku-ui/motionone)
+| Package | Version | Downloads |
+|---------|---------|-----------|
+| [Vue](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) |
+| [Nuxt](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion-nuxt?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion-nuxt?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) |
+
 
 **A tiny, performant animation library for VueJS. Powered by [Motion One](https://motion.dev/).**
 
