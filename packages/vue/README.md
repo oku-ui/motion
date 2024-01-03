@@ -1,58 +1,191 @@
-# Vue Typescript Bundle Template
+# Vue and Nuxt Motion One
 
-![Vue Typescript Bundle Template](https://github.com/productdevbookcom/assets/blob/main/vue-ts-bundle-template.jpg?raw=true)
+| Package | Version | Downloads |
+|---------|---------|-----------|
+| [Vue](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) |
+| [Nuxt](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion-nuxt?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion-nuxt?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) |
 
-This is a template for creating a Typescript bundle. It is based on the [Typescript](https://www.typescriptlang.org/) compiler with the [Vite](https://vitejs.dev/) bundler.
 
-## Features
+**A tiny, performant animation library for VueJS. Powered by [Motion One](https://motion.dev/).**
 
-- [x] [Typescript](https://www.typescriptlang.org/)
-- [x] [Vite](https://vitejs.dev/)
-- [x] [Vue](https://vuejs.org/)
-- [x] [Vue Macros](https://github.com/sxzz/unplugin-vue-macros)
-- [x] [ESLint](https://eslint.org/) with [Antfu's ESLint Config](https://github.com/antfu/eslint-config)
-- [x] [Bumpp](https://github.com/antfu/bumpp) github changelog generator
-- [x] [Vitest](https://vitest.dev/)
-- [x] [Pnpm](https://pnpm.io/)
-- [x] [GitHub Actions]()
-- [x] [NPM Local Registry]()
-- [x] [Renovate]()
+## Introduction
 
-## Usage
+Motion One for Vue is a 5kb animation library for Vue 3. Built on Motion One, it's capable of springs, independent transforms, and hardware accelerated animations.
 
-1. To use this template, click the "Use this template" button above.
-2. Clone the repository to your local machine.
-3. Run `pnpm install` to install the dependencies.
-4. Run `pnpm build` to build the bundle.
-5. Run `build:watch` to build the bundle in watch mode.
-6. Run `pnpm play` to playground dev mode.
-7. Run `pnpm start` to start the bundle.
-8. Run `pnpm lint` to lint the code. (You can also run `pnpm lint:fix` to fix the linting errors.)
-9. Run `pnpm test` to run the tests. (You can also run `pnpm test:watch` to run the tests in watch mode.)
-10. Run `pnpm release` to bump the version. Terminal will ask you to select the version type. And then it will automatically commit and push the changes. GitHub Actions will automatically publish git tags. NPM local registry will automatically publish the package.
+By the end of this quick guide, you'll have installed Motion One for Vue and created your first animation.
 
-## Configuration
+## Installation
 
-### Renovate
+Motion One for VueJS can be installed via npm:
 
-[Setup Github App](https://github.com/apps/renovate) for Renovate.
+```bash
+npm install @oku-ui/motion
+# or
+pnpm add @oku-ui/motion
+# or
+yarn add @oku-ui/motion
+```
 
-# Checklists
+Motion One for NuxtJS can be installed via npm:
 
-- Update the `README.md` file.
-- Update the `LICENSE` file.
-- Update the `package.json` file. (name,version, description, author, repository, bugs, homepage, funding, keywords)
-- playground/src/App.vue - update package name `vue-bundle-template`
-- playground/package.json - in change the package name `vue-bundle-template`
+```bash
+npm install @oku-ui/motion-nuxt
+# or
+pnpm add @oku-ui/motion-nuxt
+# or
+yarn add @oku-ui/motion-nuxt
+```
 
-## Sponsors
+## Create an animation
 
-<p align="center">
-  <a href="https://cdn.jsdelivr.net/gh/oku-ui/static/sponsors/sponsors.svg">
-    <img alt="sponsors" src='https://cdn.jsdelivr.net/gh/oku-ui/static/sponsors/sponsors.svg'/>
-  </a>
-</p>
+Import the Motion component and register it in your Vue component:
 
-## License
+```ts
+<script setup lang="ts">
+import { Motion } from "@oku-ui/motion"
+</script>
 
-This project is licensed under the [MIT License](LICENSE).
+<template>
+  <Motion />
+</template>
+```
+
+The `Motion` component can be used to create an animatable HTML or SVG element. By default, it will render a `div` element:
+
+```ts
+<script setup lang="ts">
+import { Motion } from "motion/vue"
+</script>
+
+<template>
+  <Motion />
+</template>
+
+<style scoped>
+div {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: var(--splash);
+}
+</style>
+```
+
+Edit the above example by adding an animate prop:
+
+
+```ts
+<Motion :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }" />
+```
+
+Every time a value in animate changes, perhaps from component data or props, the component will automatically animate to the latest values.
+
+## Transition options
+
+We can change the type of animation used by passing a `transition` prop.
+
+```ts
+<Motion
+  :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
+  :transition="{ duration: 1, easing: 'ease-in-out' }"
+/>
+```
+
+By default transition options are applied to all values, but we can also override on a per-value basis:
+
+```ts
+<Motion
+  :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
+  :transition="{
+    duration: 1,
+    rotate: { duration: 2 },
+  }"
+/>
+```
+
+## Keyframes
+
+Values can also be set as arrays, to define a series of keyframes.
+
+```ts
+<Motion :animate="{ x: [0, 100, 50] }" />
+```
+
+By default, keyframes are spaced evenly throughout `duration`, but this can be adjusted by providing progress values to `offset`:
+
+```ts
+<Motion
+  :animate="{ x: [0, 100, 50] }"
+  :transition="{ x: { offset: [0, 0.25, 1] } }"
+/>
+```
+
+## Enter animations
+
+Elements will automatically `animate` to the values defined in animate when they're created.
+
+This can be disabled by setting the `initial` prop to `false`. The styles defined in `animate` will be applied immediately when the element is first created.
+
+```ts
+<Motion :initial="false" :animate="{ x: 100 }" />
+```
+
+## Exit animations
+
+When an element is removed with `v-show` or `v-if` it can be animated out with the Presence component and the exit prop:
+
+```ts
+<script setup lang="ts">
+import { Motion, Presence } from "motion/vue"
+
+const show = ref(true)
+</script>
+
+<template>
+  <div class="container">
+    <Presence>
+      <Motion
+        v-show="show"
+        :initial="{ opacity: 0, scale: 0 }"
+        :animate="{ opacity: 1, scale: 1 }"
+        :exit="{ opacity: 0, scale: 0.6 }"
+        class="box"
+      />
+    </Presence>
+    <button @click="show = !show">
+      Toggle
+    </button>
+  </div>
+</template>
+
+<style>
+.container {
+  width: 100px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.container button {
+  cursor: pointer;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: var(--splash);
+}
+</style>
+```
+
+`exit` can be provided a `transition` of its own, that override the component's `transition`:
+
+```ts
+<Motion
+  v-show="isVisible"
+  :animate="{ opacity: 1 }"
+  :exit="{ opacity: 0, transition: { duration: 0.8 } }"
+  :transition="transition"
+/>
+```
