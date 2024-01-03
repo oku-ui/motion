@@ -1,1 +1,3 @@
-export { default as Button } from './button.vue'
+export * from './component/motion'
+export * from './component/presence'
+export * from './component/presenceGroup'

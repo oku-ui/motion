@@ -1,52 +1,26 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "target": "esnext",
-    "jsx": "preserve",
+    "target": "ESNext",
+    "jsxImportSource": "vue",
     "lib": [
-      "esnext",
-      "dom"
+      "ESNext",
+      "DOM"
     ],
-    "useDefineForClassFields": true,
-    "baseUrl": "src",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "paths": {
-      "~/*": [
-        "*"
-      ]
-    },
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "types": [
-      "vitest/globals",
-      "unplugin-vue-define-options/macros-global",
-      "unplugin-vue-macros/macros-global"
+      "vite/client",
+      "node"
     ],
     "strict": true,
-    "outDir": "dist/types",
-    "sourceMap": true,
     "esModuleInterop": true,
-    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
-  ],
-  "vueCompilerOptions": {
-    "target": 3,
-    "plugins": [
-      "@vue-macros/volar/define-options",
-      "@vue-macros/volar/define-slots"
-    ]
-  },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "auto-imports.d.ts",
-    "shims.d.ts",
-    "volar.d.ts"
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }

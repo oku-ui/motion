@@ -21,10 +21,10 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.es.js"
+      "import": "./dist/index.mjs"
     }
   },
-  "main": "./dist/index.es.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -33,21 +33,17 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "vite build --mode production",
-    "build:watch": "vite build --watch",
-    "dev": "vite",
-    "play": "pnpm --filter playground dev",
-    "prepublishOnly": "pnpm run build",
-    "release": "pnpm build && bumpp --commit --push --tag && pnpm publish",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "test": "vitest",
-    "test:watch": "vitest --watch",
-    "coverage": "vitest run --coverage",
-    "postinstall": "npx simple-git-hooks"
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "playground": "pnpm --filter playground-vue dev",
+    "release": "pnpm build && pnpm bumpp --commit='version(alert-dialog): release %s' --no-tag && pnpm publish",
+    "clean": "rimraf ./dist && rimraf ./node_modules"
   },
   "peerDependencies": {
     "vue": ">=3.3.0"
+  },
+  "dependencies": {
+    "@motionone/dom": "^10.16.4"
   },
   "devDependencies": {
     "@antfu/eslint-config": "2.6.1",
