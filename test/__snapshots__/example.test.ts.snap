@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`button > disabled 1`] = `"<button><span></span></button>"`;
+
+exports[`button > loading 1`] = `"<button><span class="h-12 w-20 h-full"> hello </span></button>"`;

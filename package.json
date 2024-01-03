@@ -1,0 +1,78 @@
+{
+  "name": "vue-bundle-template",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@8.8.0",
+  "description": "add description",
+  "author": "add author",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/productdevbook",
+  "homepage": "https://github.com/productdevbookcom/vue-bundle-template",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/productdevbookcom/vue-bundle-template.git"
+  },
+  "bugs": "https://github.com/productdevbookcom/vue-bundle-template/issues",
+  "keywords": [
+    "add keywords"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js"
+    }
+  },
+  "main": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "vite build --mode production",
+    "build:watch": "vite build --watch",
+    "dev": "vite",
+    "play": "pnpm --filter playground dev",
+    "prepublishOnly": "pnpm run build",
+    "release": "pnpm build && bumpp --commit --push --tag && pnpm publish",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "coverage": "vitest run --coverage",
+    "postinstall": "npx simple-git-hooks"
+  },
+  "peerDependencies": {
+    "vue": ">=3.3.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "2.6.1",
+    "@types/node": "^20.10.6",
+    "@vitejs/plugin-vue": "^5.0.2",
+    "@vitest/coverage-v8": "^1.1.1",
+    "@vue-macros/volar": "^0.18.8",
+    "@vue/test-utils": "^2.4.3",
+    "bumpp": "^9.2.1",
+    "eslint": "^8.56.0",
+    "jsdom": "^23.0.1",
+    "lint-staged": "^15.2.0",
+    "simple-git-hooks": "^2.9.0",
+    "typescript": "^5.3.3",
+    "unplugin-vue-macros": "^2.7.7",
+    "vite": "^5.0.10",
+    "vite-plugin-dts": "^3.7.0",
+    "vitest": "^1.1.1",
+    "vue": "^3.4.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "pnpm eslint . --fix"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
