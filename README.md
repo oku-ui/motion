@@ -1,4 +1,4 @@
-# Vue and Nuxt MotionOne
+# Vue and Nuxt Motion One
 
 | Package | Version | Downloads |
 |---------|---------|-----------|
@@ -22,21 +22,21 @@ By the end of this quick guide, you'll have installed Motion One for Vue and cre
 Motion One for VueJS can be installed via npm:
 
 ```bash
-npm install @oku-ui/motionone
+npm install @oku-ui/motion
 # or
-pnpm add @oku-ui/motionone
+pnpm add @oku-ui/motion
 # or
-yarn add @oku-ui/motionone
+yarn add @oku-ui/motion
 ```
 
 Motion One for NuxtJS can be installed via npm:
 
 ```bash
-npm install @oku-ui/motionone-nuxt
+npm install @oku-ui/motion-nuxt
 # or
-pnpm add @oku-ui/motionone-nuxt
+pnpm add @oku-ui/motion-nuxt
 # or
-yarn add @oku-ui/motionone-nuxt
+yarn add @oku-ui/motion-nuxt
 ```
 
 ## Create an animation
@@ -45,7 +45,7 @@ Import the Motion component and register it in your Vue component:
 
 ```ts
 <script setup lang="ts">
-import { Motion } from "@oku-ui/motionone"
+import { Motion } from "@oku-ui/motion"
 </script>
 
 <template>
