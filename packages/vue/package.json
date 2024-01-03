@@ -1,10 +1,36 @@
 {
-  "name": "motion",
+  "name": "@oku-ui/motion",
   "type": "module",
+  "version": "0.0.0",
   "packageManager": "pnpm@8.13.0",
+  "description": "A tiny, performant animation library for VueJS",
+  "author": "Mehmet productdevbook <hi@productdevbook.com>",
   "license": "MIT",
+  "funding": "https://github.com/sponsors/productdevbook",
+  "homepage": "https://github.com/productdevbookcom/@oku-ui/motion",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/productdevbookcom/@oku-ui/motion.git"
+  },
+  "bugs": "https://github.com/productdevbookcom/@oku-ui/motion/issues",
+  "keywords": [
+    "vue",
+    "motion"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.es.js"
+    }
+  },
+  "main": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
   },
   "scripts": {
     "build": "vite build --mode production",
@@ -19,6 +45,9 @@
     "test:watch": "vitest --watch",
     "coverage": "vitest run --coverage",
     "postinstall": "npx simple-git-hooks"
+  },
+  "peerDependencies": {
+    "vue": ">=3.3.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "2.6.1",
@@ -44,5 +73,8 @@
   },
   "lint-staged": {
     "*": "pnpm eslint . --fix"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
