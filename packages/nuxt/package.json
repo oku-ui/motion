@@ -3,8 +3,8 @@
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@8.13.0",
-  "description": "add description",
-  "author": "add author",
+  "description": "A tiny, performant animation library for NuxtJS",
+  "author": "Mehmet productdevbook <hi@productdevbook.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/productdevbook",
   "homepage": "https://github.com/oku-ui/motion",
@@ -40,7 +40,7 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
-    "release": "pnpm build && bumpp --commit --push --tag && pnpm publish",
+    "release": "pnpm build && pnpm bumpp --commit='version(nuxt): release %s' --no-tag && pnpm publish",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "vitest run",
@@ -51,7 +51,8 @@
     "vue": ">=3.3.0"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.9.0"
+    "@nuxt/kit": "^3.9.0",
+    "@oku-ui/motion": "latest"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.5.5",

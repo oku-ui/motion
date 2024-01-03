@@ -7,12 +7,12 @@
   "author": "Mehmet productdevbook <hi@productdevbook.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/productdevbook",
-  "homepage": "https://github.com/productdevbookcom/@oku-ui/motion",
+  "homepage": "https://github.com/oku/oku-ui/motion",
   "repository": {
     "type": "git",
-    "url": "https://github.com/productdevbookcom/@oku-ui/motion.git"
+    "url": "https://github.com/oku/oku-ui/motion.git"
   },
-  "bugs": "https://github.com/productdevbookcom/@oku-ui/motion/issues",
+  "bugs": "https://github.com/oku/oku-ui/motion/issues",
   "keywords": [
     "vue",
     "motion"

@@ -68,6 +68,9 @@ importers:
       '@nuxt/kit':
         specifier: ^3.9.0
         version: 3.9.0(rollup@3.29.4)
+      '@oku-ui/motion':
+        specifier: latest
+        version: link:../vue
     devDependencies:
       '@nuxt/module-builder':
         specifier: ^0.5.5
