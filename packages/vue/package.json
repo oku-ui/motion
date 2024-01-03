@@ -36,8 +36,8 @@
     "build": "unbuild",
     "dev": "unbuild --stub",
     "playground": "pnpm --filter playground-vue dev",
-    "release": "pnpm build && pnpm bumpp --commit='version(alert-dialog): release %s' --no-tag && pnpm publish",
-    "clean": "rimraf ./dist && rimraf ./node_modules"
+    "clean": "rimraf ./dist && rimraf ./node_modules",
+    "release": "pnpm build && pnpm bumpp --commit='version(vue): release %s' --no-tag && pnpm publish"
   },
   "peerDependencies": {
     "vue": ">=3.3.0"
