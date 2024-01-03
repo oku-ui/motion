@@ -1,0 +1,55 @@
+name: Main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-test:
+    name: 📚 Main
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: corepack enable
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: pnpm
+
+      - name: 📦 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 👀 Lint
+        run: pnpm lint
+
+      - name: 🏗️ Prepare
+        run: pnpm dev:prepare
+
+      - name: 📦 Build
+        run: pnpm prepack
+
+      - name: 🧪 Test with coverage
+        run: pnpm coverage
+
+      - name: 📝 Upload coverage
+        if: always()
+        uses: davelosert/vitest-coverage-report-action@v2
