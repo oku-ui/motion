@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { SpringOptions } from '@oku-ui/motion'
-import { spring, stagger } from '@oku-ui/motion'
+import type { SpringOptions } from '@motionone/dom'
+import { spring, stagger } from '@motionone/dom'
 import type { StaggerOptions } from '@motionone/dom/types/utils/stagger'
 import Frame from '~/components/Frame.vue'
 
@@ -138,10 +138,16 @@ const { paneRef, transitionValue, init, animate } = usePane({
   initial: { hidden: true },
 })
 
-const liveCode = ref()
+const liveCode = ref(`
+<script setup lang="ts">`)
 
 watchEffect(() => {
   liveCode.value = `
+<script setup lang="ts">
+import { Motion, PresenceGroup } from '@motionone/vue'
+<\/script>
+
+<template>
 <PresenceGroup v-if="reload">
   <template v-for="(item, index) in 5" :key="index">
     <Motion
@@ -160,6 +166,8 @@ watchEffect(() => {
       </Motion>
     </template>
 </PresenceGroup>
+</template>
+  
 `
 })
 </script>
@@ -196,13 +204,17 @@ watchEffect(() => {
     </template>
 
     <template #code>
-      <ProseCode language="vue" :code="liveCode">
-        <pre>
-              <code>
-                {{ liveCode }}
-              </code>
-            </pre>
-      </ProseCode>
+      <CodeGroup>
+        <ProsePre
+          :code="liveCode"
+          language="vue"
+          filename="Code"
+          :highlights="[1, 2, 3]"
+          icon="i-ph-code"
+        >
+          {{ liveCode }}
+        </ProsePre>
+      </CodeGroup>
     </template>
   </Frame>
 </template>
