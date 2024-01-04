@@ -1,3 +1,3 @@
 export { default as Motion } from './component/Motion.vue'
-export * from './component/Presence.vue'
-export * from './component/PresenceGroup.vue'
+export { default as Presence } from './component/Presence.vue'
+export { default as PresenceGroup } from './component/PresenceGroup.vue'
