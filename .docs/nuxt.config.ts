@@ -21,6 +21,7 @@ const devConfig = {
   modules: [
     '@nuxt/content',
     '@nuxt/ui',
+    '@oku-ui/motion-nuxt',
     // 'nuxt-og-image',
   ],
   extends: [

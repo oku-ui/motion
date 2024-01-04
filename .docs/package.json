@@ -8,6 +8,7 @@
     "prepare": "DEV=true nuxi prepare"
   },
   "dependencies": {
+    "@0b5vr/tweakpane-plugin-rotation": "^0.2.0",
     "@iconify-json/fa-brands": "latest",
     "@iconify-json/game-icons": "latest",
     "@iconify-json/heroicons": "latest",
@@ -20,7 +21,11 @@
     "@nuxt/content": "^2.10.0",
     "@nuxt/ui": "^2.11.1",
     "@nuxt/ui-pro": "^0.6.1",
-    "playwright": "^1.40.1"
+    "@oku-ui/motion-nuxt": "^0.1.0",
+    "@tweakpane/core": "^2.0.3",
+    "@tweakpane/plugin-essentials": "^0.2.1",
+    "playwright": "^1.40.1",
+    "tweakpane": "^4.0.3"
   },
   "devDependencies": {
     "@egoist/tailwindcss-icons": "^1.7.1",
