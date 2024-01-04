@@ -8,4 +8,10 @@ export default antfu(
       '**/*.md',
     ],
   },
+  {
+    files: ['**/*.vue'],
+    rules: {
+      'import/first': 'off',
+    },
+  },
 )
