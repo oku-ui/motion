@@ -12,8 +12,7 @@
     "release": "bumpp --commit --push --tag",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "vitest",
-    "test:watch": "vitest --watch",
+    "test:vue": "vitest --config ./packages/vue/vitest.config.ts",
     "prepare": "npx simple-git-hooks"
   },
   "devDependencies": {
