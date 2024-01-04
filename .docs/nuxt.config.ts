@@ -5,7 +5,6 @@ import type { NuxtConfig } from 'nuxt/config'
 const routeRules = {
   '/motion/getting-started': { redirect: '/motion/getting-started/introduction', prerender: false },
   '/motion/community': { redirect: '/motion/community/getting-help', prerender: false },
-  '/motion/examples': { redirect: '/motion/examples/overview', prerender: false },
 }
 
 const devConfig = {

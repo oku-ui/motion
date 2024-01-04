@@ -8,7 +8,7 @@ onMounted(() => {
     container: paneRef.value,
   })
   const PARAMS = {
-    speed: 0.5,
+    speed: 100,
   }
   pane.addBinding(PARAMS, 'speed').on('change', (ev) => {
     console.warn(ev.value)
@@ -19,14 +19,15 @@ onMounted(() => {
 
 <template>
   <div>
-    <UndefinedMotion
+    <Motion
+      class="box-test"
       :animate="{
         rotate: `${rotate}deg`,
         backgroundColor: 'var(--yellow)',
       }"
       :transition="{
-        duration: 1,
-        rotate: { duration: 2 },
+        duration: 0.1,
+        rotate: { duration: 0.2 },
       }"
     />
     <div ref="paneRef" class="pane" />
@@ -34,7 +35,13 @@ onMounted(() => {
 </template>
 
 <style>
-.tp-dfwv {
-  position: fixed !important;
+:root {
+  --yellow: #000
+}
+
+.box-test {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
 }
 </style>

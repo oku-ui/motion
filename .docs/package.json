@@ -21,7 +21,7 @@
     "@nuxt/content": "^2.10.0",
     "@nuxt/ui": "^2.11.1",
     "@nuxt/ui-pro": "^0.6.1",
-    "@oku-ui/motion-nuxt": "^0.1.0",
+    "@oku-ui/motion-nuxt": "^0.1.2",
     "@tweakpane/core": "^2.0.3",
     "@tweakpane/plugin-essentials": "^0.2.1",
     "playwright": "^1.40.1",
