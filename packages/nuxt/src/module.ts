@@ -37,7 +37,7 @@ export default defineNuxtModule<ModuleOptions>({
     if (options.autoImportComponents) {
       motionComponents.forEach((component) => {
         addComponent({
-          name: `${options.prefix}${component}`,
+          name: options.prefix ? `${options.prefix}${component}` : component,
           export: component,
           filePath: '@oku-ui/motion',
         })
