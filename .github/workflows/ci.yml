@@ -44,10 +44,8 @@ jobs:
       - name: 🚀 Build
         run: pnpm build
 
-      # - name: 🧪 Test
-      #   run: pnpm test
-      #   env:
-      #     VITE_TEST_DB_URL: ${{ secrets.VITE_TEST_DB_URL }}
+      - name: 🧪 Test Vue
+        run: pnpm test:vue
 
       # - name: 🧪 Test with coverage
       #   run: pnpm coverage
