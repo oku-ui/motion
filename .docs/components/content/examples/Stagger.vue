@@ -138,13 +138,12 @@ const { paneRef, transitionValue, init, animate } = usePane({
   initial: { hidden: true },
 })
 
-const liveCode = ref(`
-<script setup lang="ts">`)
+const liveCode = ref()
 
 watchEffect(() => {
   liveCode.value = `
 <script setup lang="ts">
-import { Motion, PresenceGroup } from '@motionone/vue'
+import {stagger, spring} from '@motionone/dom'
 <\/script>
 
 <template>
@@ -156,10 +155,12 @@ import { Motion, PresenceGroup } from '@motionone/vue'
       :transition="${replaceValue({
         ...transitionValue,
         easing: `spring(${replaceFuntionValue(springValue)})`,
-        delay: `stagger(${staggerDuration}, ${replaceFuntionValue(staggerOptionsRa)})(index, data.length)`,
+        delay: `stagger(${staggerDuration.value}, ${
+          JSON.stringify(staggerOptionsRa).replace(/"/g, '')
+        })(index, 5)`,
         repeat: 'Infinity',
         direction: `'alternate'`,
-    }).replace(/\\/g, '').replace(/"/g, '')
+    }).replace(/\\/g, '').replace(/"/g, '').replace(/'/g, '"')
         }"
       class="bg-red-500 w-24 h-24 rounded-lg shadow-sm"
     />
@@ -168,7 +169,7 @@ import { Motion, PresenceGroup } from '@motionone/vue'
 </PresenceGroup>
 </template>
   
-`
+`.trim()
 })
 </script>
 
@@ -180,12 +181,15 @@ import { Motion, PresenceGroup } from '@motionone/vue'
           <Motion
             :initial="{
               ...init,
-            }" :animate="{
+            }"
+            :animate="{
               ...animate,
-            }" :transition="{
+            }"
+            :transition="{
               delay: stagger(staggerDuration, staggerOptionsRa)(index, data.length),
               ...transitionValue,
-            }" class="mt-2 flex justify-center items-center"
+            }"
+            class="mt-2 flex justify-center items-center"
           >
             <div class="w-5 h-5 bg-rose-500 rounded-full mr-2" />
           </Motion>
