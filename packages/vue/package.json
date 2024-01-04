@@ -34,7 +34,8 @@
   },
   "scripts": {
     "build": "unbuild",
-    "dev": "unbuild --stub",
+    "dev": "esno watch.ts",
+    "dev:stub": "unbuild --stub",
     "playground": "pnpm --filter playground-vue dev",
     "clean": "rimraf ./dist && rimraf ./node_modules",
     "release": "pnpm build && pnpm bumpp --commit='version(vue): release %s' --no-tag && pnpm publish"

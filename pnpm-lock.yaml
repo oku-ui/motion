@@ -29,6 +29,9 @@ importers:
       bumpp:
         specifier: ^9.2.1
         version: 9.2.1
+      chokidar:
+        specifier: ^3.5.3
+        version: 3.5.3
       eslint:
         specifier: ^8.56.0
         version: 8.56.0

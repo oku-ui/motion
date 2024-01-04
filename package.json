@@ -24,6 +24,7 @@
     "@vue-macros/volar": "^0.18.8",
     "@vue/test-utils": "^2.4.3",
     "bumpp": "^9.2.1",
+    "chokidar": "^3.5.3",
     "eslint": "^8.56.0",
     "jsdom": "^23.0.1",
     "lint-staged": "^15.2.0",

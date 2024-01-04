@@ -21,9 +21,9 @@
   ],
   "exports": {
     ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
+      "types": "./dist/types.ts",
+      "import": "./dist/module.ts",
+      "require": "./dist/module.ts"
     },
     "./utils": "./dist/utils.mjs"
   },
