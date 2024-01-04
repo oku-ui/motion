@@ -69,6 +69,12 @@ importers:
       '@nuxt/devtools':
         specifier: ^1.0.6
         version: 1.0.6(nuxt@3.9.0)(vite@5.0.10)
+      '@vueuse/core':
+        specifier: ^10.7.1
+        version: 10.7.1(vue@3.4.4)
+      '@vueuse/nuxt':
+        specifier: ^10.7.1
+        version: 10.7.1(nuxt@3.9.0)(vue@3.4.4)
       nuxt:
         specifier: ^3.9.0
         version: 3.9.0(typescript@5.3.3)(vite@5.0.10)

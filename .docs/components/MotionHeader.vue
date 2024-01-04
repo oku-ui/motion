@@ -16,7 +16,7 @@ const mobileNav = computed(() => {
   // Show Migration and Bridge on mobile only when user is reading them
   const docsLink = links.find(link => link.to === '/docs')
   if (docsLink && !route.path.startsWith('/docs/bridge') && !route.path.startsWith('/docs/migration'))
-    docsLink.children = docsLink.children.filter(link => !['/docs/bridge', '/docs/migration'].includes(link.to as string))
+    docsLink.children = docsLink.children?.filter(link => !['/docs/bridge', '/docs/migration'].includes(link.to as string))
 
   return links
 })

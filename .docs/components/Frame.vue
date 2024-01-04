@@ -14,6 +14,14 @@ function onReplay() {
 defineExpose({
   onReplay,
 })
+
+const el = ref<HTMLElement | null>(null)
+
+const { x, y, style } = useDraggable(el, {
+  initialValue: { x: 60, y: 60 },
+  stopPropagation: true,
+  preventDefault: true,
+})
 </script>
 
 <template>
@@ -30,10 +38,25 @@ defineExpose({
       >
         <Icon dynamic name="i-ph-arrow-clockwise-bold" class="h-5 w-5" />
       </button>
+
+      <div
+        ref="el"
+        :style="style"
+        class="bg-green-900 rounded-lg fixed w-60 h-6 z-[9999] cursor-move"
+      >
+        <div class="flex items-center justify-center h-full">
+          <UIcon dynamic name="i-ph-arrows-out-cardinal-bold" class="h-5 w-5 text-white" />
+        </div>
+      </div>
+      <div
+        class="w-60 fixed z-[999]" :style="{
+          left: `${x}px`,
+          top: `${y + 7}px`,
+        }"
+      >
+        <slot name="setting" />
+      </div>
       <slot :reload="replayRef" />
-    </div>
-    <div class="grid grid-cols-1 ml-4 h-full">
-      <slot name="setting" />
     </div>
   </div>
   <slot name="code" />

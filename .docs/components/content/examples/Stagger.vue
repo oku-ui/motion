@@ -8,8 +8,8 @@ export interface Props {
   replay: boolean
 }
 
-const _props = withDefaults(defineProps<Props>(), {
-  replay: false,
+withDefaults(defineProps<Props>(), {
+  replay: true,
 })
 
 const data = ['a', 'b', 'c', 'd', 'e', 'f']
@@ -37,7 +37,7 @@ const { paneRef, transitionValue, init, animate } = usePane({
   onAnimate(pane) {
     animate.y = -20
 
-    pane.addInput(animate, 'y', {
+    pane.addBinding(animate, 'y', {
       label: 'Y',
       min: -50,
       max: 50,
@@ -56,7 +56,7 @@ const { paneRef, transitionValue, init, animate } = usePane({
       title: 'Spring',
       expanded: true,
     })
-    springPane.addInput(springValue, 'stiffness', {
+    springPane.addBinding(springValue, 'stiffness', {
       label: 'Stiffness',
       min: 0,
       max: 100,
@@ -66,7 +66,7 @@ const { paneRef, transitionValue, init, animate } = usePane({
       frame.value.onReplay()
     })
 
-    springPane.addInput(springValue, 'damping', {
+    springPane.addBinding(springValue, 'damping', {
       label: 'Damping',
       min: -4,
       max: 100,
@@ -81,7 +81,7 @@ const { paneRef, transitionValue, init, animate } = usePane({
       expanded: true,
     })
 
-    staggerPane.addInput(staggerDuration, 'value', {
+    staggerPane.addBinding(staggerDuration, 'value', {
       label: 'Duration',
       min: 0,
       max: 10,
@@ -96,7 +96,7 @@ const { paneRef, transitionValue, init, animate } = usePane({
       expanded: true,
     })
 
-    staggerOptionsPane.addInput(staggerOptionsRa, 'easing', {
+    staggerOptionsPane.addBinding(staggerOptionsRa, 'easing', {
       label: 'Easing',
       options: {
         linear: 'linear',
@@ -112,7 +112,7 @@ const { paneRef, transitionValue, init, animate } = usePane({
       frame.value.onReplay()
     })
 
-    staggerOptionsPane.addInput(staggerOptionsRa, 'from', {
+    staggerOptionsPane.addBinding(staggerOptionsRa, 'from', {
       label: 'From',
       options: {
         first: 'first',
@@ -124,7 +124,7 @@ const { paneRef, transitionValue, init, animate } = usePane({
       frame.value.onReplay()
     })
 
-    staggerOptionsPane.addInput(staggerOptionsRa, 'start', {
+    staggerOptionsPane.addBinding(staggerOptionsRa, 'start', {
       label: 'Start',
       min: 0,
       max: 10,

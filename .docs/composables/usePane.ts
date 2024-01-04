@@ -2,7 +2,7 @@ import type { FolderApi, FolderParams } from 'tweakpane'
 import { Pane } from 'tweakpane'
 import * as TweakpaneRotationInputPlugin from '@0b5vr/tweakpane-plugin-rotation'
 import * as EssentialsPlugin from '@tweakpane/plugin-essentials'
-import type { AnimationOptionsWithOverrides, Variant } from '@oku-ui/motion'
+import type { AnimationOptionsWithOverrides, Variant } from '@motionone/dom'
 
 export function usePane(
   fn?: {

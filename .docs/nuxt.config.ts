@@ -21,6 +21,7 @@ const devConfig = {
     '@nuxt/content',
     '@nuxt/ui',
     '@oku-ui/motion-nuxt',
+    '@vueuse/nuxt',
     // 'nuxt-og-image',
   ],
   extends: [
