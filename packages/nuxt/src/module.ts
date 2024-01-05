@@ -1,7 +1,8 @@
-import { addComponent, defineNuxtModule } from '@nuxt/kit'
+import { addComponent, addImports, defineNuxtModule } from '@nuxt/kit'
 
 export interface ModuleOptions {
   autoImportComponents?: boolean
+  autoImportMotion?: boolean
   prefix?: string
 }
 
@@ -23,6 +24,16 @@ const motionComponents = [
   'PresenceGroup',
 ]
 
+const motionImports = [
+  'animate',
+  'timeline',
+  'stagger',
+  'spring',
+  'glide',
+  'inView',
+  'scroll',
+]
+
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: '@oku-ui/motion-nuxt',
@@ -30,6 +41,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     autoImportComponents: true,
+    autoImportMotion: true,
   },
   setup(options, nuxt) {
     // const resolver = createResolver(import.meta.url)
@@ -43,6 +55,15 @@ export default defineNuxtModule<ModuleOptions>({
           name: options.prefix ? `${options.prefix}${component}` : component,
           export: component,
           filePath: '@oku-ui/motion',
+        })
+      })
+    }
+
+    if (options.autoImportMotion) {
+      motionImports.forEach((motion) => {
+        addImports({
+          from: '@oku-ui/motion',
+          name: motion,
         })
       })
     }
