@@ -140,33 +140,35 @@ const { paneRef, transitionValue, init, animate } = usePane({
 
 const liveCode = ref()
 
+function getTransitionConfig(staggerDuration: any, staggerOptionsRa: any) {
+  return `{
+    easing: spring(${cleanConfig(springValue)}),
+    repeat: Number.POSITIVE_INFINITY,
+    direction: 'alternate',
+    delay: stagger(${staggerDuration}, ${cleanConfig(staggerOptionsRa)})(index, items.length),
+  }`.replace(/"/g, '')
+}
+
 watchEffect(() => {
   liveCode.value = `
 <script setup lang="ts">
-import {stagger, spring} from '@motionone/dom'
+import { spring, stagger } from '@motionone/dom'
+import { Motion, PresenceGroup } from '@oku-ui/motion'
+
+const items = ['a', 'b', 'c', 'd', 'e', 'f']
 <\/script>
 
 <template>
-<PresenceGroup v-if="reload">
-  <template v-for="(item, index) in 5" :key="index">
-    <Motion
-      :initial=${replaceValue(init)}
-      :animate=${replaceValue(animate)}
-      :transition="${replaceValue({
-        ...transitionValue,
-        easing: `spring(${replaceFuntionValue(springValue)})`,
-        delay: `stagger(${staggerDuration.value}, ${
-          JSON.stringify(staggerOptionsRa).replace(/"/g, '')
-        })(index, 5)`,
-        repeat: 'Infinity',
-        direction: `'alternate'`,
-    }).replace(/\\/g, '').replace(/"/g, '').replace(/'/g, '"')
-        }"
-      class="bg-red-500 w-24 h-24 rounded-lg shadow-sm"
-    />
-      </Motion>
+  <PresenceGroup>
+    <template v-for="(item, index) in items" :key="index">
+      <Motion
+        :initial="${cleanConfig(init)}"
+        :animate="${cleanConfig(animate)}"
+        :transition="${getTransitionConfig(staggerDuration.value, staggerOptionsRa)}"
+        class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"
+      />
     </template>
-</PresenceGroup>
+  </PresenceGroup>
 </template>
   
 `.trim()
@@ -195,12 +197,6 @@ import {stagger, spring} from '@motionone/dom'
           </Motion>
         </template>
       </PresenceGroup>
-
-      <!-- <div v-else class="h-40">
-        <div class="flex items-center justify-center h-full">
-          <div class="i-ph-arrow-clockwise-bold h-10 w-10 text-red-600  animate-spin" />
-        </div>
-      </div> -->
     </template>
 
     <template #setting>

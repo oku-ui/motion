@@ -17,3 +17,18 @@ export function replaceFuntionValue(string: any) {
     .replace(/:/g, ': ')
     .replace(/"/g, '\'')
 }
+
+export function cleanConfig(config: string | number | Record<string, any>) {
+  const cleanedConfig = JSON.stringify(config, (key, value) => {
+    if (typeof value === 'string')
+      return `'${value}'`
+
+    else if (typeof value === 'number')
+      return value
+
+    else
+      return value
+  }, 2)
+
+  return cleanedConfig.replace(/"/g, '')
+}
