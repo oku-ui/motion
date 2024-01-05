@@ -40,7 +40,7 @@ const titleTemplate = computed(() => {
   const titleTemplate = navKeyFromPath(route.path, 'titleTemplate', navigation.value)
   if (titleTemplate)
     return titleTemplate
-  return '%s · Pergel · Oku'
+  return '%s · Motion · Oku'
 })
 
 const communityLinks = computed(() => [{

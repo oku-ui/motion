@@ -33,7 +33,7 @@ const title = computed(() => props.title.slice(0, 60))
 
     <div class="w-[600px] pl-[100px]">
       <p v-if="headline" class="mb-4 text-[24px] font-semibold uppercase text-[#FEC476]">
-        Oku - Pergel
+        Oku - Motion
       </p>
       <h1 class="m-0 mb-4 flex w-[600px] items-center text-[75px] font-semibold text-white">
         <span>{{ title }}</span>

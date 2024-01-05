@@ -39,7 +39,7 @@ useHead({
 })
 
 useServerSeoMeta({
-  ogSiteName: 'Pergel',
+  ogSiteName: 'Motion',
   twitterCard: 'summary_large_image',
 })
 
