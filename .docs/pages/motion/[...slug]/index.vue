@@ -19,7 +19,7 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, async ()
   if (page.value.surround === false)
     return []
 
-  return queryContent('/pergel')
+  return queryContent('/motion')
     .where({ _extension: 'md', navigation: { $ne: false } })
     .without(['body', 'excerpt'])
     .findSurround(withoutTrailingSlash(route.path))
@@ -46,12 +46,12 @@ const titleTemplate = computed(() => {
 const communityLinks = computed(() => [{
   icon: 'i-ph-pen-duotone',
   label: 'Edit this page',
-  to: `https://github.com/oku-ui/pergel/edit/main/.docs/content/pergel/${page?.value?._file?.split('/').slice(1).join('/')}`,
+  to: `https://github.com/oku-ui/motion/edit/main/.docs/content/motion/${page?.value?._file?.split('/').slice(1).join('/')}`,
   target: '_blank',
 }, {
   icon: 'i-ph-shooting-star-duotone',
   label: 'Star on GitHub',
-  to: 'https://github.com/oku-ui/pergel',
+  to: 'https://github.com/oku-ui/motion',
   target: '_blank',
 }, {
   icon: 'i-ph-chat-centered-text-duotone',

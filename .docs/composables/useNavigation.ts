@@ -19,13 +19,6 @@ function _useNavigation() {
             active: route.path.startsWith('/motion/getting-started'),
           },
           {
-            label: 'Use',
-            description: 'Learn how to use Vue in your projects.',
-            icon: 'i-simple-icons-nuxtdotjs',
-            to: '/motion/use',
-            active: route.path.startsWith('/motion/nuxt'),
-          },
-          {
             label: 'Examples',
             description: 'Discover and explore official and community examples.',
             icon: 'i-ph-app-window-duotone',

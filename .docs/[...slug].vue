@@ -7,10 +7,10 @@ const route = useRoute()
 const { navPageFromPath } = useContentHelpers()
 const { headerLinks } = useNavigation()
 
-const links = computed(() => headerLinks.value.find(link => link.to === '/pergel')?.children ?? [])
+const links = computed(() => headerLinks.value.find(link => link.to === '/motion')?.children ?? [])
 
 const navigationLinks = computed(() => {
-  const path = ['/pergel', route.params.slug?.[0]].filter(Boolean).join('/')
+  const path = ['/motion', route.params.slug?.[0]].filter(Boolean).join('/')
 
   return mapContentNavigation(navPageFromPath(path, navigation!.value)?.children || [])
 })
