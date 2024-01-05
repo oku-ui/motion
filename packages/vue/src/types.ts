@@ -1,1 +1,1 @@
-export * from '@motionone/types'
+export type * from '@motionone/types'
