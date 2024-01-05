@@ -5,7 +5,7 @@ const navigation = inject<Ref<NavItem[]>>('navigation')
 
 const route = useRoute()
 const { navPageFromPath } = useContentHelpers()
-const { headerLinks } = useNavigation()
+const { headerLinks } = useNavigationMotion()
 
 const links = computed(() =>
   headerLinks.value.find(link => link.to === '/motion')?.children.map(link => ({

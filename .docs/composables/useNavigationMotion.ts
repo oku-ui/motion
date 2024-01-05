@@ -49,4 +49,4 @@ function _useNavigation() {
   }
 }
 
-export const useNavigation = createSharedComposable(_useNavigation)
+export const useNavigationMotion = createSharedComposable(_useNavigation)
