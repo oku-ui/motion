@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const title = '1:1 Radix UI components for Vue'
-const desc = 'Unstyled, accessible components for building high‑quality design systems and web apps in React.Unstyled, accessible components for building high‑quality design systems and web apps in Vue.'
+const title = 'Oku Motion'
+const desc = 'A new animation library, built on the Web Animations API for the smallest filesize and the fastest performance. Powered by Motion One.'
 
 useSeoMeta({
   titleTemplate: '',
@@ -8,8 +8,8 @@ useSeoMeta({
   ogTitle: title,
   description: desc,
   ogDescription: desc,
-  ogImage: 'https://oku-ui.com/primitives-og-image.png',
-  twitterImage: 'https://oku-ui.com/primitives-og-image.png',
+  ogImage: 'https://oku-ui.com/motion-og-image.png',
+  twitterImage: 'https://oku-ui.com/motion-og-image.png',
 })
 </script>
 
