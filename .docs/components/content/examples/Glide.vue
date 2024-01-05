@@ -93,6 +93,11 @@ watchEffect(() => {
   }
 
   liveCode.value = `
+<script setup lang="ts">
+import { Presence, Motion, glide } from '@oku-ui/motion'
+
+<\/script>
+
 <Presence>
     <Motion
       :initial="${cleanConfig(_init)}"

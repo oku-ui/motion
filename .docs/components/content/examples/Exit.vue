@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const code = `
 <script setup lang="ts">
+import { Presence, Motion } from '@oku-ui/motion'
 const show = ref(true)
 <\/script>
 

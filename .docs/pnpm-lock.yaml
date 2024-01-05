@@ -48,8 +48,8 @@ importers:
         specifier: ^0.6.1
         version: 0.6.1(nuxt@3.9.0)(vite@5.0.10)(vue@3.4.4)
       '@oku-ui/motion-nuxt':
-        specifier: ^0.1.2
-        version: 0.1.2(vue@3.4.4)
+        specifier: ^0.2.0
+        version: 0.2.0(vue@3.4.4)
       '@tweakpane/core':
         specifier: ^2.0.3
         version: 2.0.3
@@ -1534,22 +1534,22 @@ packages:
       - ts-node
     dev: false
 
-  /@oku-ui/motion-nuxt@0.1.2(vue@3.4.4):
-    resolution: {integrity: sha512-XRNQDKBZp5z+0DcRStrJJ3haWTdKxojzkADAtAYj0uoYVOh36IweCxGMNnK/jfhhpwJFVEo6Bu5vuzOk9j4u8Q==}
+  /@oku-ui/motion-nuxt@0.2.0(vue@3.4.4):
+    resolution: {integrity: sha512-tJ+HBWX27woSTXp4EuCtpoABdcmZa+nUKyU+I6cOMj5UqS2yUfjERl/zEjnPptP8gdKCtIsE9V6AYFGPc5mDCw==}
     engines: {node: '>=18'}
     peerDependencies:
       vue: '>=3.3.0'
     dependencies:
       '@nuxt/kit': 3.9.0
-      '@oku-ui/motion': 0.2.1(vue@3.4.4)
+      '@oku-ui/motion': 0.3.1(vue@3.4.4)
       vue: 3.4.4(typescript@5.3.3)
     transitivePeerDependencies:
       - rollup
       - supports-color
     dev: false
 
-  /@oku-ui/motion@0.2.1(vue@3.4.4):
-    resolution: {integrity: sha512-+VfY39esp9f/IDyhFJd6gYs1JDRZUdxydF4+dbwHHz5wyXjb6jZmIKQIZYwzRO2Kn+BNwX5DmDjehXxtwJudTA==}
+  /@oku-ui/motion@0.3.1(vue@3.4.4):
+    resolution: {integrity: sha512-0TpjNm2/T8w/QBY7rfNan3ikS4QMUsATo4C3e12+joaEi9SjpiuGrwLPy+2EFgURTBbsKhLQM8whybqIQs+JJA==}
     engines: {node: '>=18'}
     peerDependencies:
       vue: '>=3.3.0'

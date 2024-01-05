@@ -1,6 +1,9 @@
 <script setup lang="ts">
+// import { type } from '@oku-ui/motion/types'
+
 const code = `
 <script setup lang="ts">
+import { Presence, Motion } from '@oku-ui/motion'
 const current = ref(0)
 <\/script>
 
