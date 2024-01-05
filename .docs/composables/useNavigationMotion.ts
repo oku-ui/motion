@@ -19,6 +19,13 @@ function _useNavigation() {
             active: route.path.startsWith('/motion/getting-started'),
           },
           {
+            label: 'API',
+            description: 'Learn how to get started with Nuxt.',
+            icon: 'i-ph-rocket-launch-duotone',
+            to: '/motion/api',
+            active: route.path.startsWith('/motion/api'),
+          },
+          {
             label: 'Examples',
             description: 'Discover and explore official and community examples.',
             icon: 'i-ph-app-window-duotone',
