@@ -1,35 +1,44 @@
 <script setup lang="ts">
-import { spring, stagger } from '@motionone/dom'
-import { Motion, PresenceGroup } from '@oku-ui/motion'
+import { Motion, Presence } from '@oku-ui/motion'
 
-const items = ['a', 'b', 'c', 'd', 'e', 'f']
+const show = ref(true)
 </script>
 
 <template>
-  <PresenceGroup>
-    <template v-for="(item, index) in items" :key="index">
+  <div class="container">
+    <Presence>
       <Motion
-        :initial="{
-          x: 0,
-          y: 0,
-        }"
-        :animate="{
-          y: -20,
-        }"
-        :transition="{
-          easing: spring({
-            stiffness: 24,
-            damping: 12,
-          }),
-          repeat: Number.POSITIVE_INFINITY,
-          direction: 'alternate',
-          delay: stagger(0.5, {
-            easing: 'ease-in',
-            start: 0,
-            from: 'first',
-          })(index, items.length),
-        }" class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center"
+        v-show="show" :initial="{ opacity: 0, scale: 0 }" :animate="{ opacity: 1, scale: 1 }"
+        :exit="{ opacity: 0, scale: 0.6 }" class="box"
       />
-    </template>
-  </PresenceGroup>
+    </Presence>
+    <button @click="show = !show">
+      Toggle
+    </button>
+  </div>
 </template>
+
+<style>
+:root {
+  --splash: #f9d71c;
+}
+
+.container {
+  width: 100px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.container button {
+  cursor: pointer;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: var(--splash);
+}
+</style>

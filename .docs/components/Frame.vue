@@ -8,7 +8,7 @@ defineEmits(['reload'])
 const replayRef = ref(true)
 function onReplay() {
   replayRef.value = !replayRef.value
-  setTimeout(() => replayRef.value = !replayRef.value, 10)
+  setTimeout(() => replayRef.value = !replayRef.value, 200)
 }
 
 defineExpose({
@@ -29,7 +29,7 @@ const { x, y, style } = useDraggable(el, {
     <div
       class="bg-gray-200/50 h-[400px] dark:bg-gray-900 w-400px max-w-400px mx-auto h-400px max-h-400px rounded-md relative overflow-hidden flex items-center justify-center mt-3 w-full"
     >
-      <span class="absolute bottom-5 opacity-50">@oku-ui</span>
+      <span class="absolute bottom-5 opacity-50">Oku</span>
 
       <button
         v-if="replay"
@@ -38,6 +38,12 @@ const { x, y, style } = useDraggable(el, {
       >
         <Icon dynamic name="i-ph-arrow-clockwise-bold" class="h-5 w-5" />
       </button>
+      <div
+        v-if="!replayRef"
+        class="absolute inset-0 flex items-center justify-center bg-gray-200/50 dark:bg-gray-900"
+      >
+        <Icon dynamic name="i-ph-arrow-clockwise-bold" class="h-5 w-5 text-white animate-spin" />
+      </div>
 
       <div
         ref="el"

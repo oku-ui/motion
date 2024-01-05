@@ -109,7 +109,9 @@ watchEffect(() => {
   <Frame :replay="replay">
     <template #default="{ reload }">
       <PresenceGroup v-if="reload">
-        <div class="flex space-x-2 px-24">
+        <div
+          class="flex space-x-2 px-24"
+        >
           <template v-for="(item, index) in 10" :key="index">
             <Motion
               :initial="{
@@ -125,12 +127,6 @@ watchEffect(() => {
           </template>
         </div>
       </PresenceGroup>
-
-      <div v-else class="h-40">
-        <div class="flex items-center justify-center h-full">
-          <div class="i-ph-arrow-clockwise-bold h-10 w-10 text-red-600  animate-spin" />
-        </div>
-      </div>
     </template>
 
     <template #setting>

@@ -1,6 +1,6 @@
 ---
-title: Stagger
-description: 'Stagger'
+title: stagger
+description: 'stagger'
 ---
 
 ::stagger{replay=true}
