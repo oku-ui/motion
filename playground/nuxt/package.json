@@ -1,0 +1,17 @@
+{
+  "name": "playgrounds-vue",
+  "version": "10.17.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt dev"
+  },
+  "dependencies": {
+    "@oku-ui/motion": "workspace:^",
+    "@oku-ui/motion-nuxt": "^0.1.2",
+    "gsap": "^3.12.4",
+    "three": "^0.160.0"
+  },
+  "devDependencies": {
+    "nuxt": "^3.9.0"
+  }
+}

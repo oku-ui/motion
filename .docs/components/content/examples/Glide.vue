@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { animate, glide, spring } from '@motionone/dom'
+import { animate, glide } from '@motionone/dom'
 
 export interface Props {
   replay: boolean

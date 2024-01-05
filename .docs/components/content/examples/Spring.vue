@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import { spring } from '@motionone/dom'
-import type {
-  AnimationOptionsWithOverrides,
-  ValueKeyframesDefinition,
-} from '@motionone/dom'
-
 export interface Props {
   replay: boolean
 }
