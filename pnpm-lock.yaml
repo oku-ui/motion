@@ -228,7 +228,7 @@ importers:
         version: link:../../packages/vue
       '@oku-ui/motion-nuxt':
         specifier: ^0.1.2
-        version: link:../../packages/nuxt
+        version: 0.1.2(rollup@3.29.4)(vue@3.4.4)
       gsap:
         specifier: ^3.12.4
         version: 3.12.4
@@ -1520,6 +1520,30 @@ packages:
       - vls
       - vti
       - vue-tsc
+
+  /@oku-ui/motion-nuxt@0.1.2(rollup@3.29.4)(vue@3.4.4):
+    resolution: {integrity: sha512-XRNQDKBZp5z+0DcRStrJJ3haWTdKxojzkADAtAYj0uoYVOh36IweCxGMNnK/jfhhpwJFVEo6Bu5vuzOk9j4u8Q==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      vue: '>=3.3.0'
+    dependencies:
+      '@nuxt/kit': 3.9.0(rollup@3.29.4)
+      '@oku-ui/motion': 0.3.1(vue@3.4.4)
+      vue: 3.4.4(typescript@5.3.3)
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: false
+
+  /@oku-ui/motion@0.3.1(vue@3.4.4):
+    resolution: {integrity: sha512-0TpjNm2/T8w/QBY7rfNan3ikS4QMUsATo4C3e12+joaEi9SjpiuGrwLPy+2EFgURTBbsKhLQM8whybqIQs+JJA==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      vue: '>=3.3.0'
+    dependencies:
+      '@motionone/dom': 10.16.4
+      vue: 3.4.4(typescript@5.3.3)
+    dev: false
 
   /@one-ini/wasm@0.1.1:
     resolution: {integrity: sha512-XuySG1E38YScSJoMlqovLru4KTUNSjgVTIjyh7qMX6aNN5HY5Ct5LhRJdxO79JtTzKfzV/bnWpz+zquYrISsvw==}
