@@ -22,43 +22,46 @@ useSeoMeta({
         <Illustration class="h-[480px]" />
       </div> -->
       <template #title>
-        <span class="text-primary-400">Motion</span> Tiny size.Huge performance.
+        <span class="text-primary-400">{{ title }}</span>
+        Pixel-Powered Performance.
       </template>
       <template #description>
-        A new animation library, built on the Web Animations API for the smallest filesize and the fastest performance. Powered by Motion One.
+        A production-ready motion library for Vue3 and Nuxt3, built on the Web Animations API for the smallest filesize
+        and the fastest performance.
+        Powered by Motion One.
       </template>
       <template #links>
         <UButton to="/motion/getting-started" icon="i-ph-rocket-launch-duotone" size="xl">
-          Read the Docs
+          Get started
         </UButton>
       </template>
     </ULandingHero>
 
     <ULandingSection>
       <template #title>
-        A new animation library, built on the Web Animations API for the smallest filesize and the fastest performance. <br><span class="text-primary-400"> Nuxt 3 and Vue 3 Support. </span>
+        A production-ready motion library for <br><span class="text-primary-400">Vue3 and Nuxt3</span>,
+        <br>built on the Web Animations API for the smallest filesize
+        and the fastest performance.
       </template>
       <UPageGrid>
         <ULandingCard
-          title="Shockingly simple."
-          description="Motion One packs the power of the Web Animations API into a minimal API. It adds new features like selectors, individual transforms, timeline sequencing and more."
+          title="Shockingly Simple" icon="i-ph-gear-six-duotone"
+          description="Oku motion enhances web animations with a minimal API, offering intuitive selectors, individual transforms, and sophisticated timeline sequencing, and more for a seamless user experience."
         />
 
         <ULandingCard
-          title="Size matters"
-          icon="i-ph-lightning-duotone"
-          description="Motion One's animate function is just 3.8kb, and scroll is only 2.5kb. Both less than 20% the size of their Greensock equivalents."
+          title="Size Matters" icon="i-ph-lightning-duotone"
+          description="Oku motion's animate function is an ultra-lightweight 3.8kb, and the scroll feature is just 2.5kb, both significantly smaller than their Greensock counterparts, being less than 20% of their size."
         />
 
         <ULandingCard
-          title="Max performance."
-          icon="i-ph-palette-duotone"
-          description="Motion One uses hardware accelerated animations where possible. So your UI stays snappy and responsive, even under heavy workloads."
+          title="Max Performance" icon="i-ph-palette-duotone"
+          description="Oku motion utilizes hardware-accelerated animations to ensure a snappy and responsive UI, maintaining smooth performance even during heavy workloads."
         />
 
         <ULandingCard
-          title="Best in dev"
-          description="Motion DevTools is a Chrome extension for inspecting, editing and exporting animations made with Motion One or CSS."
+          title="Best in Dev" icon="i-ph-puzzle-piece-duotone"
+          description="Motion DevTools, a Chrome extension, allows for seamless inspection, editing, and exporting of animations created with Oku motion or CSS."
         />
       </UPageGrid>
     </ULandingSection>
