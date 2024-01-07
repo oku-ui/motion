@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -1528,15 +1524,15 @@ packages:
       vue: '>=3.3.0'
     dependencies:
       '@nuxt/kit': 3.9.0(rollup@3.29.4)
-      '@oku-ui/motion': 0.3.1(vue@3.4.4)
+      '@oku-ui/motion': 0.3.2(vue@3.4.4)
       vue: 3.4.4(typescript@5.3.3)
     transitivePeerDependencies:
       - rollup
       - supports-color
     dev: false
 
-  /@oku-ui/motion@0.3.1(vue@3.4.4):
-    resolution: {integrity: sha512-0TpjNm2/T8w/QBY7rfNan3ikS4QMUsATo4C3e12+joaEi9SjpiuGrwLPy+2EFgURTBbsKhLQM8whybqIQs+JJA==}
+  /@oku-ui/motion@0.3.2(vue@3.4.4):
+    resolution: {integrity: sha512-kgCqnUzTF52V7pk2ZDqi6rG6Nz8dBBbL21KAuAv7xnF4v7cARy1arXjRML7PeNLRPbkdbeFIoEOC4Fuqk6sKhg==}
     engines: {node: '>=18'}
     peerDependencies:
       vue: '>=3.3.0'
@@ -1627,6 +1623,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     bundledDependencies:
       - napi-wasm
 
@@ -6255,6 +6252,9 @@ packages:
     engines: {node: ^14 || ^16 || >=18}
     hasBin: true
 
+  /napi-wasm@1.1.0:
+    resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
+
   /natural-compare-lite@1.4.0:
     resolution: {integrity: sha512-Tj+HTDSJJKaZnfiuw+iaF9skdPpTo2GtEly5JHnWV/hfv2Qj/9RKsGISQtLh2ox3l5EAGw487hnBee0sIJ6v2g==}
     dev: true
@@ -9238,3 +9238,7 @@ packages:
       archiver-utils: 4.0.1
       compress-commons: 5.0.1
       readable-stream: 3.6.2
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
