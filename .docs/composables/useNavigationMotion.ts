@@ -12,16 +12,16 @@ function _useNavigation() {
         search: false,
         children: [
           {
-            label: 'Get Started',
-            description: 'Learn how to get started with Nuxt.',
+            label: 'Getting Started',
+            description: 'Learn how to get started with Vue3 and Nuxt3.',
             icon: 'i-ph-rocket-launch-duotone',
             to: '/motion/getting-started',
             active: route.path.startsWith('/motion/getting-started'),
           },
           {
             label: 'API',
-            description: 'Learn how to get started with Nuxt.',
-            icon: 'i-ph-rocket-launch-duotone',
+            description: 'Learn about APSs of Oku Motion.',
+            icon: 'i-ph-brackets-curly-duotone',
             to: '/motion/api',
             active: route.path.startsWith('/motion/api'),
           },
