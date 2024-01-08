@@ -20,7 +20,7 @@ function _useNavigation() {
           },
           {
             label: 'API',
-            description: 'Learn about APSs of Oku Motion.',
+            description: 'Learn about APIs of Oku Motion.',
             icon: 'i-ph-brackets-curly-duotone',
             to: '/motion/api',
             active: route.path.startsWith('/motion/api'),
