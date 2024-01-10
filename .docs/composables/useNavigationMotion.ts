@@ -13,14 +13,21 @@ function _useNavigation() {
         children: [
           {
             label: 'Getting Started',
-            description: 'Learn how to get started with Vue3 and Nuxt3.',
+            description: 'Learn how to get started with Oku Motion.',
             icon: 'i-ph-rocket-launch-duotone',
             to: '/motion/getting-started',
             active: route.path.startsWith('/motion/getting-started'),
           },
           {
+            label: 'Guide',
+            description: 'Learn to build animations with Oku Motion',
+            icon: 'i-ph-book-open-duotone',
+            to: '/motion/guide/animation/simple-animations',
+            active: route.path.startsWith('/motion/guide'),
+          },
+          {
             label: 'API',
-            description: 'Learn about APIs of Oku Motion.',
+            description: 'Explore the Oku Motion API.',
             icon: 'i-ph-brackets-curly-duotone',
             to: '/motion/api',
             active: route.path.startsWith('/motion/api'),
