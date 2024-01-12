@@ -25,14 +25,14 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, async ()
     .findSurround(withoutTrailingSlash(route.path))
 })
 
-const breadcrumb = computed(() => {
-  const links = mapContentNavigation(findPageBreadcrumb(navigation.value, page.value)).map(link => ({
-    label: link.label,
-    to: link.to,
-  }))
+// const breadcrumb = computed(() => {
+//   const links = mapContentNavigation(findPageBreadcrumb(navigation.value, page.value)).map(link => ({
+//     label: link.label,
+//     to: link.to,
+//   }))
 
-  return links
-})
+//   return links
+// })
 
 const titleTemplate = computed(() => {
   if (page.value.titleTemplate)
@@ -99,7 +99,7 @@ useSeoMeta({
   >
     <UPageHeader v-bind="page">
       <template #headline>
-        <UBreadcrumb :links="breadcrumb" />
+        <!-- <UBreadcrumb :links="breadcrumb" /> -->
       </template>
     </UPageHeader>
 
