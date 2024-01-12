@@ -16,7 +16,7 @@ if (!page.value)
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 
 const { data: surround } = await useAsyncData(`${route.path}-surround`, async () => {
-  if (page.value.surround === false)
+  if (page.value?.surround === false)
     return []
 
   return queryContent('/motion')
@@ -24,7 +24,6 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, async ()
     .without(['body', 'excerpt'])
     .findSurround(withoutTrailingSlash(route.path))
 })
-
 const breadcrumb = computed(() => {
   const links = mapContentNavigation(findPageBreadcrumb(navigation.value, page.value)).map(link => ({
     label: link.label,
@@ -33,11 +32,10 @@ const breadcrumb = computed(() => {
 
   return links
 })
-
 const titleTemplate = computed(() => {
-  if (page.value.titleTemplate)
+  if (page.value?.titleTemplate)
     return page.value.titleTemplate
-  const titleTemplate = navKeyFromPath(route.path, 'titleTemplate', navigation.value)
+  const titleTemplate = navKeyFromPath(route.path, 'titleTemplate', navigation!.value)
   if (titleTemplate)
     return titleTemplate
   return '%s · Motion · Oku'
@@ -64,14 +62,12 @@ const communityLinks = computed(() => [{
   to: 'https://github.com/sponsors/productdevbook',
   target: '_blank',
 }])
-
 const ecosystemLinks = [{
   icon: 'i-ph-graduation-cap-duotone',
   label: 'Video Courses',
   to: 'https://masteringnuxt.com/nuxt3?ref=oku-ui.com',
   target: '_blank',
 }]
-
 const title = page.value.head?.title || page.value.title
 const description = page.value.head?.description || page.value.description
 
@@ -82,13 +78,6 @@ useSeoMeta({
   ogDescription: description,
   ogTitle: titleTemplate.value?.includes('%s') ? titleTemplate.value.replace('%s', title) : title,
 })
-
-// defineOgImage({
-//   component: 'Pergel',
-//   title,
-//   description,
-//   headline: breadcrumb.value.length ? breadcrumb.value[breadcrumb.value.length - 1].label : '',
-// })
 </script>
 
 <template>
@@ -111,7 +100,7 @@ useSeoMeta({
       <UDocsSurround :surround="surround" />
     </UPageBody>
 
-    <template v-if="page.toc !== false" #right>
+    <template v-if="page?.toc !== false" #right>
       <UDocsToc :links="page.body?.toc?.links" :ui="{ wrapper: '' }">
         <template #bottom>
           <div class="hidden space-y-6 lg:block" :class="{ '!mt-6': page.body?.toc?.links?.length }">
@@ -120,9 +109,7 @@ useSeoMeta({
             <UPageLinks title="Community" :links="communityLinks" />
 
             <UDivider type="dashed" />
-
             <UPageLinks title="Ecosystem" :links="ecosystemLinks" />
-
             <UDivider type="dashed" />
           </div>
         </template>
