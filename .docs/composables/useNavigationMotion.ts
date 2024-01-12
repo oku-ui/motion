@@ -39,13 +39,6 @@ function _useNavigation() {
             to: '/motion/examples',
             active: route.path.startsWith('/motion/examples'),
           },
-          {
-            label: 'Community',
-            description: 'Find answers and support from the community.',
-            icon: 'i-ph-chats-teardrop-duotone',
-            to: '/motion/community',
-            active: route.path.startsWith('/motion/community'),
-          },
         ],
       },
       {

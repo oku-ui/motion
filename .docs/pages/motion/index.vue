@@ -23,6 +23,7 @@ useSeoMeta({
       </div> -->
       <template #title>
         <span class="text-primary-400">{{ title }}</span>
+        <br>
         Pixel-Powered Performance.
       </template>
       <template #description>
