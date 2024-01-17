@@ -29,7 +29,7 @@ function _useNavigation() {
             label: 'API',
             description: 'Explore the Oku Motion API.',
             icon: 'i-ph-brackets-curly-duotone',
-            to: '/motion/api',
+            to: '/motion/api/components/motion',
             active: route.path.startsWith('/motion/api'),
           },
           {
