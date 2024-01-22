@@ -55,6 +55,7 @@ provide(contextId, state)
 
 onMounted(() => {
   const unmount = state.mount(root.value!)
+
   state.update({
     ...props,
     initial: props.initial === true
