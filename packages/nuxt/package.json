@@ -1,7 +1,7 @@
 {
   "name": "@oku-ui/motion-nuxt",
   "type": "module",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "packageManager": "pnpm@8.13.0",
   "description": "A tiny, performant animation library for NuxtJS",
   "author": "Mehmet productdevbook <hi@productdevbook.com>",
@@ -36,6 +36,7 @@
     "node": ">=18"
   },
   "scripts": {
+    "prepare": "nuxi prepare",
     "prepack": "nuxt-module-build build",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
