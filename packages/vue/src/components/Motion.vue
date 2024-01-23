@@ -51,17 +51,20 @@ const state = createMotionState(
   parentState,
 )
 
-provide(contextId, state)
-
-onMounted(() => {
-  const unmount = state.mount(root.value!)
+function updateState() {
   state.update({
     ...props,
     initial: props.initial === true
       ? undefined
       : props.initial,
   })
+}
 
+provide(contextId, state)
+
+onMounted(() => {
+  const unmount = state.mount(root.value!)
+  updateState()
   return unmount
 })
 
@@ -85,12 +88,7 @@ onUpdated(() => {
       style.set(root.value, key, styles[key])
   }
 
-  state.update({
-    ...props,
-    initial: props.initial === true
-      ? undefined
-      : props.initial,
-  })
+  updateState()
 })
 
 const initialStyles = createStyles(state.getTarget())

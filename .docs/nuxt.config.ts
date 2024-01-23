@@ -9,6 +9,7 @@ const routeRules = {
 }
 
 const devConfig = {
+  ssr: false,
   $development: {
     runtimeConfig: {
       public: {

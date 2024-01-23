@@ -29,7 +29,7 @@ function _useNavigation() {
             label: 'API',
             description: 'Explore the Oku Motion API.',
             icon: 'i-ph-brackets-curly-duotone',
-            to: '/motion/api',
+            to: '/motion/api/components/motion',
             active: route.path.startsWith('/motion/api'),
           },
           {
@@ -38,13 +38,6 @@ function _useNavigation() {
             icon: 'i-ph-app-window-duotone',
             to: '/motion/examples',
             active: route.path.startsWith('/motion/examples'),
-          },
-          {
-            label: 'Community',
-            description: 'Find answers and support from the community.',
-            icon: 'i-ph-chats-teardrop-duotone',
-            to: '/motion/community',
-            active: route.path.startsWith('/motion/community'),
           },
         ],
       },
