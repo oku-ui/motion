@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Animation from './components/Animation.vue'
+import Basic from './components/Basic.vue'
 </script>
 
 <template>
-  <Animation />
+  <Basic />
 </template>
 
 <style>
