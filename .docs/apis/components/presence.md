@@ -4,7 +4,7 @@ description: Perform exit animations in Vue.
 icon: i-ph-brackets-curly-duotone
 prev:
   text: 'Transition'
-  link: '/apis/transition'
+  link: '/apis/components/transition'
 ---
 
 # Presence

@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import { transformerTwoslash } from 'vitepress-plugin-twoslash'
+import { nuxtCompilerOptions, prepend, typeDecorations } from './nuxtUtils'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -69,6 +71,29 @@ export default defineConfig({
       { icon: 'github', link: 'https://github.com/oku-ui/motion' },
       { icon: 'discord', link: 'https://chat.productdevbook.com' },
       { icon: 'x', link: 'https://twitter.com/oku_ui' },
+    ],
+  },
+
+  lastUpdated: true,
+  cleanUrls: true,
+  metaChunk: true,
+  markdown: {
+    codeTransformers: [
+      transformerTwoslash({
+        twoslashOptions: {
+          compilerOptions: {
+            lib: ['esnext', 'dom'],
+            jsx: 1, // Preserve
+            jsxImportSource: 'vue',
+            ...nuxtCompilerOptions,
+          },
+          extraFiles: {
+            ...typeDecorations,
+            'index.ts': { prepend },
+            'index.tsx': { prepend },
+          },
+        },
+      }),
     ],
   },
 })

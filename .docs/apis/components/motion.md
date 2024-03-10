@@ -4,7 +4,7 @@ description: Motion components are DOM primitives optimised for 60fps animation 
 icon: i-ph-brackets-curly-duotone
 next:
   text: 'PresenceGroup'
-  link: '/apis/presence-group'
+  link: '/apis/components/presence-group'
 ---
 
 # Motion

@@ -4,10 +4,10 @@ description: Perform exit animations in Vue. Group multiple Motion components to
 icon: i-ph-brackets-curly-duotone
 next:
   text: 'Presence'
-  link: '/apis/presence'
+  link: '/apis/components/presence'
 prev:
   text: 'Motion'
-  link: '/apis/motion'
+  link: '/apis/components/motion'
 ---
 
 # PresenceGroup
