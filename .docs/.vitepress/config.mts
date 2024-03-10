@@ -2,10 +2,30 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: 'oku',
+  title: 'Motion',
   description: 'A production-ready motion library for Vue3 and Nuxt3, built on the Web Animations API for the smallest filesize and the fastest performance. Powered by Motion One.',
+  /* prettier-ignore */
   head: [
+    // ['link', { rel: 'icon', type: 'image/svg+xml', href: '/pergel-logo-mini.svg' }],
+    // ['link', { rel: 'icon', type: 'image/png', href: '/pergel-logo-mini.png' }],
+    // ['meta', { name: 'theme-color', content: '#5f67ee' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:locale', content: 'en' }],
+    ['meta', { property: 'og:title', content: 'Motion | Oku' }],
+    ['meta', { property: 'og:site_name', content: 'Motion' }],
+    // ['meta', { property: 'og:image', content: 'https://pergel.oku-ui.com/pergel-og.png' }],
+    // ['meta', { property: 'og:url', content: 'https://pergel.oku-ui.com' }],
+    [
+      'script',
+      {
+        'async': true,
+        'defer': true,
+        'data-domain': 'motion.oku-ui.com',
+        'src': 'https://rapor.vucod.com/js/script.js',
+      },
+    ],
   ],
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
