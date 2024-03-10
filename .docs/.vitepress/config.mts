@@ -12,7 +12,7 @@ export default defineConfig({
       { text: 'Get Started', link: '/started/introduction' },
       { text: 'Guide', link: '/guide/simple-animations' },
       { text: 'API', link: '/apis/components/motion' },
-      { text: 'Examples', link: 'https://stackblitz.com/@YeSuX/projects' },
+      { text: 'Examples', link: 'https://stackblitz.com/@YeSuX/collections/oku-motion-examples' },
     ],
 
     sidebar: {
@@ -31,15 +31,15 @@ export default defineConfig({
           items: [
             {
               text: 'Motioin',
-              link: '../apis/components/motion',
+              link: '../components/motion',
             },
             {
               text: 'PresenceGroup',
-              link: '../apis/components/presence-group',
+              link: '../components/presence-group',
             },
             {
               text: 'Presence',
-              link: '../apis/components/presence',
+              link: '../components/presence',
             },
           ],
         },
@@ -47,7 +47,7 @@ export default defineConfig({
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/oku-ui/motion' },
-      { icon: 'discord', link: 'https://discord.gg/aFGBDrVuyT' },
+      { icon: 'discord', link: 'https://chat.productdevbook.com' },
       { icon: 'x', link: 'https://twitter.com/oku_ui' },
     ],
   },
