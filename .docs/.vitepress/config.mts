@@ -18,8 +18,8 @@ export default defineConfig({
     [
       'script',
       {
-        'async': true,
-        'defer': true,
+        'async': '',
+        'defer': '',
         'data-domain': 'motion.oku-ui.com',
         'src': 'https://rapor.vucod.com/js/script.js',
       },
