@@ -16,6 +16,7 @@
     "daisyui": "^4.7.3",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
-    "vitepress": "^1.0.0-rc.45"
+    "vitepress": "^1.0.0-rc.45",
+    "vitepress-plugin-twoslash": "^0.10.2"
   }
 }
