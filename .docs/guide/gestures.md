@@ -1,6 +1,9 @@
 ---
 title: 'Gestures'
 description: 'A powerful gesture recognition system for the browser.'
+prev:
+  text: 'Transition'
+  link: '/guide/transition'
 ---
 
 # Gestures

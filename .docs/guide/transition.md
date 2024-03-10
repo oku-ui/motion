@@ -1,6 +1,12 @@
 ---
 title: 'Transition'
 description: 'A transition defines how values animate from one state to another.'
+next:
+  text: 'Gestures'
+  link: '/guide/gestures'
+prev:
+  text: 'Simple Animations'
+  link: '/guide/simple-animations'
 ---
 
 # Transition

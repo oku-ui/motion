@@ -1,6 +1,9 @@
 ---
 title: 'Simple animations'
 description: ''
+next:
+  text: 'Transition'
+  link: '/guide/transition'
 ---
 
 # Simple animations

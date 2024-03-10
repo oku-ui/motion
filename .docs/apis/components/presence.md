@@ -2,6 +2,9 @@
 title: Presence
 description: Perform exit animations in Vue.
 icon: i-ph-brackets-curly-duotone
+prev:
+  text: 'Transition'
+  link: '/apis/transition'
 ---
 
 # Presence

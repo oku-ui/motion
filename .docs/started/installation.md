@@ -1,6 +1,9 @@
 ---
 title: 'Quick Start'
 description: 'Oku Motion requires Vue 3 or greater.'
+prev:
+  text: 'Introduction'
+  link: '/started/introduction'
 ---
 
 # Quick Start

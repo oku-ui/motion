@@ -1,6 +1,9 @@
 ---
 title: 'Introduction'
 description: Get started with Oku Motion and learn by exploring interactive examples.
+next:
+  text: 'Quick Start'
+  link: '/started/installation'
 ---
 
 # Introduction

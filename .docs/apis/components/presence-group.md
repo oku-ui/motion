@@ -2,6 +2,12 @@
 title: PresenceGroup
 description: Perform exit animations in Vue. Group multiple Motion components together.
 icon: i-ph-brackets-curly-duotone
+next:
+  text: 'Presence'
+  link: '/apis/presence'
+prev:
+  text: 'Motion'
+  link: '/apis/motion'
 ---
 
 # PresenceGroup
