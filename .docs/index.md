@@ -12,7 +12,7 @@ hero:
       link: /started/introduction
     - theme: alt
       text: Explore Examples
-      link: https://stackblitz.com/@YeSuX/projects
+      link: https://stackblitz.com/@YeSuX/collections/oku-motion-examples
   image:
     src: assets/oku-motion_logo.jpg
     alt: Oku motion
