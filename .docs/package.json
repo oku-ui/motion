@@ -1,0 +1,21 @@
+{
+  "name": "oku-motion-docs",
+  "description": "Oku Motion is a simple yet powerful motion library for Vue3 and Nuxt3.",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "dependencies": {
+    "@oku-ui/motion": "^0.3.4",
+    "@splinetool/runtime": "^1.0.63"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "autoprefixer": "^10.4.18",
+    "daisyui": "^4.7.3",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1",
+    "vitepress": "^1.0.0-rc.45"
+  }
+}
