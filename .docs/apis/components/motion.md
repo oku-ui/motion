@@ -330,7 +330,7 @@ The transition defined in this prop can be overridden for specific animation pro
 
 Motion extends the basic set of event listeners provided by Vue with a simple yet powerful set of UI gesture recognisers.
 
-[Learn more](../../2.guide/1.animation/3.Gestures.md)
+[Learn more](../../guide/gestures.md)
 
 ## Events
 
