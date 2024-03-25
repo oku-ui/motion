@@ -14,7 +14,7 @@ hero:
       text: Explore Examples
       link: https://stackblitz.com/@YeSuX/collections/oku-motion-examples
   image:
-    src: assets/motion_logo.svg
+    src: /motion_logo.svg
     alt: Oku motion
 
 features:
