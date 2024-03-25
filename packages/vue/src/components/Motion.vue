@@ -6,7 +6,7 @@ import {
   provide,
   ref,
 } from 'vue'
-import { createMotionState, createStyles, style } from '@motionone/dom'
+import { createMotionState, createStyles } from '@motionone/dom'
 import type {
   AnimationOptionsWithOverrides,
   InViewOptions,
@@ -15,6 +15,7 @@ import type {
 } from '@motionone/dom'
 import type { PresenceState } from '../context'
 import { contextId, presenceId } from '../context'
+import { style } from '../utils/style'
 
 interface MotionProps {
   tag?: string
