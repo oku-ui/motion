@@ -15,6 +15,9 @@ importers:
       '@tailwindcss/postcss7-compat':
         specifier: ^2.2.17
         version: 2.2.17
+      '@types/node':
+        specifier: ^20.11.26
+        version: 20.11.30
       autoprefixer:
         specifier: ^10.4.18
         version: 10.4.18(postcss@8.4.35)
@@ -38,7 +41,7 @@ importers:
         version: 5.4.3
       vitepress:
         specifier: ^1.0.0-rc.45
-        version: 1.0.0-rc.45(@algolia/client-search@4.22.1)(postcss@8.4.35)(search-insights@2.13.0)(typescript@5.4.3)
+        version: 1.0.0-rc.45(@algolia/client-search@4.22.1)(@types/node@20.11.30)(postcss@8.4.35)(search-insights@2.13.0)(typescript@5.4.3)
       vitepress-plugin-twoslash:
         specifier: ^0.10.2
         version: 0.10.2(typescript@5.4.3)
@@ -811,6 +814,12 @@ packages:
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
     dev: true
 
+  /@types/node@20.11.30:
+    resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: true
+
   /@types/parse-json@4.0.2:
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
     dev: true
@@ -842,7 +851,7 @@ packages:
       vite: ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.1.5
+      vite: 5.1.5(@types/node@20.11.30)
       vue: 3.4.21(typescript@5.4.3)
     dev: true
 
@@ -2820,6 +2829,10 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+    dev: true
+
   /unist-util-is@6.0.0:
     resolution: {integrity: sha512-2qCTHimwdxLfz+YzdGfkqNlH0tLi9xjTnHddPmJwtIG9MGsdbutfTc4P+haPD7l7Cjxf/WZj+we5qfVPvvxfYw==}
     dependencies:
@@ -2899,7 +2912,7 @@ packages:
       vfile-message: 4.0.2
     dev: true
 
-  /vite@5.1.5:
+  /vite@5.1.5(@types/node@20.11.30):
     resolution: {integrity: sha512-BdN1xh0Of/oQafhU+FvopafUp6WaYenLU/NFoL5WyJL++GxkNfieKzBhM24H3HVsPQrlAqB7iJYTHabzaRed5Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -2927,6 +2940,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.11.30
       esbuild: 0.19.11
       postcss: 8.4.35
       rollup: 4.9.2
@@ -2951,7 +2965,7 @@ packages:
       - typescript
     dev: true
 
-  /vitepress@1.0.0-rc.45(@algolia/client-search@4.22.1)(postcss@8.4.35)(search-insights@2.13.0)(typescript@5.4.3):
+  /vitepress@1.0.0-rc.45(@algolia/client-search@4.22.1)(@types/node@20.11.30)(postcss@8.4.35)(search-insights@2.13.0)(typescript@5.4.3):
     resolution: {integrity: sha512-/OiYsu5UKpQKA2c0BAZkfyywjfauDjvXyv6Mo4Ra57m5n4Bxg1HgUGoth1CLH2vwUbR/BHvDA9zOM0RDvgeSVQ==}
     hasBin: true
     peerDependencies:
@@ -2977,7 +2991,7 @@ packages:
       minisearch: 6.3.0
       postcss: 8.4.35
       shiki: 1.1.7
-      vite: 5.1.5
+      vite: 5.1.5(@types/node@20.11.30)
       vue: 3.4.21(typescript@5.4.3)
     transitivePeerDependencies:
       - '@algolia/client-search'
