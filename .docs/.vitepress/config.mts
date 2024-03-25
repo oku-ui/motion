@@ -8,7 +8,7 @@ export default defineConfig({
   description: 'A production-ready motion library for Vue3 and Nuxt3, built on the Web Animations API for the smallest filesize and the fastest performance. Powered by Motion One.',
   /* prettier-ignore */
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '../assets/motion_logo.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/motion_logo.svg' }],
     // ['link', { rel: 'icon', type: 'image/png', href: '/pergel-logo-mini.png' }],
     // ['meta', { name: 'theme-color', content: '#5f67ee' }],
     ['meta', { property: 'og:type', content: 'website' }],
@@ -29,7 +29,7 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: '../assets/motion_logo.svg',
+    logo: '/motion_logo.svg',
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Get Started', link: '/started/introduction' },
