@@ -11,9 +11,6 @@ importers:
       '@oku-ui/motion':
         specifier: ^0.3.4
         version: 0.3.4(vue@3.4.21)
-      '@splinetool/runtime':
-        specifier: ^1.0.63
-        version: 1.0.63
     devDependencies:
       '@tailwindcss/postcss7-compat':
         specifier: ^2.2.17
@@ -723,13 +720,6 @@ packages:
     dependencies:
       shiki: 1.1.7
     dev: true
-
-  /@splinetool/runtime@1.0.63:
-    resolution: {integrity: sha512-oOheCcH04IW9y2xNk6AoTE8DVevGKU0MSKsnqeRjAgCe+G1d9mC/+Ru1Nhgd5jIgrY3Zc+gUELI9eo/YwaBODA==}
-    dependencies:
-      on-change: 4.0.2
-      semver-compare: 1.0.0
-    dev: false
 
   /@tailwindcss/postcss7-compat@2.2.17:
     resolution: {integrity: sha512-3h2svqQAqYHxRZ1KjsJjZOVTQ04m29LjfrLjXyZZEJuvUuJN+BCIF9GI8vhE1s0plS0mogd6E6YLg6mu4Wv/Vw==}
@@ -2265,11 +2255,6 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /on-change@4.0.2:
-    resolution: {integrity: sha512-cMtCyuJmTx/bg2HCpHo3ZLeF7FZnBOapLqZHr2AlLeJ5Ul0Zu2mUJJz051Fdwu/Et2YW04ZD+TtU+gVy0ACNCA==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dev: false
-
   /once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
     dependencies:
@@ -2589,10 +2574,6 @@ packages:
   /search-insights@2.13.0:
     resolution: {integrity: sha512-Orrsjf9trHHxFRuo9/rzm0KIWmgzE8RMlZMzuhZOJ01Rnz3D0YBAe+V6473t6/H6c7irs6Lt48brULAiRWb3Vw==}
     dev: true
-
-  /semver-compare@1.0.0:
-    resolution: {integrity: sha512-YM3/ITh2MJ5MtzaM429anh+x2jiLVjqILF4m4oyQB18W7Ggea7BfqdH/wGMK7dDiMghv/6WG7znWMwUDzJiXow==}
-    dev: false
 
   /shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}

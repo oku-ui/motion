@@ -7,8 +7,7 @@
     "preview": "vitepress preview"
   },
   "dependencies": {
-    "@oku-ui/motion": "^0.3.4",
-    "@splinetool/runtime": "^1.0.63"
+    "@oku-ui/motion": "^0.3.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.2.17",

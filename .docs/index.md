@@ -14,7 +14,7 @@ hero:
       text: Explore Examples
       link: https://stackblitz.com/@YeSuX/collections/oku-motion-examples
   image:
-    src: assets/oku-motion_logo.jpg
+    src: assets/motion_logo.svg
     alt: Oku motion
 
 features:
@@ -31,18 +31,3 @@ features:
     title: Best in Dev
     details: Motion DevTools, a Chrome extension, allows for seamless inspection, editing, and exporting of animations created with Oku motion or CSS.
 ---
-
-<Logo></Logo>
-
-<script setup lang="ts">
-import Logo from './components/logo.vue'
-import { onMounted } from 'vue'
-import { Application } from '@splinetool/runtime'
-
-onMounted(()=>{
-  const logoComponent = document.getElementById('logo')
-  const logoContainer = document.getElementsByClassName('image-container')
-
-  logoContainer[0].replaceWith(logoComponent)
-})
-</script>
