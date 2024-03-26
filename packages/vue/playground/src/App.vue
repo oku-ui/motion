@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Animation from './components/Animation.vue'
+import useAnimate from './excamples/use-animate.vue'
 </script>
 
 <template>
-  <Animation />
+  <useAnimate />
 </template>
 
 <style>
