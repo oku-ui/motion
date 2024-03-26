@@ -3,3 +3,6 @@ export { default as Presence } from './components/Presence.vue'
 export { default as PresenceGroup } from './components/PresenceGroup.vue'
 
 export * from '@motionone/dom'
+
+// hooks
+export { useAnimate } from './hooks/use-animate'
