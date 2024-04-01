@@ -5,20 +5,23 @@ import { onMounted, ref } from 'vue'
 import { useAnimate } from '../../../src/index'
 
 const containerRef = ref()
+const animateCopy = ref()
 
+// TODO: need to optmize
 onMounted(() => {
   const [scope, animate] = useAnimate(containerRef)
+  animateCopy.value = animate
   console.log(scope)
 })
 
 function play() {
-  // useAnimate()
+  animateCopy.value('.four', { x: 90 }, { duration: 2 })
 }
 </script>
 
 <template>
   <div ref="containerRef" class="container">
-    <div class="box" :style="{ width: '50px', height: '50px', background: 'blue' }" />
+    <div class="box four" :style="{ width: '50px', height: '50px', background: 'blue' }" />
     <p>reverse</p>
     <button @click="play()">
       play
