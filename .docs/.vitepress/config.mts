@@ -53,7 +53,7 @@ export default defineConfig({
           text: 'Components',
           items: [
             {
-              text: 'Motioin',
+              text: 'Motion',
               link: '../components/motion',
             },
             {

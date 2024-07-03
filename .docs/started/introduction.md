@@ -18,12 +18,12 @@ In this quick overview, we'll take a look at some of the APIs that Oku Motion of
 
 It's based on [Motion One](https://motion.dev).
 
-## The `<motion />` component
+## The `<Motion />` component
 
 The core of Motion is the motion component. Think of it as a plain HTML or SVG element, supercharged with animation capabilities.
 
-```
-<Motion/>
+```html
+<Motion />
 ```
 
 <iframe
@@ -32,7 +32,7 @@ The core of Motion is the motion component. Think of it as a plain HTML or SVG e
 ></iframe>
 
 ## Gestures
-`<motion />` extends Vue's event system with powerful gesture recognisers. It supports hover, press and more.
+`<Motion />` extends Vue's event system with powerful gesture recognisers. It supports hover, press [and more](/guide/gestures).
 
 ```html
 <Motion 
@@ -79,6 +79,6 @@ Variants can be used to animate entire sub-trees of components with a single `an
 
 ## Scroll-triggered animations
 
-Elements can animate as they enter and leave the viewport with the handy whileInView prop.
+Elements can animate as they enter and leave the viewport with the handy `:in-view` prop. As `:in-view="{ scale: [0.9, 1] }"` for example.
 
 ## To be continued...
