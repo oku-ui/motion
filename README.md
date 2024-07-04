@@ -40,7 +40,7 @@ yarn add @oku-ui/motion-nuxt
 
 Add `@oku-ui/motion-nuxt` to the `modules` section of `nuxt.config.ts`:
 
-```ts
+```ts [nuxt.config.ts]
 export default defineNuxtConfig({
   modules: [
     '@oku-ui/motion-nuxt',
@@ -57,7 +57,7 @@ export default defineNuxtConfig({
 
 Import the Motion component and register it in your Vue component:
 
-```ts
+```vue
 <script setup lang="ts">
 import { Motion } from "@oku-ui/motion"
 </script>
@@ -69,7 +69,7 @@ import { Motion } from "@oku-ui/motion"
 
 The `Motion` component can be used to create an animatable HTML or SVG element. By default, it will render a `div` element:
 
-```ts
+```vue
 <script setup lang="ts">
 import { Motion } from "motion/vue"
 </script>
@@ -91,7 +91,7 @@ div {
 Edit the above example by adding an animate prop:
 
 
-```ts
+```vue
 <Motion :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }" />
 ```
 
@@ -101,7 +101,7 @@ Every time a value in animate changes, perhaps from component data or props, the
 
 We can change the type of animation used by passing a `transition` prop.
 
-```ts
+```vue
 <Motion
   :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
   :transition="{ duration: 1, easing: 'ease-in-out' }"
@@ -110,7 +110,7 @@ We can change the type of animation used by passing a `transition` prop.
 
 By default transition options are applied to all values, but we can also override on a per-value basis:
 
-```ts
+```vue
 <Motion
   :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
   :transition="{
@@ -124,13 +124,13 @@ By default transition options are applied to all values, but we can also overrid
 
 Values can also be set as arrays, to define a series of keyframes.
 
-```ts
+```vue
 <Motion :animate="{ x: [0, 100, 50] }" />
 ```
 
 By default, keyframes are spaced evenly throughout `duration`, but this can be adjusted by providing progress values to `offset`:
 
-```ts
+```vue
 <Motion
   :animate="{ x: [0, 100, 50] }"
   :transition="{ x: { offset: [0, 0.25, 1] } }"
@@ -143,7 +143,7 @@ Elements will automatically `animate` to the values defined in animate when they
 
 This can be disabled by setting the `initial` prop to `false`. The styles defined in `animate` will be applied immediately when the element is first created.
 
-```ts
+```vue
 <Motion :initial="false" :animate="{ x: 100 }" />
 ```
 
@@ -151,7 +151,7 @@ This can be disabled by setting the `initial` prop to `false`. The styles define
 
 When an element is removed with `v-show` or `v-if` it can be animated out with the Presence component and the exit prop:
 
-```ts
+```vue
 <script setup lang="ts">
 import { Motion, Presence } from "motion/vue"
 
@@ -198,7 +198,7 @@ const show = ref(true)
 
 `exit` can be provided a `transition` of its own, that override the component's `transition`:
 
-```ts
+```vue
 <Motion
   v-show="isVisible"
   :animate="{ opacity: 1 }"
