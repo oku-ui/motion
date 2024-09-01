@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -159,8 +163,8 @@ importers:
         specifier: ^0.18.8
         version: 0.18.8(@vue-macros/reactivity-transform@0.4.1)(rollup@3.29.4)(typescript@5.3.3)(vue@3.4.3)
       '@vue/test-utils':
-        specifier: ^2.4.3
-        version: 2.4.3(vue@3.4.3)
+        specifier: ^2.4.6
+        version: 2.4.6
       bumpp:
         specifier: ^9.2.1
         version: 9.2.1
@@ -1524,15 +1528,15 @@ packages:
       vue: '>=3.3.0'
     dependencies:
       '@nuxt/kit': 3.9.0(rollup@3.29.4)
-      '@oku-ui/motion': 0.3.2(vue@3.4.4)
+      '@oku-ui/motion': 0.3.4(vue@3.4.4)
       vue: 3.4.4(typescript@5.3.3)
     transitivePeerDependencies:
       - rollup
       - supports-color
     dev: false
 
-  /@oku-ui/motion@0.3.2(vue@3.4.4):
-    resolution: {integrity: sha512-kgCqnUzTF52V7pk2ZDqi6rG6Nz8dBBbL21KAuAv7xnF4v7cARy1arXjRML7PeNLRPbkdbeFIoEOC4Fuqk6sKhg==}
+  /@oku-ui/motion@0.3.4(vue@3.4.4):
+    resolution: {integrity: sha512-TPd4uRSPn/7t7FaidR/4iq0OaP6DxladLbJgZndgMGFgvJWJ/Md2Obv/F561c+KgiMkwHOAa78o4hoz8kTWEVA==}
     engines: {node: '>=18'}
     peerDependencies:
       vue: '>=3.3.0'
@@ -3080,6 +3084,13 @@ packages:
       js-beautify: 1.14.11
       vue: 3.4.3(typescript@5.3.3)
       vue-component-type-helpers: 1.8.27
+    dev: true
+
+  /@vue/test-utils@2.4.6:
+    resolution: {integrity: sha512-FMxEjOpYNYiFe0GkaHsnJPXFHxQ6m4t8vI/ElPGpMWxZKpmRvQ33OIrvRXemy6yha03RxhOlQuy+gZMC3CQSow==}
+    dependencies:
+      js-beautify: 1.14.11
+      vue-component-type-helpers: 2.1.4
     dev: true
 
   /abbrev@1.1.1:
@@ -4988,6 +4999,7 @@ packages:
 
   /glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -4999,6 +5011,7 @@ packages:
   /glob@8.1.0:
     resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
     engines: {node: '>=12'}
+    deprecated: Glob versions prior to v9 are no longer supported
     dependencies:
       fs.realpath: 1.0.0
       inflight: 1.0.6
@@ -8911,6 +8924,10 @@ packages:
     resolution: {integrity: sha512-0vOfAtI67UjeO1G6UiX5Kd76CqaQ67wrRZiOe7UAb9Jm6GzlUr/fC7CV90XfwapJRjpCMaZFhv1V0ajWRmE9Dg==}
     dev: true
 
+  /vue-component-type-helpers@2.1.4:
+    resolution: {integrity: sha512-aVqB3KxwpM76cYRkpnezl1J62E/1omzHQfx1yuz7zcbxmzmP/PeSgI20NEmkdeGnjZPVzm0V9fB4ZyRu5BBj4A==}
+    dev: true
+
   /vue-devtools-stub@0.1.0:
     resolution: {integrity: sha512-RutnB7X8c5hjq39NceArgXg28WZtZpGc3+J16ljMiYnFhKvd8hITxSWQSQ5bvldxMDU6gG5mkxl1MTQLXckVSQ==}
 
@@ -9238,7 +9255,3 @@ packages:
       archiver-utils: 4.0.1
       compress-commons: 5.0.1
       readable-stream: 3.6.2
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

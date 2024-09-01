@@ -58,7 +58,7 @@
     "@vitejs/plugin-vue": "^5.0.2",
     "@vitest/coverage-v8": "^1.1.1",
     "@vue-macros/volar": "^0.18.8",
-    "@vue/test-utils": "^2.4.3",
+    "@vue/test-utils": "^2.4.6",
     "bumpp": "^9.2.1",
     "eslint": "^8.56.0",
     "jsdom": "^23.0.1",
