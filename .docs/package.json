@@ -12,7 +12,7 @@
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.2.17",
     "@types/node": "^20.11.26",
-    "autoprefixer": "^10.4.18",
+    "autoprefixer": "^10.4.20",
     "daisyui": "^4.7.3",
     "fast-glob": "^3.3.2",
     "pathe": "^1.1.2",
