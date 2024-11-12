@@ -14,6 +14,10 @@ Motion One for Vue is a 5kb animation library for Vue 3. Built on Motion One, it
 
 By the end of this quick guide, you'll have installed Motion One for Vue and created your first animation.
 
+# Contributing
+
+Please read our [contributing guide](https://github.com/oku-ui/motion/blob/master/CONTRIBUTING.md)
+
 ## Installation
 
 Motion One for VueJS can be installed via npm:

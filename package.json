@@ -9,8 +9,10 @@
   },
   "scripts": {
     "build": "pnpm turbo build",
-    "release": "bumpp --commit --push --tag",
+    "build:skip": "pnpm nx run-many -t build --skip-nx-cache",
     "story": "pnpm storybook dev -p 6006 --no-open",
+    "build:storybook": "pnpm storybook build",
+    "release": "bumpp --commit --push --tag",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test:vue": "vitest --config ./packages/vue/vitest.config.ts",
