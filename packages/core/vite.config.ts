@@ -30,10 +30,8 @@ export default defineConfig({
       },
       tsconfigPath: 'tsconfig.app.json',
       afterBuild: async () => {
-        return
         // pnpm build:plugins
         execSync('pnpm build:plugins', { stdio: 'inherit', cwd: resolve(__dirname, '../plugins') })
-        execSync('pnpm generate:plugins', { stdio: 'inherit', cwd: resolve(__dirname, '../plugins') })
         execSync('pnpm lint:fix', { stdio: 'inherit', cwd: resolve(__dirname, '../..') })
       },
     }),
