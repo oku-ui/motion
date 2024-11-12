@@ -14,7 +14,15 @@ It currently has support for hover, press and more. Each gesture has a series of
 
 ## Animation helpers
 
-`motion` components provide multiple gesture animation props: `whileHover`, `whileTap`, `whileFocus`, `whileDrag` and `whileInView`. These can define animation targets to temporarily animate to while a gesture is active.
+`motion` components provide multiple gesture animation props: `:hover`, `:tap`, `:focus`, `:drag` and `:in-view`. These can define animation targets to temporarily animate to while a gesture is active.
+
+```html
+<Motion
+    :in-view="{ scale: [0.9, 1] }"
+    :press="{ scale: 0.98 }"
+    :transition="{ duration: 0.5 }"
+  />
+```
 
 ## Hover
 

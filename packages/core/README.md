@@ -1,127 +1,191 @@
-<a href="https://oku-ui.com">
-  <img alt="Oku UI hero image" src="https://github.com/oku-ui/primitives/blob/main/.github/assets/primitives-cover.png?raw=true"
-</a>
+# Vue and Nuxt Motion One
 
----
+| Package | Version | Downloads |
+|---------|---------|-----------|
+| [Vue](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) |
+| [Nuxt](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion-nuxt?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion-nuxt?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) |
 
-<p>
-  <a href="https://www.npmjs.com/package/@oku-ui/primitives"><img src="https://img.shields.io/npm/v/@oku-ui/primitives.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/@oku-ui/primitives"><img src="https://img.shields.io/npm/dm/@oku-ui/primitives.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="Downloads"></a>
-  <a href="https://github.com/oku-ui/primitives/tree/main/LICENSE"><img src="https://img.shields.io/github/license/nuxt/nuxt.svg?style=flat&colorA=18181B&colorB=28CF8D" alt="License"></a>
-  <a href="https://nuxt.com"><img src="https://img.shields.io/badge/Oku Primitives%20Docs-18181B?logo=nuxt.js" alt="Website"></a>
-  <a href="https://discord.gg/RCGzQQPtAh"><img src="https://img.shields.io/badge/Oku%20Discord-18181B?logo=discord" alt="Discord"></a>
-</p>
 
-# Oku Primitives
+**A tiny, performant animation library for VueJS. Powered by [Motion One](https://motion.dev/).**
 
-**An open-source UI component library for building high-quality, accessible design systems and web apps.**
+## Introduction
 
-Oku Primitives is a low-level UI component library with a focus on accessibility, customization and developer experience. You can use these components either as the base layer of your design system or adopt them incrementally.
+Motion One for Vue is a 5kb animation library for Vue 3. Built on Motion One, it's capable of springs, independent transforms, and hardware accelerated animations.
 
-Website: [Oku Website](https://oku-ui.com)
+By the end of this quick guide, you'll have installed Motion One for Vue and created your first animation.
 
----
+## Installation
 
-# Contributing
+Motion One for VueJS can be installed via npm:
 
-Please read our [contributing guide](https://github.com/oku-ui/primitives/blob/master/CONTRIBUTING.md)
+```bash
+npm install @oku-ui/motion
+# or
+pnpm add @oku-ui/motion
+# or
+yarn add @oku-ui/motion
+```
 
-# TODO
+Motion One for NuxtJS can be installed via npm:
 
-## Components
+```bash
+npm install @oku-ui/motion-nuxt
+# or
+pnpm add @oku-ui/motion-nuxt
+# or
+yarn add @oku-ui/motion-nuxt
+```
 
-Enter the component you want most in the components, leave the emojis and follow.
+## Create an animation
 
-**Developers can work on unclaimed components**
+Import the Motion component and register it in your Vue component:
 
-### Components
-### Components
+```vue
+<script setup lang="ts">
+import { Motion } from "@oku-ui/motion"
+</script>
 
-| Component                                                                                       | Status       | 🔗 Hook v1 | 👀 Visual Check | 📄 Docs | 📝 Note                        |
-| ------------------------------------------------------------------------------------------------ | ------------ | ---------- | --------------- | ------- | ------------------------------ |
-| [Accordion](https://vue-primitives.netlify.app/?path=/story/components-accordion--single)       | ✅ Completed | ✅         | ✅              |         |                                |
-| [AlertDialog](https://vue-primitives.netlify.app/?path=/story/components-alertdialog--styled)   | ✅ Completed | ✅         |                 |         |                                |
-| [AspectRatio](https://vue-primitives.netlify.app/?path=/story/components-aspectratio--styled)   | ✅ Completed | ✅         |                 |         |                                |
-| [Avatar](https://vue-primitives.netlify.app/?path=/story/components-avatar--styled)             | ✅ Completed | ✅         |                 |         | 🔨 PR from Radix               |
-| [Checkbox](https://vue-primitives.netlify.app/?path=/story/components-checkbox--styled)         | ✅ Completed | ✅         |                 |         | 🔧 Needs input                 |
-| [Collapsible](https://vue-primitives.netlify.app/?path=/story/components-collapsible--styled)   | ✅ Completed | ✅         | ✅              |         |                                |
-| [Context Menu](https://vue-primitives.netlify.app/?path=/story/components-contextmenu--styled)  | ✅ Completed | ✅         |                 |         |                                |
-| [Dialog](https://vue-primitives.netlify.app/?path=/story/components-dialog--styled)             | ✅ Completed | ✅         |                 |         |                                |
-| [DropdownMenu](https://vue-primitives.netlify.app/?path=/story/components-dropdownmenu--styled) | ✅ Completed | ✅         |                 |         |                                |
-| Form                                                                                            | ❌ Not Started | ❌         |                 |         |                                |
-| [HoverCard](https://vue-primitives.netlify.app/?path=/story/components-hovercard--chromatic)    | ✅ Completed | ✅         |                 |         | 🔧 Needs polygon; fix close    |
-| [Label](https://vue-primitives.netlify.app/?path=/story/components-label--styled)               | ✅ Completed | ✅         |                 |         |                                |
-| [Menubar](https://vue-primitives.netlify.app/?path=/story/components-menubar--styled)           | ✅ Completed | ✅         |                 |         |                                |
-| NavigationMenu                                                                                  | 🚧 In Progress | 🚧         |                 |         |                                |
-| [Popover](https://vue-primitives.netlify.app/?path=/story/components-popover--styled)           | ✅ Completed | ✅         |                 |         |                                |
-| [Progress](https://vue-primitives.netlify.app/?path=/story/components-progress--styled)         | ✅ Completed | ✅         |                 |         | ✅                              |
-| [RadioGroup](https://vue-primitives.netlify.app/?path=/story/components-radiogroup--styled)     | ✅ Completed | ✅         |                 |         | 🔧 Needs input                 |
-| [ScrollArea](https://vue-primitives.netlify.app/?path=/story/components-scrollarea--basic)      | ✅ Completed | ✅         |                 |         |                                |
-| Select                                                                                          | 🚧 In Progress | 🚧         |                 |         |                                |
-| [Separator](https://vue-primitives.netlify.app/?path=/story/components-separator--styled)       | ✅ Completed | ✅         |                 |         |                                |
-| [Slider](https://vue-primitives.netlify.app/?path=/story/components-slider--styled)             | ✅ Completed | ✅         | ✅              |         |                                |
-| [Switch](https://vue-primitives.netlify.app/?path=/story/components-switch--styled)             | ✅ Completed | ✅         |                 |         | 🔧 Needs input                 |
-| [Tabs](https://vue-primitives.netlify.app/?path=/story/components-tabs--styled)                 | ✅ Completed | ✅         | ✅              |         |                                |
-| [Toast](https://vue-primitives.netlify.app/?path=/story/components-toast--styled)               | ✅ Completed | ✅         |                 |         |                                |
-| [ToggleGroup](https://vue-primitives.netlify.app/?path=/story/components-togglegroup--single)   | ✅ Completed | ✅         | ✅              |         |                                |
-| [Toggle](https://vue-primitives.netlify.app/?path=/story/components-toggle--styled)             | ✅ Completed | ✅         | ✅              |         |                                |
-| [Toolbar](https://vue-primitives.netlify.app/?path=/story/components-toolbar--styled)           | ✅ Completed | ✅         |                 |         | 🔧 Focus on MouseDown          |
-| [Tooltip](https://vue-primitives.netlify.app/?path=/story/components-tooltip--styled)           | ✅ Completed | ✅         |                 |         |                                |
+<template>
+  <Motion />
+</template>
+```
 
----
+The `Motion` component can be used to create an animatable HTML or SVG element. By default, it will render a `div` element:
 
-### Utilities
+```vue
+<script setup lang="ts">
+import { Motion } from "motion/vue"
+</script>
 
-| Utility                                                                                              | Status       | 🔗 Hook v1 | 👀 Visual Check | 📄 Docs | 📝 Note                             |
-| ---------------------------------------------------------------------------------------------------- | ------------ | ---------- | --------------- | ------- | ----------------------------------- |
-| [Collection](https://vue-primitives.netlify.app/?path=/story/utilities-rovingfocusgroup--basic)      | 🚧 Partial | ✅         |                 |         | 🔧 Needs array items               |
-| [DismissableLayer](https://vue-primitives.netlify.app/?path=/story/utilities-dismissablelayer--basic) | 🚧 Partial | ✅         |                 |         | 🔧 Dismissable like Solid.js       |
-| [FocusScope](https://vue-primitives.netlify.app/?path=/story/utilities-focusscope--basic)             | ✅ Completed | ✅         |                 |         |                                     |
-| [Menu](https://vue-primitives.netlify.app/?path=/story/utilities-menu--styled)                        | ✅ Completed | ✅         |                 |         |                                     |
-| [Popper](https://vue-primitives.netlify.app/?path=/story/utilities-popper--styled)                    | ✅ Completed | ✅         |                 |         | 🔧 Needs Arrow                     |
-| [Portal](https://vue-primitives.netlify.app/?path=/story/utilities-portal--base)                      | ✅ Completed | ❌         |                 |         | 🔧 Dismissable like Solid.js       |
-| [Presence](https://vue-primitives.netlify.app/?path=/story/utilities-presence--basic)                 | ✅ Completed | ✅         |                 |         |                                     |
-| Primitives                                                                                           | ✅ Completed | ❌         |                 |         |                                     |
-| [RovingFocusGroup](https://vue-primitives.netlify.app/?path=/story/utilities-rovingfocusgroup--basic) | ✅ Completed | ✅         | ✅              |         |                                     |
-| Slot                                                                                                 | ✅ Completed | ❌         |                 |         | 🔧 Remove VDom                     |
-| [VisuallyHidden](https://vue-primitives.netlify.app/?path=/story/utilities-visuallyhidden--basic)     | ✅ Completed | ❌         |                 |         |                                     |
-## Community
+<template>
+  <Motion />
+</template>
 
-- [Discord](https://discord.gg/RCGzQQPtAh) - To get involved with the Oku community, ask questions and share tips.
-- [Twitter](https://twitter.com/oku_ui) - To receive updates, announcements, blog posts, and general Oku tips.
+<style scoped>
+div {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: var(--splash);
+}
+</style>
+```
 
-## Sponsors
+Edit the above example by adding an animate prop:
 
-<p align="center">
-  <a href="https://cdn.jsdelivr.net/gh/productdevbook/static/sponsors.svg">
-    <img alt="sponsors" src='https://cdn.jsdelivr.net/gh/productdevbook/static/sponsors.svg'/>
-  </a>
-</p>
 
-## Thanks
+```vue
+<Motion :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }" />
+```
 
-Thanks to [@radix_ui](https://github.com/radix-ui/primitives) for the inspiration and the great work they've done with [Radix Primitives](https://radix-ui.com). We proceed through the initial stages of many codes by looking at them.
+Every time a value in animate changes, perhaps from component data or props, the component will automatically animate to the latest values.
 
-Thanks to Johnson Chu [@johnsoncodehk](https://github.com/johnsoncodehk). Supported me with many issues that I was stuck in Typescript.
+## Transition options
 
-Thanks to Daniel Roe [@danielroe](https://github.com/danielroe). Nuxt has helped me in many areas so far.
+We can change the type of animation used by passing a `transition` prop.
 
-Thanks to Kevin Deng [@sxzz](https://github.com/sxzz). Helped me a lot with the issues I was stuck in Vue. and [Vue Macros](https://vue-macros.sxzz.moe) is a great project.
+```vue
+<Motion
+  :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
+  :transition="{ duration: 1, easing: 'ease-in-out' }"
+/>
+```
 
-## Credits
-- [Daniel Roe](https://github.com/danielroe)
-- [Johnson Chu](https://github.com/johnsoncodehk)
-- [Skirtle](https://github.com/skirtles-code)
-- [Jacek Karczmarczyk](https://github.com/jacekkarczmarczyk)
-- [Headless UI](https://headlessui.com)
-- [Destyler](https://destyler.org)
-- [Radix Vue](https://github.com/unovue/radix-vue)
-- [Element Plus](https://github.com/element-plus/element-plus)
+By default transition options are applied to all values, but we can also override on a per-value basis:
 
----
+```vue
+<Motion
+  :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
+  :transition="{
+    duration: 1,
+    rotate: { duration: 2 },
+  }"
+/>
+```
 
-## License
+## Keyframes
 
-Licensed under the MIT License, Copyright © 2023-present [productdevbook](https://twitter.com/productdevbook).
+Values can also be set as arrays, to define a series of keyframes.
 
-See [LICENSE](./LICENSE) for more information.
+```vue
+<Motion :animate="{ x: [0, 100, 50] }" />
+```
+
+By default, keyframes are spaced evenly throughout `duration`, but this can be adjusted by providing progress values to `offset`:
+
+```vue
+<Motion
+  :animate="{ x: [0, 100, 50] }"
+  :transition="{ x: { offset: [0, 0.25, 1] } }"
+/>
+```
+
+## Enter animations
+
+Elements will automatically `animate` to the values defined in animate when they're created.
+
+This can be disabled by setting the `initial` prop to `false`. The styles defined in `animate` will be applied immediately when the element is first created.
+
+```vue
+<Motion :initial="false" :animate="{ x: 100 }" />
+```
+
+## Exit animations
+
+When an element is removed with `v-show` or `v-if` it can be animated out with the Presence component and the exit prop:
+
+```vue
+<script setup lang="ts">
+import { Motion, Presence } from "motion/vue"
+
+const show = ref(true)
+</script>
+
+<template>
+  <div class="container">
+    <Presence>
+      <Motion
+        v-show="show"
+        :initial="{ opacity: 0, scale: 0 }"
+        :animate="{ opacity: 1, scale: 1 }"
+        :exit="{ opacity: 0, scale: 0.6 }"
+        class="box"
+      />
+    </Presence>
+    <button @click="show = !show">
+      Toggle
+    </button>
+  </div>
+</template>
+
+<style>
+.container {
+  width: 100px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.container button {
+  cursor: pointer;
+}
+.box {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  background-color: var(--splash);
+}
+</style>
+```
+
+`exit` can be provided a `transition` of its own, that override the component's `transition`:
+
+```vue
+<Motion
+  v-show="isVisible"
+  :animate="{ opacity: 1 }"
+  :exit="{ opacity: 0, transition: { duration: 0.8 } }"
+  :transition="transition"
+/>
+```

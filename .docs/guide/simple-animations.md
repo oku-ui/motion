@@ -12,7 +12,7 @@ next:
 
 Most animations will be performed with the `motion` component and the animate prop.
 
-```html
+```vue
 <Motion :animate="{x: 100}" />
 ```
 
@@ -27,7 +27,7 @@ When any value in `animate` changes, the component will automatically animate to
 
 When a `motion` component is first created, it'll automatically animate to the values in `animate` if they're different from those defined in `style` or `initial`. You can set the initial prop to `false` to disable enter animations.
 
-```html
+```vue
 <Motion :animate="{ x: 100 }" :initial="false" />
 ```
 
@@ -40,7 +40,7 @@ When a `motion` component is first created, it'll automatically animate to the v
 
 Oku Motion provides the `Presence component` to keep components in the DOM while they perform on exit animation.
 
-```html
+```vue
 <Presence>
   <Motion
     v-if="refresh"
@@ -61,7 +61,7 @@ Oku Motion provides the `Presence component` to keep components in the DOM while
 
 Values in `animate` can also be set as a series of keyframes. This will animate through each value in sequence.
 
-```html
+```vue
 <Motion
   :animate="{ x: [0, 100, 0] }"
 />
@@ -74,7 +74,7 @@ Values in `animate` can also be set as a series of keyframes. This will animate 
 
 We can use the current value as the initial keyframe by passing a **wildcard keyframe**, `null`.
 
-```html
+```vue
 <Motion
   :animate="{ x: [null, 100, 0] }"
 />
@@ -91,7 +91,7 @@ Each keyframe will be spaced evenly throughout the animaton. You can override th
 
 times is an array of the same length as the keyframes array, with numbers between 0 and 1 definining where in the animation each keyframe should be hit.
 
-```html
+```vue
 <Motion
     class="box"
     :animate="{ scale: [null, 1.5, 0.8] }"

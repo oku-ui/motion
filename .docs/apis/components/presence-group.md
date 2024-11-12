@@ -12,7 +12,7 @@ prev:
 
 # PresenceGroup
 
-```ts
+```vue
 <PresenceGroup>
   <template v-for="item in items" :key="item.id">
     <Motion

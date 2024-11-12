@@ -33,7 +33,7 @@ Motion can animate:
 
 When animating to a non-animatable value like `"block"`, this value will be set instantly. By setting this value within `transitionEnd`, this value will be set at the end of the animation.
 
-```html
+```vue
 <Motion
   class="box"
   :animate="{
@@ -44,7 +44,7 @@ When animating to a non-animatable value like `"block"`, this value will be set 
     transitionEnd: { display: 'none' },
   }"
 />
-``` 
+```
 
 <iframe
   src="https://stackblitz.com/edit/vitejs-vite-zydpdg?embed=1&file=src%2FApp.vue&view=preview"
@@ -57,7 +57,7 @@ In general, values can only be animated between two of the same type (ie two `px
 
 However, HTML component's `x`, `y`, `width`, `height`, `top`, `left`, `right` and `bottom` values have enhanced support and can all be animated freely between different value types.
 
-```html
+```vue
 <Motion
   class="box"
   :initial="{
@@ -92,12 +92,12 @@ Transform properties are accelerated by the GPU, and therefore animate smoothly.
 
 `motion` components have enhanced `style` props, allowing you to set them individually there, too.
 
-```html
+```vue
 <Motion
-    class="box"
-    :hover="{ scale: [null, 1.5, 1.2] }"
-    :transition="{ duration: 0.5 }"
-  />
+  class="box"
+  :hover="{ scale: [null, 1.5, 1.2] }"
+  :transition="{ duration: 0.5 }"
+/>
 ```
 
 <iframe
@@ -117,8 +117,8 @@ Transform properties are accelerated by the GPU, and therefore animate smoothly.
 
 If set as numbers, `originX` and `Y` default to a progress value between `0` and `1`. `originZ` defaults to pixels.
 
-```html
-<Motion :style="{originX:0.5}"/>
+```vue
+<Motion :style="{ originX: 0.5 }"/>
 ```
 
 ### CSS variables
@@ -129,7 +129,7 @@ Motion can animate the value of CSS variables, and also read CSS variables as an
 
 HTML `motion` components can animate to and from CSS variables, as long as that variable is defined on a component ancestor.
 
-```html
+```vue
 <Motion
   class="box"
   :animate="{
@@ -150,7 +150,7 @@ By defining and animating CSS variables, we can use a parent `motion` component 
 
 CSS variables are also of an arbitary type, so Motion can't infer their default type. You're able to animate `rotate` as a number because Motion understands that it should be set as deg, whereas `'--rotate'` needs to be explicitly set with the unit type, e.g. `'360deg'`.
 
-```html
+```vue
 <Motion
   tag="ul"
   :initial="{
@@ -194,7 +194,7 @@ Using MotionValues instead of state to update visual properties will also avoid 
 
 Where possible, animate just transform values and opacity, as they are GPU-accelerated. This way, you can animate hundreds of layers on modern mobile devices.
 
-```html
+```vue
 // GPU accelerated (fast)
 <Motion :style="{ x: 0 }" :animate="{ x: 100 }" />
 
@@ -206,7 +206,7 @@ Where possible, animate just transform values and opacity, as they are GPU-accel
 
 `motion` components are fully compatible with server-side rendering, meaning the initial state of a component will be reflected in the server-generated output.
 
-```html
+```vue
 // Server will output `translateX(100px)`
 <Motion :initial="false" :animate="{ x: 100 }" />
 ```
@@ -217,16 +217,13 @@ The following SVG values are not currently compatible with server-side rendering
 
 `scale` and `rotate` rely on the dynamic calculation of `transformOrigin` - `originX` and `originY` should be set as strings (either `px` or `%`) to support these server side.
 
-```html
-<Motion
-  tag="circle"
-  :style="{ scale: 2, originX: '100px', originY: '100px' }"
-/>
+```vue
+<Motion tag="circle" :style="{ scale: 2, originX: '100px', originY: '100px' }" />
 ```
 
 `path` values rely on the measurement of the overall path length. Setting `strokeDasharray` to `"0 1"` will hide the path until Motion can measure it.
 
-```html
+```vue
 <Motion tag="path" strokeDasharray="0 1" />
 ```
 
@@ -238,15 +235,15 @@ The following SVG values are not currently compatible with server-side rendering
 
 Define a HTML or SVG tag to render.
 
-```html
+```vue
 <Motion tag="button">Button</Motion>
-``` 
+```
 
 ### animate
 
 A target of values to animate to.
 
-```html
+```vue
 // As values
 <Motion :animate="{ opacity: 1 }" />
 
@@ -254,7 +251,7 @@ A target of values to animate to.
 <Motion animate="visible" :variants="variants" />
 
 // Multiple variants
-<Motion :animate="["visible", "active"]" :variants="variants" />
+<Motion :animate="['visible', 'active']" :variants="variants" />
 
 // AnimationControls
 <Motion :animate="animation" />
@@ -267,7 +264,7 @@ The animate prop accepts all the same values and keyframes as Motion One's [anim
 ### initial
 A target of values to animate from when the element is first rendered.
 
-```ts
+```vue
 // As values
 <Motion :initial="{ opacity: 1 }" />
 
@@ -275,11 +272,11 @@ A target of values to animate from when the element is first rendered.
 <Motion initial="visible" :variants="variants" />
 
 // Multiple variants
-<Motion :initial="["visible", "active"]" :variants="variants" />
+<Motion :initial="['visible', 'active']" :variants="variants" />
 
 // As false (disable mount animation)
-<Motion :initial="false" :animate="{opacity:0}" />
-``` 
+<Motion :initial="false" :animate="{ opacity: 0 }" />
+```
 
 If set to false, the target defined in animate will be immediately set when the element is first rendered. Only subsequent changes to animate will animate.
 
@@ -311,7 +308,7 @@ const show = ref(true)
     </button>
   </div>
 </template>
-``` 
+```
 
 Note: This animation is only interruptible if the element is hidden via v-show.
 
@@ -321,9 +318,9 @@ The exit prop accepts all the same values and keyframes as Motion One's [animate
 
 Provides a default transition for all animations to use.
 
-```html
+```vue
 <Motion :animate="{ x: 100 }" :transition="{ duration: 0.5 }" />
-``` 
+```
 
 Supports all [animate options.](https://motion.dev/dom/animate#options)
 
@@ -355,7 +352,7 @@ const logComplete = ({ detail }) => console.log("Complete: ", detail)
     @motioncomplete="logComplete"
   />
 </template>
-``` 
+```
 
 ### motionstart
 

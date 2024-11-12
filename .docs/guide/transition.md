@@ -13,7 +13,7 @@ prev:
 
 A `transition` defines the type of animation used when animating between two values.
 
-```html
+```vue
 <Motion
     :animate="{ opacity: 1, scale: 1.2 }"
     :transition="{ delay: 1 }"
@@ -29,7 +29,7 @@ A `transition` defines the type of animation used when animating between two val
 
 A different set of transition setting can be defined for each specific value.
 
-```html
+```vue
 <Motion
     class="box"
     :initial="{ opacity: 0, scale: 0.5 }"
@@ -70,7 +70,7 @@ The number of times to repeat the transition. Set to `Infinity` for perpetual re
 
 Without setting `repeatType`, this will loop the animation.
 
-```html
+```vue
 <Motion
   :animate="{ rotate: 180 }"
   :transition="{ repeat: 'Infinity', duration: 2 }"
@@ -87,7 +87,7 @@ How to repeat the animation. This can be either:
 - `reverse`: Alternates between forward and backwards playback
 - `mirror`: Switches from and to alternately
 
-```html
+```vue
 <Motion
   :animate="{ rotate: 180 }"
   :transition="{
@@ -104,7 +104,7 @@ How to repeat the animation. This can be either:
 
 When repeating an animation, `repeatDelay` will set the duration of the time to wait, in seconds, between each repetition.
 
-```html
+```vue
 <Motion
   :animate="{ rotate: 180 }"
   :transition="{ repeat: 'Infinity', repeatDelay: 1 }"

@@ -9,7 +9,7 @@ prev:
 
 # Presence
 
-```ts
+```vue
 <Presence>
   <Motion
     v-show="show"
@@ -17,13 +17,13 @@ prev:
     :exit="{ opacity: 0 }">
   </Motion>
 </Presence>
-``` 
+```
 
 # Usage
 Import Motion from "@oku-ui/motion" and register it with your component.
 
 
-```ts
+```vue
 <script setup lang="ts">
 import { Motion, Presence } from "@oku-ui/motion"
 
@@ -82,7 +82,7 @@ Note: Presence currently only supports a single rendered child.
 By passing a different `key` to multiple children and rendering just one at a time, we can animate between them at a given time.
 
 
-```ts
+```vue
 <script setup lang="ts">
 import { Motion, Presence } from "@oku-ui/motion"
 
