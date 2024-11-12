@@ -7,24 +7,24 @@ function removeDoneCallback(element: Element) {
   && element.removeEventListener('motioncomplete', prevDoneCallback)
   doneCallbacks.delete(element)
 }
+
+export interface MotionPresenceProps {
+  name?: string
+  exitBeforeEnter: boolean
+  initial: boolean
+}
 </script>
 
 <script setup lang="ts">
 import { onBeforeUpdate, provide } from 'vue'
 import { mountedStates } from '@motionone/dom'
-import type { PresenceState } from '../context'
-import { presenceId } from '../context'
+import type { PresenceState } from '../share/context'
+import { presenceId } from '../share/context'
 
-const props = withDefaults(defineProps<MotionProps>(), {
+const props = withDefaults(defineProps<MotionPresenceProps>(), {
   initial: true,
   exitBeforeEnter: false,
 })
-
-interface MotionProps {
-  name?: string
-  exitBeforeEnter: boolean
-  initial: boolean
-}
 
 function enter(element: Element) {
   const state = mountedStates.get(element)

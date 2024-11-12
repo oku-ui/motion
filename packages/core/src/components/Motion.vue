@@ -7,27 +7,10 @@ import {
   ref,
 } from 'vue'
 import { createMotionState, createStyles, style } from '@motionone/dom'
-import type {
-  AnimationOptionsWithOverrides,
-  InViewOptions,
-  VariantDefinition,
-  Variants,
-} from '@motionone/dom'
-import type { PresenceState } from '../context'
-import { contextId, presenceId } from '../context'
 
-interface MotionProps {
-  tag?: string
-  initial?: VariantDefinition | boolean
-  animate?: VariantDefinition
-  inView?: VariantDefinition
-  hover?: VariantDefinition
-  press?: VariantDefinition
-  exit?: VariantDefinition
-  variants?: Variants
-  inViewOptions?: InViewOptions
-  transition?: AnimationOptionsWithOverrides
-}
+import type { PresenceState } from '../share/context'
+import { contextId, presenceId } from '../share/context'
+import type { MotionProps } from './types'
 
 const props = withDefaults(defineProps<MotionProps>(), {
   tag: 'div',

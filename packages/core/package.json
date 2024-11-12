@@ -49,14 +49,6 @@
       "nuxt": [
         "./dist/nuxt/index.d.mts",
         "./dist/nuxt/index.d.ts"
-      ],
-      "resolver": [
-        "./dist/resolver/index.d.mts",
-        "./dist/resolver/index.d.ts"
-      ],
-      "namespaced": [
-        "./dist/namespaced/index.d.mts",
-        "./dist/namespaced/index.d.ts"
       ]
     }
   },
