@@ -1,8 +1,0 @@
-{
-  "name": "my-module-playground",
-  "private": true,
-  "dependencies": {
-    "@oku-ui/motion-nuxt": "workspace:*",
-    "nuxt": "^3.9.0"
-  }
-}

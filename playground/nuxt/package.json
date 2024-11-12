@@ -8,10 +8,10 @@
   "dependencies": {
     "@oku-ui/motion": "workspace:^",
     "@oku-ui/motion-nuxt": "^0.1.2",
-    "gsap": "^3.12.4",
-    "three": "^0.160.0"
+    "gsap": "^3.12.5",
+    "three": "^0.160.1"
   },
   "devDependencies": {
-    "nuxt": "^3.9.0"
+    "nuxt": "^3.14.159"
   }
 }
