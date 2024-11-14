@@ -1,88 +1,224 @@
+<script lang="ts">
+import type { AnimationPlaybackControls, DOMKeyframesDefinition, ObjectTarget, ValueAnimationOptions } from 'motion/react'
+
+/**
+ * Generate a list of every possible transform key.
+ */
+export const transformPropOrder = [
+  'transformPerspective',
+  'x',
+  'y',
+  'z',
+  'translateX',
+  'translateY',
+  'translateZ',
+  'scale',
+  'scaleX',
+  'scaleY',
+  'rotate',
+  'rotateX',
+  'rotateY',
+  'rotateZ',
+  'skew',
+  'skewX',
+  'skewY',
+]
+
+/**
+ * A quick lookup for transform props.
+ */
+export const transformProps = new Set(transformPropOrder)
+
+const underDampedSpring: Partial<ValueAnimationOptions> = {
+  type: 'spring',
+  stiffness: 500,
+  damping: 25,
+  restSpeed: 10,
+}
+
+function criticallyDampedSpring(target: unknown): Partial<ValueAnimationOptions> {
+  return {
+    type: 'spring',
+    stiffness: 550,
+    damping: target === 0 ? 2 * Math.sqrt(550) : 30,
+    restSpeed: 10,
+  }
+}
+
+const keyframesTransition: Partial<ValueAnimationOptions> = {
+  type: 'keyframes',
+  duration: 0.8,
+}
+
+/**
+ * Default easing curve is a slightly shallower version of
+ * the default browser easing curve.
+ */
+const ease: Partial<ValueAnimationOptions> = {
+  type: 'keyframes',
+  ease: [0.25, 0.1, 0.35, 1],
+  duration: 0.3,
+}
+
+function getDefaultTransition(
+  valueKey: string,
+  value?: Partial<ValueAnimationOptions>,
+): Partial<ValueAnimationOptions> {
+  if (value?.keyframes && value?.keyframes?.length > 2) {
+    return keyframesTransition
+  }
+  else if (transformProps.has(valueKey)) {
+    return valueKey.startsWith('scale')
+      ? (value?.keyframes && value?.keyframes.length) ? criticallyDampedSpring(value?.keyframes[1]) : underDampedSpring
+      : underDampedSpring
+  }
+
+  return ease
+}
+
+export interface MotionProps {
+  as?: string
+  transition?: ValueAnimationOptions
+  animate?: DOMKeyframesDefinition
+  initial?: DOMKeyframesDefinition | ObjectTarget<any>
+  inView?: DOMKeyframesDefinition | ObjectTarget<any>
+  exit?: DOMKeyframesDefinition | ObjectTarget<any>
+  waitExit?: boolean
+}
+</script>
+
 <script setup lang="ts">
+import { animate } from 'motion'
 import {
-  inject,
+  defineOptions,
+  nextTick,
+  onBeforeUnmount,
   onMounted,
-  onUpdated,
-  provide,
   ref,
+  useAttrs,
+  useId,
+  watch,
+  withDefaults,
 } from 'vue'
-import { createMotionState, createStyles, style } from '@motionone/dom'
+import { generateHTMLStyles } from '../share/build'
 
-import type { PresenceState } from '../share/context'
-import { contextId, presenceId } from '../share/context'
-import type { MotionProps } from './types'
-
-const props = withDefaults(defineProps<MotionProps>(), {
-  tag: 'div',
+defineOptions({
+  name: 'Motion',
+  inheritAttrs: false,
 })
 
-const root = ref<Element | null>(null)
-const parentState = inject(contextId, undefined)
-const presenceState = inject(presenceId, undefined) as
-  | PresenceState
-  | undefined
+const props = withDefaults(defineProps<MotionProps>(), {
+  as: 'div',
+  waitExit: false,
+})
 
-const state = createMotionState(
-  {
-    ...props,
-    initial: presenceState?.initial === false
-      ? presenceState.initial
-      : props.initial === true
-        ? undefined
-        : props.initial,
+const attrs = useAttrs()
+const elRef = ref<HTMLElement | null>(null)
+const isClient = ref(false)
+const id = useId()
+
+let animationInstance: AnimationPlaybackControls | null = null
+
+function setElRef(el: HTMLElement | null) {
+  if (el)
+    mergeStyles(el, props.initial)
+  elRef.value = el
+}
+
+const defaultTransition = ref({})
+onMounted(async () => {
+  if (typeof window === 'undefined') {
+    isClient.value = false
+    return
+  }
+
+  isClient.value = true
+  for (const key in props.animate) {
+    const value = getDefaultTransition(key, props.transition as ValueAnimationOptions | undefined)
+    defaultTransition.value = {
+      ...value,
+      ...props.transition,
+    }
+  }
+})
+
+watch(
+  () => props.animate,
+  () => {
+    requestAnimationFrame(() => {
+      if (animationInstance)
+        animationInstance.complete()
+
+      if (elRef.value && props.animate)
+        animationInstance = animate(elRef.value, props.animate, defaultTransition.value)
+    })
   },
-  parentState,
+  { deep: true },
 )
 
-function updateState() {
-  state.update({
-    ...props,
-    initial: props.initial === true
-      ? undefined
-      : props.initial,
+function mergeStyles(el: HTMLElement, newStyles: any) {
+  if (!el || !newStyles)
+    return
+
+  const style = {} as any
+  generateHTMLStyles(newStyles, { style })
+
+  el.style.cssText = Object.keys(style)
+    .map(key => `${key}: ${style[key]}`)
+    .join(';')
+}
+
+function beforeEnter(el: any) {
+  setElRef(el)
+}
+
+function onLeave(_el: any, _done: any) {
+  if (animationInstance)
+    animationInstance.stop()
+
+  setTimeout(() => {
+    if (elRef.value && props.exit)
+      animationInstance = animate(elRef.value, props.exit, defaultTransition.value)
+
+    animationInstance?.then(() => {
+      if (props.waitExit)
+        _done && _done()
+    })
+  }, 10)
+}
+
+function onEnter(_el: any, done: any) {
+  nextTick(() => {
+    setTimeout(() => {
+      if (elRef.value && props.animate)
+        animationInstance = animate(elRef.value, props.animate, defaultTransition.value)
+
+      animationInstance?.then(() => {
+        done()
+      })
+    }, 10)
   })
 }
 
-provide(contextId, state)
-
-onMounted(() => {
-  const unmount = state.mount(root.value!)
-  updateState()
-  return unmount
+onBeforeUnmount(() => {
+  animationInstance?.stop()
 })
-
-let manuallyAppliedMotionStyles = false
-onUpdated(() => {
-  /**
-   * Vue reapplies all styles every render, rather than diffing and
-   * only reapplying the ones that change. This means that initially
-   * calculated motion styles also get reapplied every render, leading
-   * to incorrect animation origins.
-   *
-   * To prevent this, once an element is mounted we hand over these
-   * styles to Motion. This will currently still lead to a jump if interrupting
-   * transforms in browsers where the number polyfill is used.
-   */
-  if (!manuallyAppliedMotionStyles && root.value) {
-    manuallyAppliedMotionStyles = true
-
-    const styles = createStyles(state.getTarget())
-    for (const key in styles)
-      style.set(root.value, key, styles[key])
-  }
-
-  updateState()
-})
-
-const initialStyles = createStyles(state.getTarget())
 </script>
 
 <template>
-  <component
-    :is="tag" ref="root" :style="state.isMounted()
-      ? style
-      : { ...style, ...initialStyles }"
+  <Transition
+    :css="false"
+    appear
+    @leave="onLeave"
+    @enter="onEnter"
+    @before-enter="beforeEnter"
   >
-    <slot />
-  </component>
+    <component
+      :is="as"
+      :key="id"
+      v-bind="attrs"
+    >
+      <slot />
+    </component>
+  </Transition>
 </template>

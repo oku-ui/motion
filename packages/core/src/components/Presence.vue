@@ -10,8 +10,8 @@ function removeDoneCallback(element: Element) {
 
 export interface MotionPresenceProps {
   name?: string
-  exitBeforeEnter: boolean
-  initial: boolean
+  exitBeforeEnter?: boolean
+  initial?: boolean
 }
 </script>
 

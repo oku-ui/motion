@@ -5,3 +5,5 @@ dist
 package-lock.json
 coverage
 .turbo
+.docs/.vitepress/cache
+.olddocs

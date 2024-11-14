@@ -1,4 +1,9 @@
+import { fileURLToPath } from 'node:url'
 import type { StorybookConfig } from '@storybook/vue3-vite'
+import type { UserConfig } from 'vite'
+import { mergeConfig } from 'vite'
+import tailwind from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
 
 const config: StorybookConfig = {
   stories: [
@@ -19,5 +24,24 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
+  viteFinal(config) {
+    return mergeConfig(config, {
+      define: { 'process.env': {} },
+      resolve: {
+        alias: {
+          '@oku-ui/motion': fileURLToPath(new URL('../packages/core/src', import.meta.url)),
+        },
+      },
+      css: {
+        postcss: {
+          plugins: [
+            tailwind(),
+            autoprefixer(),
+          ],
+        },
+      },
+    } as UserConfig)
+  },
+
 }
 export default config

@@ -32,7 +32,7 @@ export default defineConfig({
       afterBuild: async () => {
         // pnpm build:plugins
         execSync('pnpm build:plugins', { stdio: 'inherit', cwd: resolve(__dirname, '../plugins') })
-        execSync('pnpm lint:fix', { stdio: 'inherit', cwd: resolve(__dirname, '../..') })
+        // execSync('pnpm lint:fix', { stdio: 'inherit', cwd: resolve(__dirname, '../..') })
       },
     }),
   ],

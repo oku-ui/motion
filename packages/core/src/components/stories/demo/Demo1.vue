@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Motion } from '../index.ts'
+import { Motion } from '../../index.ts'
 
 const rotate = ref(10)
 </script>

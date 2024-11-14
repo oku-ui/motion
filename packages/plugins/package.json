@@ -2,7 +2,7 @@
   "name": "plugins",
   "type": "module",
   "version": "0.3.0",
-  "description": "Plugins for Oku Primitives",
+  "description": "Plugins for Oku Motion",
   "license": "MIT",
   "repository": {
     "type": "git",

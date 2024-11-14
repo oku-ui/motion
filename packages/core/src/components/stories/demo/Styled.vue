@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Motion } from '../index.ts'
+import { Motion } from '../../index.ts'
 </script>
 
 <template>
