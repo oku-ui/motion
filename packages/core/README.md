@@ -5,7 +5,6 @@
 | [Vue](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) |
 | [Nuxt](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion-nuxt?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion-nuxt?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) |
 
-
 **A tiny, performant animation library for VueJS. Powered by [Motion One](https://motion.dev/).**
 
 ## Introduction
@@ -42,7 +41,7 @@ Import the Motion component and register it in your Vue component:
 
 ```vue
 <script setup lang="ts">
-import { Motion } from "@oku-ui/motion"
+import { Motion } from '@oku-ui/motion'
 </script>
 
 <template>
@@ -54,7 +53,7 @@ The `Motion` component can be used to create an animatable HTML or SVG element. 
 
 ```vue
 <script setup lang="ts">
-import { Motion } from "motion/vue"
+import { Motion } from 'motion/vue'
 </script>
 
 <template>
@@ -72,7 +71,6 @@ div {
 ```
 
 Edit the above example by adding an animate prop:
-
 
 ```vue
 <Motion :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }" />
@@ -136,7 +134,7 @@ When an element is removed with `v-show` or `v-if` it can be animated out with t
 
 ```vue
 <script setup lang="ts">
-import { Motion, Presence } from "motion/vue"
+import { Motion, Presence } from 'motion/vue'
 
 const show = ref(true)
 </script>
