@@ -1,5 +1,6 @@
 <script lang="ts">
-import type { AnimationPlaybackControls, DOMKeyframesDefinition, ObjectTarget, ValueAnimationOptions } from 'motion/react'
+
+import type { AnimationPlaybackControls, DOMKeyframesDefinition, DynamicAnimationOptions, ObjectTarget, ValueAnimationOptions } from 'motion/react'
 
 /**
  * Generate a list of every possible transform key.
@@ -78,8 +79,8 @@ function getDefaultTransition(
 
 export interface MotionProps {
   as?: string
-  transition?: ValueAnimationOptions
-  animate?: DOMKeyframesDefinition
+  transition?: DynamicAnimationOptions
+  animate?: DOMKeyframesDefinition | ObjectTarget<any>
   initial?: DOMKeyframesDefinition | ObjectTarget<any>
   inView?: DOMKeyframesDefinition | ObjectTarget<any>
   exit?: DOMKeyframesDefinition | ObjectTarget<any>

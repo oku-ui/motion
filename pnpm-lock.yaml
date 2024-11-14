@@ -114,8 +114,8 @@ importers:
   .docs:
     dependencies:
       '@oku-ui/motion':
-        specifier: link:../packages/core/src
-        version: link:../packages/core/src
+        specifier: link:../packages/core
+        version: link:../packages/core
       '@oku-ui/primitives':
         specifier: ^0.7.2
         version: 0.7.2(@vue/shared@3.5.12)(vue@3.5.12(typescript@5.6.3))

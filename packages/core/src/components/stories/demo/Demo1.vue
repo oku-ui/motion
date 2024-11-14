@@ -12,7 +12,6 @@ const rotate = ref(10)
       backgroundColor: 'var(--yellow)',
     }" :transition="{
       duration: 1,
-      rotate: { duration: 2 },
     }"
   />
 
