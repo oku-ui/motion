@@ -1,15 +1,27 @@
-import type { DynamicAnimationOptions, ValueAnimationOptions } from 'motion/react'
-import { type Directive, type DirectiveBinding, type Plugin, type VNode, reactive } from 'vue'
+import type {
+  DynamicAnimationOptions,
+  ValueAnimationOptions,
+} from 'motion/react'
+import type {
+  Directive,
+  DirectiveBinding,
+  Plugin,
+  VNode,
+} from 'vue'
+import { reactive } from 'vue'
 import { animate } from 'motion'
-import { type AnimationInstance, type DirectiveValue, type MotionElement, type MotionSVGElement, getDefaultTransition, mergeStyles, presenceId } from '../share'
-import { AnimationsKey } from '../composables/useStore'
+import type {
+  AnimationInstance,
+  DirectiveValue,
+  MotionElement,
+  MotionSVGElement,
+} from '../share'
+import { AnimationsKey, getDefaultTransition, mergeStyles, presenceId } from '../share'
 
 export const motionPlugin: Plugin = {
   install(app) {
     // Object to store animation instances
-    const animationInstances = reactive<AnimationInstance>({
-
-    })
+    const animationInstances = reactive<AnimationInstance>({})
 
     // Function to create or update animation
     function createOrUpdateAnimation(
@@ -24,10 +36,8 @@ export const motionPlugin: Plugin = {
       // Get transition based on keyframes keys
       const transition = keyframes ? getDefaultTransition(Object.keys(keyframes).join(','), options as Partial<ValueAnimationOptions>) : {}
 
-      // Geçiş için tür belirleme
-      const animationOptions = options || {} // Opsiyonlar varsa, yoksa boş bir obje.
+      const animationOptions = options || {}
 
-      // 'transition' ve 'options' birleşimini net bir türle sağlayalım
       const animationParams: DynamicAnimationOptions = {
         ...transition,
         ...animationOptions,

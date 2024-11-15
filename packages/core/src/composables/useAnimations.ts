@@ -2,9 +2,7 @@ import { inject } from 'vue'
 import type { AnimationPlaybackControls, DOMKeyframesDefinition, DynamicAnimationOptions, ValueAnimationOptions } from 'motion/react'
 import { animate } from 'motion'
 import type { MotionElement, MotionProps, MotionSVGElement } from '../share'
-import { getDefaultTransition } from '../share'
-
-import { AnimationsKey } from './useStore'
+import { AnimationsKey, getDefaultTransition } from '../share'
 
 export function useAnimations() {
   const animations = inject(AnimationsKey)

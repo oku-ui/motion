@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useAnimations } from '@oku-ui/composables'
+import { Motion, useAnimations } from '../../../index.ts'
 import { onMounted, ref } from 'vue'
 
 const rotate = ref(500)
