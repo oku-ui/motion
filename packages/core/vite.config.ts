@@ -63,7 +63,6 @@ export default defineConfig({
       external: [
         'vue',
         '@vue/shared',
-        '@motionone/dom',
         'motion',
       ],
     },
