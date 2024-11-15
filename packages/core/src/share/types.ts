@@ -14,11 +14,11 @@ export interface AnimationInstance {
 }
 
 export interface MotionElement extends HTMLElement {
-  motion_playback_instance?: AnimationPlaybackControls // Renamed property with underscore
+  motion_playback_instance?: AnimationPlaybackControls
 }
 
 export interface MotionSVGElement extends SVGElement {
-  motion_playback_instance?: AnimationPlaybackControls // Renamed property with underscore
+  motion_playback_instance?: AnimationPlaybackControls
 }
 
 export interface PresenceState {

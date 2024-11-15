@@ -1,5 +1,5 @@
 import { inject } from 'vue'
-import type { DOMKeyframesDefinition, DynamicAnimationOptions, ValueAnimationOptions } from 'motion/react'
+import type { AnimationPlaybackControls, DOMKeyframesDefinition, DynamicAnimationOptions, ValueAnimationOptions } from 'motion/react'
 import { animate } from 'motion'
 import type { MotionElement, MotionProps, MotionSVGElement } from '../share'
 import { getDefaultTransition } from '../share'
@@ -54,7 +54,7 @@ export function useAnimations() {
     el: MotionElement | MotionSVGElement,
     keyframes: DOMKeyframesDefinition,
     options?: DynamicAnimationOptions,
-  ) {
+  ): AnimationPlaybackControls {
     const transition = keyframes ? getDefaultTransition(Object.keys(keyframes).join(','), options as Partial<ValueAnimationOptions>) : {}
     // 'transition' ve 'options' birleşimini net bir türle sağlayalım
     const animationParams: DynamicAnimationOptions = {
