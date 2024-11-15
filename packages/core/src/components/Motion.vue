@@ -3,7 +3,6 @@ import { type MotionPropsVue, presenceId } from '../share'
 
 import {
   inject,
-
   useAttrs,
   useId,
 } from 'vue'

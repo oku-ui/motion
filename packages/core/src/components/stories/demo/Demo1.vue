@@ -18,7 +18,7 @@ onMounted(() => {
   <Motion
     :keyframes="{
       rotate: `${rotate}deg`,
-      backgroundColor: 'var(--yellow)',
+      backgroundColor: '#FFD700',
     }"
     :options="{
       duration: 1,

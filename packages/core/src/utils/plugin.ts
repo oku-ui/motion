@@ -28,6 +28,7 @@ export const motionPlugin: Plugin = {
       el: MotionElement | MotionSVGElement,
       binding: DirectiveBinding<DirectiveValue>,
       node: VNode,
+      updated: boolean = false,
     ) {
       const key = binding.value.key || node.key as string
 
@@ -43,31 +44,41 @@ export const motionPlugin: Plugin = {
         ...animationOptions,
       } as DynamicAnimationOptions
 
+      if (updated) {
+        requestAnimationFrame(() => {
+          if (animationInstances[key])
+            animationInstances[key].motion_playback_instance?.complete()
+
+          const motion = animate(el, keyframes, options)
+
+          animationInstances[key] = {
+            motion_playback_instance: motion,
+          }
+        })
+        return
+      }
+
+      animationInstances[key] = {
+        keyframes,
+        exit,
+        initial,
+        key,
+        options: animationParams,
+      }
+
       if (initial) {
         mergeStyles(el, initial)
         // Start the main animation with the keyframes and options
 
-        if (waitExit) {
-          animationInstances[key] = {
-            keyframes,
-            exit,
-            initial,
-            key,
-            options: animationParams,
-          }
+        if (waitExit)
           return
-        }
 
         const motion = animate(el, keyframes, options)
 
         animationInstances[key] = {
-          keyframes,
-          exit,
-          initial,
-          key,
-          options: animationParams,
           motion_playback_instance: motion,
         }
+
         el.motion_playback_instance = motion
       }
       else {
@@ -75,11 +86,6 @@ export const motionPlugin: Plugin = {
         const motion = animate(el, keyframes, options)
 
         animationInstances[key] = {
-          keyframes,
-          exit,
-          initial,
-          key,
-          options: animationParams,
           motion_playback_instance: motion,
         }
 
@@ -89,8 +95,12 @@ export const motionPlugin: Plugin = {
 
     // Directive definition for 'v-animate'
     const vAnimate: Directive<MotionElement | MotionSVGElement, DirectiveValue> = {
-      mounted: createOrUpdateAnimation,
-      updated: createOrUpdateAnimation,
+      mounted: (el, binding, node) => {
+        createOrUpdateAnimation(el, binding, node)
+      },
+      updated: (el, binding, node) => {
+        createOrUpdateAnimation(el, binding, node, true)
+      },
       unmounted(el, binding, node) {
         const key = binding.value.key || node.key as string
 
