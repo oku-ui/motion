@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "2.6.1",
+    "@oku-ui/motion": "workspace:*",
     "@radix-ui/colors": "^3.0.0",
     "@storybook/addon-essentials": "^8.4.3",
     "@storybook/addon-interactions": "^8.4.3",
@@ -54,6 +55,11 @@
     "vite-plugin-dts": "^3.9.1",
     "vitest": "^1.6.0",
     "vue": "^3.5.12"
+  },
+  "pnpm": {
+    "overrides": {
+      "@oku-ui/motion": "link:./packages/core/src"
+    }
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"

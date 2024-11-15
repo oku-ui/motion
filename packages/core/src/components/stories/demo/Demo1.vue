@@ -1,8 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { Motion } from '../../index.ts'
+import { onMounted, ref } from 'vue'
+import { Motion, useAnimations } from '../../../index'
 
-const rotate = ref(10)
+const rotate = ref(500)
+
+const animations = useAnimations()
+onMounted(() => {
+  setTimeout(() => {
+    animations.stop()
+    // eslint-disable-next-line no-console
+    console.log('motion stopped')
+  }, 500)
+})
 </script>
 
 <template>
@@ -10,7 +19,8 @@ const rotate = ref(10)
     :animate="{
       rotate: `${rotate}deg`,
       backgroundColor: 'var(--yellow)',
-    }" :transition="{
+    }"
+    :transition="{
       duration: 1,
     }"
   />

@@ -1,7 +1,7 @@
 <script lang="ts">
 
-import type { AnimationPlaybackControls, DOMKeyframesDefinition, DynamicAnimationOptions, ObjectTarget, ValueAnimationOptions } from 'motion/react'
-import { AnimationsKey } from '../composables/useStore'
+import type { DOMKeyframesDefinition, DynamicAnimationOptions, ObjectTarget, ValueAnimationOptions } from 'motion/react'
+import { useAnimations } from '../composables/useAnimate'
 
 /**
  * Generate a list of every possible transform key.
@@ -86,6 +86,7 @@ export interface MotionProps {
   inView?: DOMKeyframesDefinition | ObjectTarget<any>
   exit?: DOMKeyframesDefinition | ObjectTarget<any>
   waitExit?: boolean
+  id?: string
 }
 </script>
 
@@ -95,8 +96,6 @@ import {
   nextTick,
   onBeforeUnmount,
   onMounted,
-  provide,
-  reactive,
   ref,
   useAttrs,
   useId,
@@ -114,12 +113,11 @@ const props = withDefaults(defineProps<MotionProps>(), {
   waitExit: false,
 })
 
+const animationInstances = useAnimations().animations
 const attrs = useAttrs()
 const elRef = ref<HTMLElement | null>(null)
 const isClient = ref(false)
-const id = useId()
-
-const animationInstances = reactive<{ [key: string]: AnimationPlaybackControls | undefined }>({})
+const id = props.id || useId()
 
 function setElRef(el: HTMLElement | null) {
   if (el)
@@ -206,7 +204,6 @@ onBeforeUnmount(() => {
   animationInstances[id]?.stop()
 })
 
-provide(AnimationsKey, animationInstances)
 </script>
 
 <template>

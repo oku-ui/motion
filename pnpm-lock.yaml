@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  '@oku-ui/motion': link:./packages/core/src
+
 importers:
 
   .:
@@ -11,6 +14,9 @@ importers:
       '@antfu/eslint-config':
         specifier: 2.6.1
         version: 2.6.1(@vue/compiler-sfc@3.5.12)(eslint@8.57.1)(typescript@5.6.3)(vitest@1.6.0(@types/node@20.17.6)(happy-dom@12.10.3)(jsdom@23.2.0)(terser@5.36.0))
+      '@oku-ui/motion':
+        specifier: link:packages/core/src
+        version: link:packages/core/src
       '@radix-ui/colors':
         specifier: ^3.0.0
         version: 3.0.0
@@ -114,8 +120,8 @@ importers:
   .docs:
     dependencies:
       '@oku-ui/motion':
-        specifier: link:../packages/core
-        version: link:../packages/core
+        specifier: link:../packages/core/src
+        version: link:../packages/core/src
       '@oku-ui/primitives':
         specifier: ^0.7.2
         version: 0.7.2(@vue/shared@3.5.12)(vue@3.5.12(typescript@5.6.3))
@@ -293,8 +299,8 @@ importers:
   playground/nuxt:
     dependencies:
       '@oku-ui/motion':
-        specifier: workspace:^
-        version: link:../../packages/core
+        specifier: link:../../packages/core/src
+        version: link:../../packages/core/src
       '@oku-ui/motion-nuxt':
         specifier: ^0.1.2
         version: 0.1.2(magicast@0.3.5)(rollup@4.26.0)(vue@3.5.12(typescript@5.6.3))
@@ -1334,24 +1340,6 @@ packages:
   '@microsoft/tsdoc@0.15.0':
     resolution: {integrity: sha512-HZpPoABogPvjeJOdzCOSJsXeL/SMCBgBZMVC3X3d7YYp2gf31MfxhUoYUNwf1ERPJOnQc0wkFn9trqI6ZEdZuA==}
 
-  '@motionone/animation@10.18.0':
-    resolution: {integrity: sha512-9z2p5GFGCm0gBsZbi8rVMOAJCtw1WqBTIPw3ozk06gDvZInBPIsQcHgYogEJ4yuHJ+akuW8g1SEIOpTOvYs8hw==}
-
-  '@motionone/dom@10.18.0':
-    resolution: {integrity: sha512-bKLP7E0eyO4B2UaHBBN55tnppwRnaE3KFfh3Ps9HhnAkar3Cb69kUCJY9as8LrccVYKgHA+JY5dOQqJLOPhF5A==}
-
-  '@motionone/easing@10.18.0':
-    resolution: {integrity: sha512-VcjByo7XpdLS4o9T8t99JtgxkdMcNWD3yHU/n6CLEz3bkmKDRZyYQ/wmSf6daum8ZXqfUAgFeCZSpJZIMxaCzg==}
-
-  '@motionone/generators@10.18.0':
-    resolution: {integrity: sha512-+qfkC2DtkDj4tHPu+AFKVfR/C30O1vYdvsGYaR13W/1cczPrrcjdvYCj0VLFuRMN+lP1xvpNZHCRNM4fBzn1jg==}
-
-  '@motionone/types@10.17.1':
-    resolution: {integrity: sha512-KaC4kgiODDz8hswCrS0btrVrzyU2CSQKO7Ps90ibBVSQmjkrt2teqta6/sOG59v7+dPnKMAg13jyqtMKV2yJ7A==}
-
-  '@motionone/utils@10.18.0':
-    resolution: {integrity: sha512-3XVF7sgyTSI2KWvTf6uLlBJ5iAgRgmvp3bpuOiQJvInd4nZ19ET8lX5unn30SlmRH7hXbBbH+Gxd0m0klJ3Xtw==}
-
   '@napi-rs/wasm-runtime@0.2.5':
     resolution: {integrity: sha512-kwUxR7J9WLutBbulqg1dfOrMTwhMdXLdcGUhcbCcGwnPLt3gz19uHVdwH1syKVDbE022ZS2vZxOWflFLS0YTjw==}
 
@@ -1417,12 +1405,6 @@ packages:
 
   '@oku-ui/motion-nuxt@0.1.2':
     resolution: {integrity: sha512-XRNQDKBZp5z+0DcRStrJJ3haWTdKxojzkADAtAYj0uoYVOh36IweCxGMNnK/jfhhpwJFVEo6Bu5vuzOk9j4u8Q==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      vue: '>=3.3.0'
-
-  '@oku-ui/motion@0.3.4':
-    resolution: {integrity: sha512-TPd4uRSPn/7t7FaidR/4iq0OaP6DxladLbJgZndgMGFgvJWJ/Md2Obv/F561c+KgiMkwHOAa78o4hoz8kTWEVA==}
     engines: {node: '>=18'}
     peerDependencies:
       vue: '>=3.3.0'
@@ -4541,9 +4523,6 @@ packages:
   he@1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
-
-  hey-listen@1.0.8:
-    resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
 
   homedir-polyfill@1.0.3:
     resolution: {integrity: sha512-eSmmWE5bZTK2Nou4g0AI3zZ9rswp7GRKoKXS1BLUkvPviOqs4YTN1djQIqrXy9k5gEtdLPy86JjRwsNM9tnDcA==}
@@ -8998,41 +8977,6 @@ snapshots:
 
   '@microsoft/tsdoc@0.15.0': {}
 
-  '@motionone/animation@10.18.0':
-    dependencies:
-      '@motionone/easing': 10.18.0
-      '@motionone/types': 10.17.1
-      '@motionone/utils': 10.18.0
-      tslib: 2.8.1
-
-  '@motionone/dom@10.18.0':
-    dependencies:
-      '@motionone/animation': 10.18.0
-      '@motionone/generators': 10.18.0
-      '@motionone/types': 10.17.1
-      '@motionone/utils': 10.18.0
-      hey-listen: 1.0.8
-      tslib: 2.8.1
-
-  '@motionone/easing@10.18.0':
-    dependencies:
-      '@motionone/utils': 10.18.0
-      tslib: 2.8.1
-
-  '@motionone/generators@10.18.0':
-    dependencies:
-      '@motionone/types': 10.17.1
-      '@motionone/utils': 10.18.0
-      tslib: 2.8.1
-
-  '@motionone/types@10.17.1': {}
-
-  '@motionone/utils@10.18.0':
-    dependencies:
-      '@motionone/types': 10.17.1
-      hey-listen: 1.0.8
-      tslib: 2.8.1
-
   '@napi-rs/wasm-runtime@0.2.5':
     dependencies:
       '@emnapi/core': 1.3.1
@@ -9317,17 +9261,12 @@ snapshots:
   '@oku-ui/motion-nuxt@0.1.2(magicast@0.3.5)(rollup@4.26.0)(vue@3.5.12(typescript@5.6.3))':
     dependencies:
       '@nuxt/kit': 3.14.159(magicast@0.3.5)(rollup@4.26.0)
-      '@oku-ui/motion': 0.3.4(vue@3.5.12(typescript@5.6.3))
+      '@oku-ui/motion': link:packages/core/src
       vue: 3.5.12(typescript@5.6.3)
     transitivePeerDependencies:
       - magicast
       - rollup
       - supports-color
-
-  '@oku-ui/motion@0.3.4(vue@3.5.12(typescript@5.6.3))':
-    dependencies:
-      '@motionone/dom': 10.18.0
-      vue: 3.5.12(typescript@5.6.3)
 
   '@oku-ui/primitives@0.7.2(@vue/shared@3.5.12)(vue@3.5.12(typescript@5.6.3))':
     dependencies:
@@ -13130,8 +13069,6 @@ snapshots:
       '@types/hast': 3.0.4
 
   he@1.2.0: {}
-
-  hey-listen@1.0.8: {}
 
   homedir-polyfill@1.0.3:
     dependencies:
