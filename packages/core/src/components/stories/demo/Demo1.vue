@@ -52,19 +52,3 @@ onMounted(() => {
     </p>
   </Motion>
 </template>
-
-<style>
-body {
-  padding: 100px;
-}
-
-:root {
-  --yellow: #000
-}
-
-div {
-  width: 100px;
-  height: 100px;
-  border-radius: 10px;
-}
-</style>

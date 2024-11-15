@@ -36,6 +36,9 @@ function exit(element: any, done: VoidFunction) {
     if (typeof state.exit === 'function') {
       animationInstances.createAnimate(element, state.exit(element.dataset.index), {
         onComplete: () => {
+          if (state.waitExit || props.waitExit)
+            return
+
           done && done()
         },
       })
@@ -43,6 +46,9 @@ function exit(element: any, done: VoidFunction) {
     else {
       animationInstances.createAnimate(element, state.exit, {
         onComplete: () => {
+          if (state.waitExit || props.waitExit)
+            return
+
           done && done()
         },
       })

@@ -13,6 +13,22 @@ import { Motion } from '../../index.ts'
       // transitionEnd: { display: 'none' },
     }"
   />
+
+  <Motion
+    tag="ul"
+    :initial="{
+      '--rotate': '0deg',
+    }"
+    :keyframes="{
+      '--rotate': '360deg',
+    }"
+    :options="{
+      duration: 2,
+      repeat: Infinity,
+    }"
+  >
+    <li class="box2" :style="{ transform: 'rotate(var(--rotate))' }" />
+  </Motion>
 </template>
 
 <style scoped>
@@ -20,4 +36,12 @@ import { Motion } from '../../index.ts'
     width: 300px;
     height: 300px;
   }
+
+  .box2 {
+  background: #fff;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 20px;
+}
 </style>

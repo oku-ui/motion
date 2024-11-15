@@ -1,13 +1,9 @@
-<script lang="ts">
+<script setup lang="ts">
 import { type MotionPropsVue, presenceId } from '../share'
 
-</script>
-
-<script setup lang="ts">
 import {
   inject,
-  onMounted,
-  ref,
+
   useAttrs,
   useId,
 } from 'vue'
@@ -24,17 +20,7 @@ const props = withDefaults(defineProps<MotionPropsVue>(), {
 const data = inject(presenceId)
 
 const attrs = useAttrs()
-const isClient = ref(false)
 const id = props.id || useId()
-
-onMounted(async () => {
-  if (typeof window === 'undefined') {
-    isClient.value = false
-    return
-  }
-
-  isClient.value = true
-})
 
 </script>
 
