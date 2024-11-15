@@ -1,4 +1,4 @@
-import { MotionPlugin } from '@oku-ui/motion'
+import { motionPlugin } from '@oku-ui/motion'
 import { setup } from '@storybook/vue3'
 import type { Preview } from '@storybook/vue3'
 import { themes } from '@storybook/theming'
@@ -7,7 +7,7 @@ import { dark, light } from './themes'
 import './style.css'
 
 setup((app) => {
-  app.use(MotionPlugin)
+  app.use(motionPlugin)
 })
 
 const preview: Preview = {

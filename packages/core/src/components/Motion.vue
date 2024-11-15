@@ -1,16 +1,6 @@
 <script lang="ts">
-import type { DOMKeyframesDefinition, DynamicAnimationOptions, ObjectTarget } from 'motion/react'
-import { presenceId } from '../share'
+import { type MotionPropsVue, presenceId } from '../share'
 
-export interface MotionProps {
-  as?: string
-  keyframes?: DOMKeyframesDefinition
-  options?: DynamicAnimationOptions
-  initial?: DOMKeyframesDefinition | ObjectTarget<any>
-  exit?: DOMKeyframesDefinition | ObjectTarget<any>
-  waitExit?: boolean
-  id?: string
-}
 </script>
 
 <script setup lang="ts">
@@ -27,7 +17,7 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<MotionProps>(), {
+const props = withDefaults(defineProps<MotionPropsVue>(), {
   as: 'div',
   waitExit: false,
 })
@@ -36,12 +26,6 @@ const data = inject(presenceId)
 const attrs = useAttrs()
 const isClient = ref(false)
 const id = props.id || useId()
-
-// function setElRef(el: HTMLElement | null) {
-//   if (el)
-//     mergeStyles(el, props.initial)
-//   elRef.value = el
-// }
 
 onMounted(async () => {
   if (typeof window === 'undefined') {
@@ -64,8 +48,10 @@ onMounted(async () => {
       options: props.options,
       initial: props.initial,
       exit: props.exit,
-      exitBeforeEnter: data?.exitBeforeEnter,
+      waitExit: data?.waitExit,
+      index: props.index,
     }"
+    :data-index="props.index"
     v-bind="attrs"
   >
     <slot />

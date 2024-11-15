@@ -16,7 +16,7 @@ const show = ref(true)
         wait-exit = false
       </p>
       <Presence
-        exit-before-enter
+        wait-exit
       >
         <Motion
           v-show="show"

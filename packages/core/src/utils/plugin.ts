@@ -2,9 +2,9 @@ import type { DynamicAnimationOptions, ValueAnimationOptions } from 'motion/reac
 import { type Directive, type DirectiveBinding, type Plugin, type VNode, reactive } from 'vue'
 import { animate } from 'motion'
 import { type AnimationInstance, type DirectiveValue, type MotionElement, type MotionSVGElement, getDefaultTransition, mergeStyles, presenceId } from '../share'
-import { AnimationsKey } from './useStore'
+import { AnimationsKey } from '../composables/useStore'
 
-export const MotionPlugin: Plugin = {
+export const motionPlugin: Plugin = {
   install(app) {
     // Object to store animation instances
     const animationInstances = reactive<AnimationInstance>({
@@ -19,7 +19,7 @@ export const MotionPlugin: Plugin = {
     ) {
       const key = binding.value.key || node.key as string
 
-      const { keyframes, options, initial, exit, exitBeforeEnter } = binding.value
+      const { keyframes, options, initial, exit, waitExit } = binding.value
 
       // Get transition based on keyframes keys
       const transition = keyframes ? getDefaultTransition(Object.keys(keyframes).join(','), options as Partial<ValueAnimationOptions>) : {}
@@ -37,7 +37,7 @@ export const MotionPlugin: Plugin = {
         mergeStyles(el, initial)
         // Start the main animation with the keyframes and options
 
-        if (exitBeforeEnter) {
+        if (waitExit) {
           animationInstances[key] = {
             keyframes,
             exit,
@@ -97,7 +97,7 @@ export const MotionPlugin: Plugin = {
     app.directive('animate', vAnimate)
     app.provide(AnimationsKey, animationInstances)
     app.provide(presenceId, {
-      exitBeforeEnter: false,
+      waitExit: false,
     })
   },
 }

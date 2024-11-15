@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { useAnimations } from '@oku-ui/composables'
 import { onMounted, ref } from 'vue'
-import { Motion, useAnimations } from '../../../index'
 
 const rotate = ref(500)
 
@@ -36,7 +36,8 @@ onMounted(() => {
   </div>
 
   <Motion
-    :initial="{ opacity: 0, x: -50 }" :in-view="{
+    :initial="{ opacity: 0, x: -50 }"
+    :in-view="{
       opacity: 1,
       x: 0,
       transition: {
