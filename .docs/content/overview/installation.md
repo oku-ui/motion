@@ -4,19 +4,19 @@ A quick tutorial to walk through installing the packages, as well as the support
 
 ## Installing the package
 
-<a href="https://www.npmjs.com/package/@oku-ui/primitives" target="__blank"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@oku-ui/primitives?flat&colorA=002438&colorB=41c399"></a>
+<a href="https://www.npmjs.com/package/@oku-ui/motion" target="__blank"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@oku-ui/motion?flat&colorA=002438&colorB=41c399"></a>
 
-<InstallationTabs value="@oku-ui/primitives" />
+<InstallationTabs value="@oku-ui/motion" />
 
 ## Nuxt modules
 
 Oku Motion offers Nuxt modules support.
 
-In `nuxt.config.ts`, simply add `@oku-ui/primitives/nuxt` into the modules, and it will auto-imports all the components for you.
+In `nuxt.config.ts`, simply add `@oku-ui/motion/nuxt` into the modules, and it will auto-imports all the components for you.
 
 ```ts
 export default defineNuxtConfig({
-  modules: ['@oku-ui/primitives/nuxt'],
+  modules: ['@oku-ui/motion/nuxt'],
 })
 ```
 
@@ -24,11 +24,11 @@ export default defineNuxtConfig({
 
 Oku Motion also has resolver for the popular [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components).
 
-In `vite.config.ts`, import `@oku-ui/primitives/resolver`, and configure as such and it will auto-imports all the components from Oku Motion.
+In `vite.config.ts`, import `@oku-ui/motion/resolver`, and configure as such and it will auto-imports all the components from Oku Motion.
 
 ```ts{2,10  }
 import Components from 'unplugin-vue-components/vite'
-import OkuPrimitivesResolver from '@oku-ui/primitives/resolver'
+import OkuMotionResolver from '@oku-ui/motion/resolver'
 
 export default defineConfig({
   plugins: [
@@ -36,9 +36,9 @@ export default defineConfig({
     Components({
       dts: true,
       resolvers: [
-        OkuPrimitivesResolver()
+        OkuMotionResolver()
 
-        // OkuPrimitivesResolver({
+        // OkuMotionResolver({
         //   prefix: '' // use the prefix option to add Prefix to the imported components
         // })
       ],

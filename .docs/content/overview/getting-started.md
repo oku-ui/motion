@@ -2,24 +2,20 @@
 
 title: Getting started
 description: A quick tutorial to get you up and running with Radix Primitives.
-name: popover
 ---
 
 # Getting started
 
 <Description>
-A quick tutorial to get you up and running with Radix Primitives.
+A quick tutorial to get you up and running with 
 </Description>
 
-## Implementing a Popover
-
-In this quick tutorial, we will install and style the [Popover](../components/popover) component.
 
 ### 1. Install the library
 
 Install the component from your command line.
 
-<InstallationTabs value="@oku-ui/primitives" />
+<InstallationTabs value="@oku-ui/motion" />
 
 ### 2. Import the parts
 
@@ -28,7 +24,7 @@ Import and structure the parts.
 ```vue twoslash
 <!-- Popover.vue -->
 <script setup lang="ts">
-import { PopoverArrow, PopoverClose, PopoverContent, PopoverPortal, PopoverRoot, PopoverTrigger } from '@oku-ui/primitives'
+import { PopoverArrow, PopoverClose, PopoverContent, PopoverPortal, PopoverRoot, PopoverTrigger } from '@oku-ui/motion'
 </script>
 
 <template>

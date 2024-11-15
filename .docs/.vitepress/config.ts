@@ -101,19 +101,7 @@ export default defineConfig({
           { text: 'Introduction', link: '/overview/introduction' },
           { text: 'Getting Started', link: '/overview/getting-started' },
           { text: 'Installation', link: '/overview/installation' },
-          { text: 'Accessibility', link: '/overview/accessibility' },
           { text: 'Releases', link: '/overview/releases' },
-        ],
-      },
-      {
-        text: 'Guides',
-        collapsed: false,
-        items: [
-          { text: 'Styling', link: '/guides/styling' },
-          { text: 'Animation/Transition', link: '/guides/animation' },
-          { text: 'Composition', link: '/guides/composition' },
-          { text: 'Server side rendering', link: '/guides/server-side-rendering' },
-          { text: 'Namespaced', link: '/docs/guides/namespaced-components' },
         ],
       },
       {
@@ -123,13 +111,6 @@ export default defineConfig({
           { text: 'Overview', link: '/animation/overview' },
         ],
       },
-      // {
-      //   text: 'Utilities',
-      //   collapsed: false,
-      //   items: [
-      //     { text: 'Config Provider', link: '/utilities/config-provider' },
-      //   ],
-      // },
     ],
 
     socialLinks: [

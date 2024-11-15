@@ -35,49 +35,59 @@ function setRotate(value: number) {
         }"
       />
 
-      <div>
-        <Motion
-          :animate="{ opacity: 1, scale: 1 }"
-          as="div"
-          :initial="{ opacity: 0, scale: 0.2 }"
-          class="w-[200px] h-[200px] border-dashed bg-red-500 border-2 border-sky-500 pointer-events-none"
-          :transition="{
-            duration: 0.8,
-            delay: 0.5,
-            ease: [0, 0.71, 0.2, 1.01],
-          }"
-        />
-      </div>
+     <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+        <g class="segment" opacity="0">
+          <path
+            id="loading-path"
+            d="M 94 25 C 94 21.686 96.686 19 100 19 L 100 19 C 103.314 19 106 21.686 106 25 L 106 50 C 106 53.314 103.314 56 100 56 L 100 56 C 96.686 56 94 53.314 94 50 Z"
+          ></path>
+        </g>
+        <g class="segment" opacity="0">
+          <use
+            href="#loading-path"
+            style="transform: rotate(45deg); transform-origin: 100px 100px"
+          />
+        </g>
+        <g class="segment" opacity="0">
+          <use
+            href="#loading-path"
+            style="transform: rotate(90deg); transform-origin: 100px 100px"
+          />
+        </g>
+        <g class="segment" opacity="0">
+          <use
+            href="#loading-path"
+            style="transform: rotate(135deg); transform-origin: 100px 100px"
+          />
+        </g>
+        <g class="segment" opacity="0">
+          <use
+            href="#loading-path"
+            style="transform: rotate(180deg); transform-origin: 100px 100px"
+          />
+        </g>
+        <g class="segment" opacity="0">
+          <use
+            href="#loading-path"
+            style="transform: rotate(225deg); transform-origin: 100px 100px"
+          />
+        </g>
+        <g class="segment" opacity="0">
+          <use
+            href="#loading-path"
+            style="transform: rotate(270deg); transform-origin: 100px 100px"
+          />
+        </g>
+        <g class="segment" opacity="0">
+          <use
+            href="#loading-path"
+            style="transform: rotate(315deg); transform-origin: 100px 100px"
+          />
+        </g>
+      </svg>
+     </div>
 
-      <!-- <Motion
-        tag="div"
-        appear
-        :variants="{
-          enter: {
-            x: 100,
-            y,
-            rotate,
-            options: {
-              type: 'spring',
-              onComplete: (el) => {
-                console.log('enter complete', el)
-              },
-            },
-          },
-          leave: {
-            x: 0,
-            y: 0,
-            rotate: 0,
-            options: {
-              onComplete: (el) => {
-                console.log('leave complete', el)
-              },
-            },
-          },
-        }"
-      >
-        <div class="w-[200px] h-[200px] border-dashed border-2 border-sky-500 pointer-events-none" />
-      </Motion> -->
     </div>
     <div class="grid">
       <Input :value="x" :set="setX">

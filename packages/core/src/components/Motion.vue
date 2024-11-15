@@ -1,6 +1,7 @@
 <script lang="ts">
 
 import type { AnimationPlaybackControls, DOMKeyframesDefinition, DynamicAnimationOptions, ObjectTarget, ValueAnimationOptions } from 'motion/react'
+import { AnimationsKey } from '../composables/useStore'
 
 /**
  * Generate a list of every possible transform key.
@@ -91,15 +92,15 @@ export interface MotionProps {
 <script setup lang="ts">
 import { animate } from 'motion'
 import {
-  defineOptions,
   nextTick,
   onBeforeUnmount,
   onMounted,
+  provide,
+  reactive,
   ref,
   useAttrs,
   useId,
   watch,
-  withDefaults,
 } from 'vue'
 import { generateHTMLStyles } from '../share/build'
 
@@ -118,7 +119,7 @@ const elRef = ref<HTMLElement | null>(null)
 const isClient = ref(false)
 const id = useId()
 
-let animationInstance: AnimationPlaybackControls | null = null
+const animationInstances = reactive<{ [key: string]: AnimationPlaybackControls | undefined }>({})
 
 function setElRef(el: HTMLElement | null) {
   if (el)
@@ -147,11 +148,11 @@ watch(
   () => props.animate,
   () => {
     requestAnimationFrame(() => {
-      if (animationInstance)
-        animationInstance.complete()
+      if (animationInstances[id])
+        animationInstances[id].complete()
 
       if (elRef.value && props.animate)
-        animationInstance = animate(elRef.value, props.animate, defaultTransition.value)
+        animationInstances[id] = animate(elRef.value, props.animate, defaultTransition.value)
     })
   },
   { deep: true },
@@ -174,14 +175,14 @@ function beforeEnter(el: any) {
 }
 
 function onLeave(_el: any, _done: any) {
-  if (animationInstance)
-    animationInstance.stop()
+  if (animationInstances[id])
+    animationInstances[id].stop()
 
   setTimeout(() => {
     if (elRef.value && props.exit)
-      animationInstance = animate(elRef.value, props.exit, defaultTransition.value)
+      animationInstances[id] = animate(elRef.value, props.exit, defaultTransition.value)
 
-    animationInstance?.then(() => {
+    animationInstances[id]?.then(() => {
       if (props.waitExit)
         _done && _done()
     })
@@ -192,9 +193,9 @@ function onEnter(_el: any, done: any) {
   nextTick(() => {
     setTimeout(() => {
       if (elRef.value && props.animate)
-        animationInstance = animate(elRef.value, props.animate, defaultTransition.value)
+        animationInstances[id] = animate(elRef.value, props.animate, defaultTransition.value)
 
-      animationInstance?.then(() => {
+      animationInstances[id]?.then(() => {
         done()
       })
     }, 10)
@@ -202,8 +203,10 @@ function onEnter(_el: any, done: any) {
 }
 
 onBeforeUnmount(() => {
-  animationInstance?.stop()
+  animationInstances[id]?.stop()
 })
+
+provide(AnimationsKey, animationInstances)
 </script>
 
 <template>

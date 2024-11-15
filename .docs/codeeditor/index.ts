@@ -71,7 +71,7 @@ export default defineConfig({
 function constructFiles(componentName: string, sources: Record<string, string>) {
   const dependencies = {
     'vue': 'latest',
-    '@oku-ui/primitives': version,
+    '@oku-ui/motion': version,
     '@radix-ui/colors': 'latest',
     '@iconify/vue': 'latest',
   }
