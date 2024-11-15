@@ -12,7 +12,7 @@ const onClick = () => (state.isSending = !state.isSending)
       tag="button"
       data-motion-id="Submit button"
       :initial="false"
-      :animate="
+      :keyframes="
         state.isSending
           ? { backgroundColor: `#31a6fa` }
           : { backgroundColor: `#0d63f8` }
@@ -23,7 +23,7 @@ const onClick = () => (state.isSending = !state.isSending)
         tag="span"
         data-motion-id="Button label"
         :initial="false"
-        :animate="
+        :keyframes="
           state.isSending ? { opacity: 0, y: -10 } : { opacity: 1, y: 0 }
         "
       >
@@ -34,7 +34,7 @@ const onClick = () => (state.isSending = !state.isSending)
         class="dots"
         data-motion-id="Dots container"
         :initial="false"
-        :animate="
+        :keyframes="
           state.isSending
             ? { opacity: 1, y: 0, transition: { delay: 0.2 } }
             : { opacity: 0, y: 10 }
@@ -44,7 +44,7 @@ const onClick = () => (state.isSending = !state.isSending)
           tag="div"
           class="dot"
           data-motion-id="Dot 1"
-          :animate="
+          :keyframes="
             state.isSending
               ? {
                 y: [7, -7, 7],
@@ -61,7 +61,7 @@ const onClick = () => (state.isSending = !state.isSending)
           tag="div"
           class="dot"
           data-motion-id="Dot 2"
-          :animate="
+          :keyframes="
             state.isSending
               ? {
                 y: [7, -7, 7],
@@ -79,7 +79,7 @@ const onClick = () => (state.isSending = !state.isSending)
           tag="div"
           class="dot"
           data-motion-id="Dot 3"
-          :animate="
+          :keyframes="
             state.isSending
               ? {
                 y: [7, -7, 7],

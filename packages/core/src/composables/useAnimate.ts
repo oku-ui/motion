@@ -31,9 +31,21 @@ export function useAnimations() {
       console.warn(`No animation with key "${key}" found.`)
   }
 
+  function getByID(id?: string) {
+    if (!animations || Object.keys(animations).length === 0)
+      return
+
+    if (!id)
+      return undefined // Eğer id yoksa, undefined döndür.
+
+    const animation = animations[id] // Direkt id'ye erişim sağla.
+    return animation // Animasyonu döndür.
+  }
+
   return {
     animations,
     stop,
     play,
+    getByID,
   }
 }

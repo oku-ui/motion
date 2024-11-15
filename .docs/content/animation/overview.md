@@ -28,7 +28,7 @@ import { Motion } from "@oku-ui/motion"
 For basic animations, you can update values on the animate prop:
 
 ```vue
-<Motion :animate={ opacity: 1 } />
+<Motion :keyframes={ opacity: 1 } />
 ```
 When any value in its animate prop changes, the component will automatically animate to the new target.
 

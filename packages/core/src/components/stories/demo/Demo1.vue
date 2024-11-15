@@ -16,11 +16,11 @@ onMounted(() => {
 
 <template>
   <Motion
-    :animate="{
+    :keyframes="{
       rotate: `${rotate}deg`,
       backgroundColor: 'var(--yellow)',
     }"
-    :transition="{
+    :options="{
       duration: 1,
     }"
   />

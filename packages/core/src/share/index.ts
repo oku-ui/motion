@@ -1,1 +1,3 @@
-export * from './build.ts'
+export * from './build'
+export * from './mergeStyle'
+export { getDefaultTransition } from './default'

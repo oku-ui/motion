@@ -5,7 +5,7 @@ import { Motion } from '../../index.ts'
 <template>
   <Motion
     class="box"
-    :animate="{
+    :keyframes="{
       x: 10,
       backgroundColor: '#000',
       boxShadow: '10px 10px 0 rgba(0, 2, 0, 0.2)',

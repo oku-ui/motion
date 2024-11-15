@@ -9,7 +9,7 @@ const onClick = () => (state.isSelected = !state.isSelected)
 <template>
   <Motion
     :initial="{ opacity: 0.6 }"
-    :animate="{
+    :keyframes="{
       opacity: state.isSelected ? 1 : 0.1,
       x: state.isSelected ? 0 : 50,
       transition: { duration: 1 },

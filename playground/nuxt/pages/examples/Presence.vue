@@ -15,7 +15,7 @@ const toggle = () => (state.isSelected = !state.isSelected)
       <Motion
         v-show="state.isSelected"
         :initial="{ opacity: 0 }"
-        :animate="{
+        :keyframes="{
           opacity: 1,
           x: 100,
           transition: { duration: 1 },
