@@ -56,11 +56,6 @@
     "vitest": "^1.6.0",
     "vue": "^3.5.12"
   },
-  "pnpm": {
-    "overrides": {
-      "@oku-ui/motion": "link:./packages/core/src"
-    }
-  },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
   },

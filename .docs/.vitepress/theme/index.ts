@@ -1,7 +1,7 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client'
-
+import {motionPlugin} from '@oku-ui/motion'
 import '@shikijs/twoslash/style-rich.css'
 import '@shikijs/vitepress-twoslash/style.css'
 import 'floating-vue/dist/style.css'
@@ -44,5 +44,6 @@ export default {
     app.component('ComponentPreview', ComponentPreview)
     app.component('InstallationTabs', InstallationTabs)
     app.use(TwoslashFloatingVue)
+    app.use(motionPlugin)
   },
 } satisfies Theme
