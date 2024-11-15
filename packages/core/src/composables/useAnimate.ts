@@ -1,4 +1,9 @@
 import { inject } from 'vue'
+import type { DOMKeyframesDefinition, DynamicAnimationOptions, ValueAnimationOptions } from 'motion/react'
+import { animate } from 'motion'
+import type { MotionElement, MotionProps, MotionSVGElement } from '../share'
+import { getDefaultTransition } from '../share'
+
 import { AnimationsKey } from './useStore'
 
 export function useAnimations() {
@@ -14,9 +19,9 @@ export function useAnimations() {
     }
 
     if (key && animations[key])
-      animations[key]?.stop()
+      animations[key]?.motion_playback_instance?.stop()
     else
-      Object.values(animations || {}).forEach(animation => animation?.stop())
+      Object.values(animations || {}).forEach(animation => animation?.motion_playback_instance?.stop())
   }
 
   function play(key: string) {
@@ -26,20 +31,38 @@ export function useAnimations() {
     }
 
     if (animations[key])
-      animations[key]?.play()
+      animations[key]?.motion_playback_instance?.play()
     else
       console.warn(`No animation with key "${key}" found.`)
   }
 
-  function getByID(id?: string) {
-    if (!animations || Object.keys(animations).length === 0)
+  function getByID(id?: string, element?: MotionElement | MotionSVGElement): Partial<MotionProps> | undefined {
+    if (!animations)
       return
 
     if (!id)
-      return undefined // Eğer id yoksa, undefined döndür.
+      return undefined
 
-    const animation = animations[id] // Direkt id'ye erişim sağla.
-    return animation // Animasyonu döndür.
+    const animation: Partial<MotionProps> = {
+      ...animations[id],
+      motion_playback_instance: element?.motion_playback_instance,
+    }
+    return animation
+  }
+
+  function createAnimate(
+    el: MotionElement | MotionSVGElement,
+    keyframes: DOMKeyframesDefinition,
+    options?: DynamicAnimationOptions,
+  ) {
+    const transition = keyframes ? getDefaultTransition(Object.keys(keyframes).join(','), options as Partial<ValueAnimationOptions>) : {}
+    // 'transition' ve 'options' birleşimini net bir türle sağlayalım
+    const animationParams: DynamicAnimationOptions = {
+      ...transition,
+      ...options,
+    } as DynamicAnimationOptions
+
+    return animate(el, keyframes, animationParams)
   }
 
   return {
@@ -47,5 +70,6 @@ export function useAnimations() {
     stop,
     play,
     getByID,
+    createAnimate,
   }
 }

@@ -1,6 +1,6 @@
 import { generateHTMLStyles } from './build'
 
-export function mergeStyles(el: HTMLElement, newStyles: any) {
+export function mergeStyles(el: any, newStyles: any) {
   if (!el || !newStyles)
     return
 

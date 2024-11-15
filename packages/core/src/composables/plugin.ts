@@ -1,36 +1,25 @@
-import type { AnimationPlaybackControls, DOMKeyframesDefinition, DynamicAnimationOptions, ValueAnimationOptions } from 'motion/react'
+import type { DynamicAnimationOptions, ValueAnimationOptions } from 'motion/react'
 import { type Directive, type DirectiveBinding, type Plugin, type VNode, reactive } from 'vue'
 import { animate } from 'motion'
-import { getDefaultTransition } from '../share'
+import { type AnimationInstance, type DirectiveValue, type MotionElement, type MotionSVGElement, getDefaultTransition, mergeStyles, presenceId } from '../share'
 import { AnimationsKey } from './useStore'
-interface MotionElement extends HTMLElement {
-  motion_playback_instance?: AnimationPlaybackControls // Renamed property with underscore
-}
-
-interface MotionSVGElement extends SVGElement {
-  motion_playback_instance?: AnimationPlaybackControls // Renamed property with underscore
-}
-
-interface DirectiveValue {
-  keyframes: DOMKeyframesDefinition
-  options?: DynamicAnimationOptions
-  key?: string
-  initial?: DOMKeyframesDefinition // Initial keyframes added
-}
 
 export const MotionPlugin: Plugin = {
   install(app) {
     // Object to store animation instances
-    const animationInstances = reactive<{ [key: string]: AnimationPlaybackControls | undefined }>({
-      // Default value can be set here if needed
-      defaultKey: undefined, // Example of a default key
+    const animationInstances = reactive<AnimationInstance>({
+
     })
 
     // Function to create or update animation
-    function createOrUpdateAnimation(el: MotionElement | MotionSVGElement, binding: DirectiveBinding<DirectiveValue>, node: VNode) {
+    function createOrUpdateAnimation(
+      el: MotionElement | MotionSVGElement,
+      binding: DirectiveBinding<DirectiveValue>,
+      node: VNode,
+    ) {
       const key = binding.value.key || node.key as string
 
-      const { keyframes, options, initial } = binding.value
+      const { keyframes, options, initial, exit, exitBeforeEnter } = binding.value
 
       // Get transition based on keyframes keys
       const transition = keyframes ? getDefaultTransition(Object.keys(keyframes).join(','), options as Partial<ValueAnimationOptions>) : {}
@@ -44,33 +33,47 @@ export const MotionPlugin: Plugin = {
         ...animationOptions,
       } as DynamicAnimationOptions
 
-      // If there's an initial keyframes, apply it first
       if (initial) {
-        // Start the initial animation with the provided keyframes and options
-        const initialAnimation = animate(el, initial, animationParams)
+        mergeStyles(el, initial)
+        // Start the main animation with the keyframes and options
 
-        // Once the initial animation is finished, start the main animation
-        initialAnimation.then(() => {
-          // Start the main animation with the keyframes and options
-          const animateResult = animate(el, keyframes, animationParams)
-          if (key)
-            animationInstances[key] = animateResult
+        if (exitBeforeEnter) {
+          animationInstances[key] = {
+            keyframes,
+            exit,
+            initial,
+            key,
+            options: animationParams,
+          }
+          return
+        }
 
-          el.motion_playback_instance = animateResult // Updated property with underscore
-        })
+        const motion = animate(el, keyframes, options)
 
-        // Store the initial animation in the instances
-        if (key)
-          animationInstances[key] = initialAnimation
-        el.motion_playback_instance = initialAnimation // Updated property with underscore
+        animationInstances[key] = {
+          keyframes,
+          exit,
+          initial,
+          key,
+          options: animationParams,
+          motion_playback_instance: motion,
+        }
+        el.motion_playback_instance = motion
       }
       else {
-        // If there's no initial animation, directly start the main animation
-        const animateResult = animate(el, keyframes, animationParams)
-        if (key)
-          animationInstances[key] = animateResult
+        // Start the main animation with the keyframes and options
+        const motion = animate(el, keyframes, options)
 
-        el.motion_playback_instance = animateResult // Updated property with underscore
+        animationInstances[key] = {
+          keyframes,
+          exit,
+          initial,
+          key,
+          options: animationParams,
+          motion_playback_instance: motion,
+        }
+
+        el.motion_playback_instance = motion
       }
     }
 
@@ -84,8 +87,8 @@ export const MotionPlugin: Plugin = {
         // Stop the animation before removing
         el.motion_playback_instance?.stop() // Updated property with underscore
 
-        // Remove the animation instance from the storage
-        if (key && animationInstances[key])
+        // Remove the animation from the instances
+        if (key && animationInstances)
           delete animationInstances[key]
       },
     }
@@ -93,5 +96,8 @@ export const MotionPlugin: Plugin = {
     // Register the directive and provide the animation instances to the app
     app.directive('animate', vAnimate)
     app.provide(AnimationsKey, animationInstances)
+    app.provide(presenceId, {
+      exitBeforeEnter: false,
+    })
   },
 }

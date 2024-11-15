@@ -1,17 +1,23 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Motion, Presence } from '../../index.ts'
+import { Motion, Presence } from '../../../index.ts'
 
 const show = ref(true)
+
 </script>
 
 <template>
   <div>
+    <button @click="show = !show">
+      Toggle
+    </button>
     <div>
       <p>
         wait-exit = false
       </p>
-      <Presence>
+      <Presence
+        exit-before-enter
+      >
         <Motion
           v-show="show"
           id="deneme"
@@ -40,9 +46,5 @@ const show = ref(true)
         />
       </p>
     </div>
-
-    <button @click="show = !show">
-      Toggle
-    </button>
   </div>
 </template>

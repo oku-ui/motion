@@ -1,13 +1,4 @@
 <script lang="ts">
-// const doneCallbacks = new WeakMap<Element, VoidFunction>()
-
-// function removeDoneCallback(element: Element) {
-//   const prevDoneCallback = doneCallbacks.get(element)
-//   prevDoneCallback
-//   && element.removeEventListener('motioncomplete', prevDoneCallback)
-//   doneCallbacks.delete(element)
-// }
-
 export interface MotionPresenceProps {
   name?: string
   exitBeforeEnter?: boolean
@@ -16,12 +7,10 @@ export interface MotionPresenceProps {
 </script>
 
 <script setup lang="ts">
-import { onBeforeUpdate, provide } from 'vue'
-
-// import { mountedStates } from '@motionone/dom'
-import type { PresenceState } from '../share/context'
+import { provide } from 'vue'
 import { presenceId } from '../share/context'
 import { useAnimations } from '../composables'
+import type { PresenceState } from '../share'
 
 const props = withDefaults(defineProps<MotionPresenceProps>(), {
   initial: true,
@@ -29,24 +18,32 @@ const props = withDefaults(defineProps<MotionPresenceProps>(), {
 
 const animationInstances = useAnimations()
 
-function enter(element: any) {
-  // eslint-disable-next-line no-console
-  console.log('enter', element)
-  // eslint-disable-next-line no-console
-  console.log('state', animationInstances.getByID(element.id))
+function enter(element: any, done: VoidFunction) {
+  const state = animationInstances.getByID(element.id, element)
+  if (state && state.keyframes) {
+    animationInstances.createAnimate(element, state.keyframes, {
+      onComplete: () => {
+        done && done()
+      },
+    })
+  }
 }
 
-function exit(element: Element, done: VoidFunction) {
-
+function exit(element: any, done: VoidFunction) {
+  const state = animationInstances.getByID(element.id, element)
+  if (state && state.exit) {
+    animationInstances.createAnimate(element, state.exit, {
+      onComplete: () => {
+        done && done()
+      },
+    })
+  }
 }
 
-const state: PresenceState = { initial: props.initial }
+const state: PresenceState = { exitBeforeEnter: props.exitBeforeEnter }
 
 provide(presenceId, state)
 
-onBeforeUpdate(() => {
-  state.initial = undefined
-})
 </script>
 
 <template>
