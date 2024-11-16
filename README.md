@@ -1,4 +1,4 @@
-# Vue and Nuxt Motion One
+# Vue and Nuxt Motion
 
 | Package | Version | Downloads |
 |---------|---------|-----------|
@@ -6,13 +6,13 @@
 | [Nuxt](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion-nuxt?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion-nuxt?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) |
 
 
-**A tiny, performant animation library for VueJS. Powered by [Motion One](https://motion.dev/).**
+**A tiny, performant animation library for VueJS. Powered by [Motion](https://motion.dev/).**
 
 ## Introduction
 
-Motion One for Vue is a 5kb animation library for Vue 3. Built on Motion One, it's capable of springs, independent transforms, and hardware accelerated animations.
+Motion for Vue is a 5kb animation library for Vue 3. Built on Motion, it's capable of springs, independent transforms, and hardware accelerated animations.
 
-By the end of this quick guide, you'll have installed Motion One for Vue and created your first animation.
+By the end of this quick guide, you'll have installed Motion for Vue and created your first animation.
 
 # Contributing
 
@@ -20,7 +20,7 @@ Please read our [contributing guide](https://github.com/oku-ui/motion/blob/maste
 
 ## Installation
 
-Motion One for VueJS can be installed via npm:
+Motion for VueJS can be installed via npm:
 
 ```bash
 npm install @oku-ui/motion
@@ -30,7 +30,7 @@ pnpm add @oku-ui/motion
 yarn add @oku-ui/motion
 ```
 
-Motion One for NuxtJS can be installed via npm:
+Motion for NuxtJS can be installed via npm:
 
 ```bash
 npm install @oku-ui/motion-nuxt
@@ -213,6 +213,5 @@ const show = ref(true)
 
 ## Acknowledgments
 
-- [motionone](https://github.com/motiondivision/motionone)
-- [vue-motion-one](https://github.com/wobsoriano/vue-motion-one/tree/master)
 - [motion](https://github.com/motiondivision/motion)
+- [vue-motion-one](https://github.com/wobsoriano/vue-motion-one/tree/master)
