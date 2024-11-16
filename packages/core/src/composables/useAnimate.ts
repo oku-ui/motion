@@ -4,11 +4,11 @@ import { animate as okuAnimate } from 'motion'
 import { type DirectiveValue, getDefaultTransition } from '../share'
 import { invariant } from '../utils/errors'
 
-export function useAnimate(): {
+interface UseAnimate {
   animate: (
     el?: any,
     keyframes?: DirectiveValue['keyframes'],
-    options?: (index: number) => DirectiveValue['options'],
+    options?: DirectiveValue['options'] | ((index: number) => DirectiveValue['options']),
     id?: string
   ) => AnimationPlaybackControls | undefined | void
   scope: {
@@ -18,7 +18,9 @@ export function useAnimate(): {
     }
     updateElement: (el?: any) => void
   }
-} {
+}
+
+export function useAnimate(): UseAnimate {
   const scope = reactive<{
     el?: any
     animations: {
@@ -32,7 +34,12 @@ export function useAnimate(): {
         },
       })
 
-  const animate = (el?: any, keyframes?: DirectiveValue['keyframes'], options?: (index: number) => DirectiveValue['options'], id?: string) => {
+  const animate = (
+    el?: UseAnimate['scope']['el'],
+    keyframes?: DirectiveValue['keyframes'],
+    options?: DirectiveValue['options'] | ((index: number) => DirectiveValue['options']),
+    id?: string,
+  ) => {
     if (!el)
       return
 
@@ -50,7 +57,7 @@ export function useAnimate(): {
 
     if (data.length > 0) {
       data.forEach((el, index) => {
-        const animationOptions = options ? options(index) || {} : {}
+        const animationOptions = options ? typeof options === 'function' ? options(index) : options : {}
 
         const animationParams: DynamicAnimationOptions = {
           ...transition,

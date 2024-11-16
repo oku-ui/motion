@@ -118,6 +118,7 @@ export const motionPlugin: Plugin = {
     app.provide(AnimationsKey, animationInstances)
     app.provide(presenceId, {
       waitExit: false,
+      status: 'false',
     })
   },
 }

@@ -5,17 +5,22 @@ import { useAnimate } from '../../../index.ts'
 const { animate, scope } = useAnimate()
 
 onMounted(() => {
-  animate('li', { opacity: 0, x: 10 }, (index) => {
-    return {
-      opacity: {
-        delay: index * 0.5,
-      },
-      x: {
-        delay: index * 0.5,
-      },
-    }
-  })
+  animate(
+    'li',
+    { opacity: 0, x: 10 },
+    (index) => {
+      return {
+        opacity: {
+          delay: index * 0.5,
+        },
+        x: {
+          delay: index * 0.5,
+        },
+      }
+    },
+  )
 })
+
 </script>
 
 <template>

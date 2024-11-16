@@ -32,9 +32,11 @@ export interface MotionSVGElement extends SVGElement {
   motion_playback_instance?: AnimationPlaybackControls
 }
 
-export type PresenceState = Pick<MotionProps, 'waitExit'>
+export type PresenceState = Pick<MotionProps, 'waitExit'> & {
+  status: 'enter' | 'leave' | 'appear' | 'false' | 'true'
+}
 
-export type PresenceStateVue = PresenceState & {
+export type PresenceStateVue = Omit<PresenceState, 'status'> & {
   appear?: boolean
 }
 
