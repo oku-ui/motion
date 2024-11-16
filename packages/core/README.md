@@ -1,21 +1,21 @@
-# Vue and Nuxt Motion One
+# Vue and Nuxt Motion
 
 | Package | Version | Downloads |
 |---------|---------|-----------|
 | [Vue](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) |
 | [Nuxt](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion-nuxt?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion-nuxt?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) |
 
-**A tiny, performant animation library for VueJS. Powered by [Motion One](https://motion.dev/).**
+**A tiny, performant animation library for VueJS. Powered by [Motion](https://motion.dev/).**
 
 ## Introduction
 
-Motion One for Vue is a 5kb animation library for Vue 3. Built on Motion One, it's capable of springs, independent transforms, and hardware accelerated animations.
+Motion for Vue is a 5kb animation library for Vue 3. Built on Motion, it's capable of springs, independent transforms, and hardware accelerated animations.
 
-By the end of this quick guide, you'll have installed Motion One for Vue and created your first animation.
+By the end of this quick guide, you'll have installed Motion for Vue and created your first animation.
 
 ## Installation
 
-Motion One for VueJS can be installed via npm:
+Motion for VueJS can be installed via npm:
 
 ```bash
 npm install @oku-ui/motion
@@ -25,7 +25,7 @@ pnpm add @oku-ui/motion
 yarn add @oku-ui/motion
 ```
 
-Motion One for NuxtJS can be installed via npm:
+Motion for NuxtJS can be installed via npm:
 
 ```bash
 npm install @oku-ui/motion-nuxt
