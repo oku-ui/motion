@@ -41,7 +41,7 @@ export type PresenceStateVue = PresenceState & {
 export interface DirectiveValue extends PresenceState {
   keyframes: DOMKeyframesDefinition
   options?: DynamicAnimationOptions
-  key?: string
+  id: string
   initial?: DOMKeyframesDefinition
   exit?: DOMKeyframesDefinition
 }

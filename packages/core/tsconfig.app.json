@@ -9,7 +9,8 @@
 
     "paths": {
       "@oku-ui/*": ["./src/*"]
-    }
+    },
+    "types": ["node"]
   },
   "include": [
     "env.d.ts",

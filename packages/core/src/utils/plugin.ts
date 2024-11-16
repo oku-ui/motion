@@ -30,7 +30,7 @@ export const motionPlugin: Plugin = {
       node: VNode,
       updated: boolean = false,
     ) {
-      const key = binding.value.key || node.key as string
+      const key = binding.value.id || node.key as string
 
       const { keyframes, options, initial, exit, waitExit } = binding.value
 
@@ -102,7 +102,7 @@ export const motionPlugin: Plugin = {
         createOrUpdateAnimation(el, binding, node, true)
       },
       unmounted(el, binding, node) {
-        const key = binding.value.key || node.key as string
+        const key = binding.value.id || node.key as string
 
         // Stop the animation before removing
         el.motion_playback_instance?.stop() // Updated property with underscore
