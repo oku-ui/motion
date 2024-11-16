@@ -1,8 +1,14 @@
+import { motionPlugin } from '@oku-ui/motion'
+import { setup } from '@storybook/vue3'
 import type { Preview } from '@storybook/vue3'
 import { themes } from '@storybook/theming'
 import { DocsContainer } from './DocsContainer'
 import { dark, light } from './themes'
 import './style.css'
+
+setup((app) => {
+  app.use(motionPlugin)
+})
 
 const preview: Preview = {
   parameters: {

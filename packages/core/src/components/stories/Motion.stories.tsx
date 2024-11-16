@@ -1,7 +1,10 @@
-import CStyled from './Styled.vue'
-import Demo1 from './Demo1.vue'
+import CStyled from './demo/Styled.vue'
+import Demo1 from './demo/Demo1.vue'
+import ExitComponent from './demo/ExitComponent.vue'
 
-export default { title: 'Components/Label', excludeStories: ['RECOMMENDED_CSS__LABEL__ROOT'] }
+import UseAnimate from './demo/UseAnimate.vue'
+
+export default { title: 'Components', excludeStories: ['RECOMMENDED_CSS__LABEL__ROOT'] }
 
 export function Styled() {
   return CStyled
@@ -9,4 +12,12 @@ export function Styled() {
 
 export function Demo() {
   return Demo1
+}
+
+export function ExitC() {
+  return ExitComponent
+}
+
+export function UseAnimate1() {
+  return UseAnimate
 }

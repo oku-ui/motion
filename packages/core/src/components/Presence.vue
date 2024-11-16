@@ -1,67 +1,71 @@
-<script lang="ts">
-const doneCallbacks = new WeakMap<Element, VoidFunction>()
-
-function removeDoneCallback(element: Element) {
-  const prevDoneCallback = doneCallbacks.get(element)
-  prevDoneCallback
-  && element.removeEventListener('motioncomplete', prevDoneCallback)
-  doneCallbacks.delete(element)
-}
-
-export interface MotionPresenceProps {
-  name?: string
-  exitBeforeEnter: boolean
-  initial: boolean
-}
-</script>
-
 <script setup lang="ts">
-import { onBeforeUpdate, provide } from 'vue'
-import { mountedStates } from '@motionone/dom'
-import type { PresenceState } from '../share/context'
+import { provide } from 'vue'
 import { presenceId } from '../share/context'
+import { useAnimations } from '../composables'
+import type { PresenceState, PresenceStateVue } from '../share'
 
-const props = withDefaults(defineProps<MotionPresenceProps>(), {
-  initial: true,
-  exitBeforeEnter: false,
+const props = withDefaults(defineProps<PresenceStateVue>(), {
 })
 
-function enter(element: Element) {
-  const state = mountedStates.get(element)
+const animationInstances = useAnimations()
 
-  if (!state)
-    return
-
-  removeDoneCallback(element)
-  state.setActive('exit', false)
+function enter(element: any, done: VoidFunction) {
+  const state = animationInstances.getByID(element.id, element)
+  if (state && state.keyframes) {
+    if (typeof state.keyframes === 'function') {
+      animationInstances.createAnimate(element, state.keyframes(element.dataset.index), {
+        onComplete: () => {
+          done && done()
+        },
+      })
+    }
+    else {
+      animationInstances.createAnimate(element, state.keyframes, {
+        onComplete: () => {
+          done && done()
+        },
+      })
+    }
+  }
 }
-function exit(element: Element, done: VoidFunction) {
-  const state = mountedStates.get(element)
 
-  if (!state)
-    return done()
+function exit(element: any, done: VoidFunction) {
+  const state = animationInstances.getByID(element.id, element)
+  if (state && state.exit) {
+    if (typeof state.exit === 'function') {
+      animationInstances.createAnimate(element, state.exit(element.dataset.index), {
+        onComplete: () => {
+          if (state.waitExit || props.waitExit)
+            return
 
-  state.setActive('exit', true)
+          done && done()
+        },
+      })
+    }
+    else {
+      animationInstances.createAnimate(element, state.exit, {
+        onComplete: () => {
+          if (state.waitExit || props.waitExit)
+            return
 
-  removeDoneCallback(element)
-  doneCallbacks.set(element, done)
-  element.addEventListener('motioncomplete', done)
+          done && done()
+        },
+      })
+    }
+  }
 }
 
-const state: PresenceState = { initial: props.initial }
-
+const state: PresenceState = { waitExit: props.waitExit, status: 'true' }
 provide(presenceId, state)
 
-onBeforeUpdate(() => {
-  state.initial = undefined
-})
 </script>
 
 <template>
   <Transition
-    :name="name"
     :css="false"
-    :mode="exitBeforeEnter ? 'out-in' : undefined" @leave="exit" @enter="enter"
+    appear
+    @leave="exit"
+    @enter="enter"
   >
     <slot />
   </Transition>

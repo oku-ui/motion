@@ -96,7 +96,7 @@ Edit the above example by adding an animate prop:
 
 
 ```vue
-<Motion :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }" />
+<Motion :keyframes="{ rotate: 90, backgroundColor: 'var(--yellow)' }" />
 ```
 
 Every time a value in animate changes, perhaps from component data or props, the component will automatically animate to the latest values.
@@ -107,7 +107,7 @@ We can change the type of animation used by passing a `transition` prop.
 
 ```vue
 <Motion
-  :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
+  :keyframes="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
   :transition="{ duration: 1, easing: 'ease-in-out' }"
 />
 ```
@@ -116,7 +116,7 @@ By default transition options are applied to all values, but we can also overrid
 
 ```vue
 <Motion
-  :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
+  :keyframes="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
   :transition="{
     duration: 1,
     rotate: { duration: 2 },
@@ -129,14 +129,14 @@ By default transition options are applied to all values, but we can also overrid
 Values can also be set as arrays, to define a series of keyframes.
 
 ```vue
-<Motion :animate="{ x: [0, 100, 50] }" />
+<Motion :keyframes="{ x: [0, 100, 50] }" />
 ```
 
 By default, keyframes are spaced evenly throughout `duration`, but this can be adjusted by providing progress values to `offset`:
 
 ```vue
 <Motion
-  :animate="{ x: [0, 100, 50] }"
+  :keyframes="{ x: [0, 100, 50] }"
   :transition="{ x: { offset: [0, 0.25, 1] } }"
 />
 ```
@@ -148,7 +148,7 @@ Elements will automatically `animate` to the values defined in animate when they
 This can be disabled by setting the `initial` prop to `false`. The styles defined in `animate` will be applied immediately when the element is first created.
 
 ```vue
-<Motion :initial="false" :animate="{ x: 100 }" />
+<Motion :initial="false" :keyframes="{ x: 100 }" />
 ```
 
 ## Exit animations
@@ -168,7 +168,7 @@ const show = ref(true)
       <Motion
         v-show="show"
         :initial="{ opacity: 0, scale: 0 }"
-        :animate="{ opacity: 1, scale: 1 }"
+        :keyframes="{ opacity: 1, scale: 1 }"
         :exit="{ opacity: 0, scale: 0.6 }"
         class="box"
       />
@@ -205,8 +205,14 @@ const show = ref(true)
 ```vue
 <Motion
   v-show="isVisible"
-  :animate="{ opacity: 1 }"
+  :keyframes="{ opacity: 1 }"
   :exit="{ opacity: 0, transition: { duration: 0.8 } }"
   :transition="transition"
 />
 ```
+
+## Acknowledgments
+
+- [motionone](https://github.com/motiondivision/motionone)
+- [vue-motion-one](https://github.com/wobsoriano/vue-motion-one/tree/master)
+- [motion](https://github.com/motiondivision/motion)

@@ -15,7 +15,7 @@ const next = () => (state.current = state.current + 1)
       <Motion
         :key="state.current"
         :initial="{ opacity: 0 }"
-        :animate="{
+        :keyframes="{
           opacity: 1,
           x: 100,
           transition: { duration: 1 },

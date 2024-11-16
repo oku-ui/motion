@@ -9,7 +9,7 @@ function log(event: any) {
 <template>
   <Motion
     :initial="{ opacity: 0 }"
-    :animate="{ opacity: 1 }"
+    :keyframes="{ opacity: 1 }"
     :hover="{ scale: 1.2 }"
     :press="{ scale: 0.9 }"
     :in-view="{ backgroundColor: 'black' }"

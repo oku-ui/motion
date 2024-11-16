@@ -42,7 +42,7 @@ onMounted(() => {
     <Motion
       class="motion-one-box"
       :initial="{ opacity: 0, y: 50 }"
-      :animate="{ opacity: 1, y: 0 }"
+      :keyframes="{ opacity: 1, y: 0 }"
       :hover="{ scale: 1.2, backgroundColor: `#00ffdb`, rotate: 90 }"
       :press="{ scale: 0.9 }"
       :transition="{
@@ -55,7 +55,7 @@ onMounted(() => {
     <!-- <Motion
       class="motion-one-box"
       :initial="{ opacity: 0, y: 50 }"
-      :animate="{ opacity: 1, y: 0 }"
+      :keyframes="{ opacity: 1, y: 0 }"
       :hover="{ scale: 1.2, backgroundColor: `red`, rotate: 90 }"
       :press="{ scale: 0.9 }"
       :transition="{
@@ -69,7 +69,7 @@ onMounted(() => {
     <Motion
       class="motion-one-box"
       :initial="{ opacity: 0, y: 50 }"
-      :animate="{ opacity: 1, y: 0 }"
+      :keyframes="{ opacity: 1, y: 0 }"
       :hover="{ scale: 1.2, backgroundColor: `red`, rotate: 90 }"
       :press="{ scale: 0.9 }"
       :transition="{
@@ -82,7 +82,7 @@ onMounted(() => {
     <Motion
       class="motion-one-box"
       :initial="{ opacity: 0, y: 50 }"
-      :animate="{ opacity: 1, y: 0 }"
+      :keyframes="{ opacity: 1, y: 0 }"
       :hover="{ scale: 1.2, backgroundColor: `red`, rotate: 90 }"
       :press="{ scale: 0.9 }"
       :transition="{

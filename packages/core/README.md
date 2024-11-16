@@ -5,7 +5,6 @@
 | [Vue](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion) |
 | [Nuxt](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/v/@oku-ui/motion-nuxt?style=flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) | [![npm](https://img.shields.io/npm/dm/@oku-ui/motion-nuxt?flat&colorA=002438&colorB=28CF8D)](https://www.npmjs.com/package/@oku-ui/motion-nuxt) |
 
-
 **A tiny, performant animation library for VueJS. Powered by [Motion One](https://motion.dev/).**
 
 ## Introduction
@@ -42,7 +41,7 @@ Import the Motion component and register it in your Vue component:
 
 ```vue
 <script setup lang="ts">
-import { Motion } from "@oku-ui/motion"
+import { Motion } from '@oku-ui/motion'
 </script>
 
 <template>
@@ -54,7 +53,7 @@ The `Motion` component can be used to create an animatable HTML or SVG element. 
 
 ```vue
 <script setup lang="ts">
-import { Motion } from "motion/vue"
+import { Motion } from 'motion/vue'
 </script>
 
 <template>
@@ -73,9 +72,8 @@ div {
 
 Edit the above example by adding an animate prop:
 
-
 ```vue
-<Motion :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }" />
+<Motion :keyframes="{ rotate: 90, backgroundColor: 'var(--yellow)' }" />
 ```
 
 Every time a value in animate changes, perhaps from component data or props, the component will automatically animate to the latest values.
@@ -86,7 +84,7 @@ We can change the type of animation used by passing a `transition` prop.
 
 ```vue
 <Motion
-  :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
+  :keyframes="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
   :transition="{ duration: 1, easing: 'ease-in-out' }"
 />
 ```
@@ -95,7 +93,7 @@ By default transition options are applied to all values, but we can also overrid
 
 ```vue
 <Motion
-  :animate="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
+  :keyframes="{ rotate: 90, backgroundColor: 'var(--yellow)' }"
   :transition="{
     duration: 1,
     rotate: { duration: 2 },
@@ -108,14 +106,14 @@ By default transition options are applied to all values, but we can also overrid
 Values can also be set as arrays, to define a series of keyframes.
 
 ```vue
-<Motion :animate="{ x: [0, 100, 50] }" />
+<Motion :keyframes="{ x: [0, 100, 50] }" />
 ```
 
 By default, keyframes are spaced evenly throughout `duration`, but this can be adjusted by providing progress values to `offset`:
 
 ```vue
 <Motion
-  :animate="{ x: [0, 100, 50] }"
+  :keyframes="{ x: [0, 100, 50] }"
   :transition="{ x: { offset: [0, 0.25, 1] } }"
 />
 ```
@@ -127,7 +125,7 @@ Elements will automatically `animate` to the values defined in animate when they
 This can be disabled by setting the `initial` prop to `false`. The styles defined in `animate` will be applied immediately when the element is first created.
 
 ```vue
-<Motion :initial="false" :animate="{ x: 100 }" />
+<Motion :initial="false" :keyframes="{ x: 100 }" />
 ```
 
 ## Exit animations
@@ -136,7 +134,7 @@ When an element is removed with `v-show` or `v-if` it can be animated out with t
 
 ```vue
 <script setup lang="ts">
-import { Motion, Presence } from "motion/vue"
+import { Motion, Presence } from 'motion/vue'
 
 const show = ref(true)
 </script>
@@ -147,7 +145,7 @@ const show = ref(true)
       <Motion
         v-show="show"
         :initial="{ opacity: 0, scale: 0 }"
-        :animate="{ opacity: 1, scale: 1 }"
+        :keyframes="{ opacity: 1, scale: 1 }"
         :exit="{ opacity: 0, scale: 0.6 }"
         class="box"
       />
@@ -184,7 +182,7 @@ const show = ref(true)
 ```vue
 <Motion
   v-show="isVisible"
-  :animate="{ opacity: 1 }"
+  :keyframes="{ opacity: 1 }"
   :exit="{ opacity: 0, transition: { duration: 0.8 } }"
   :transition="transition"
 />
