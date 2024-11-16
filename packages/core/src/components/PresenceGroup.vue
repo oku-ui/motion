@@ -56,7 +56,7 @@ function exit(element: any, done: VoidFunction) {
   }
 }
 
-const state: PresenceState = { waitExit: props.waitExit }
+const state: PresenceState = { waitExit: props.waitExit, status: 'true' }
 
 provide(presenceId, state)
 
