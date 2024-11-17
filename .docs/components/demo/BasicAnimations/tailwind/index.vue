@@ -24,7 +24,7 @@ function setRotate(value: number) {
   <div class="flex gap-10 items-center">
     <div>
       <Motion
-        :keyframes="{ x,
+        :animate="{ x,
                     y,
                     rotate }"
         as="div"

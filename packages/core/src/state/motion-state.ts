@@ -12,8 +12,11 @@ import { transformResetValue } from '@/state/transform'
 import { scheduleAnimation, unscheduleAnimation } from '@/state/schedule'
 import { motionEvent } from '@/state/event'
 
+// List of state types
 const STATE_TYPES = ['initial', 'animate', 'inView', 'hover', 'press', 'exit'] as const
 type StateType = typeof STATE_TYPES[number]
+
+// WeakMap to store mounted states
 export const mountedStates = new WeakMap<Element, MotionState>()
 
 export class MotionState {
@@ -33,6 +36,7 @@ export class MotionState {
 
   private target: DOMKeyframesDefinition
   private featureManager: FeatureManager
+
   constructor(options: Options, parent?: MotionState) {
     this.options = options
     this.parent = parent
@@ -40,17 +44,15 @@ export class MotionState {
     this.initContext()
     const initialVariantSource = options.initial === false ? 'animate' : 'initial'
     this.featureManager = new FeatureManager(this)
-    /**
-     * 初始化baseTarget、target
-     */
+    // Initialize baseTarget and target
     this.initTarget(initialVariantSource)
   }
 
   private initContext() {
     for (const name of STATE_TYPES) {
-      // 为每个状态类型设置上下文
-      // 如果options中对应的状态类型是字符串，则直接使用
-      // 否则，尝试从父级上下文中获取对应的状态类型值
+      // Set context for each state type
+      // If the corresponding state type in options is a string, use it directly
+      // Otherwise, try to get the corresponding state type value from the parent context
       this.context[name as keyof typeof this.context]
         = typeof this.options[name] === 'string'
           ? this.options[name]
@@ -88,7 +90,7 @@ export class MotionState {
         visualElement.setStaticValue(key, this.options.variants[this.initial][key])
     }
 
-    // 挂载特征
+    // Mount features
     this.featureManager.mount()
   }
 
@@ -96,15 +98,15 @@ export class MotionState {
     mountedStates.delete(this.element)
     unscheduleAnimation(this as any)
     visualElementStore.get(this.element)?.unmount()
-    // 卸载特征
+    // Unmount features
     this.featureManager.unmount()
   }
 
   update(options: Options) {
     this.options = options
-    // 更新特征
+    // Update features
     this.featureManager.update()
-    // 更新动画
+    // Update animation
     scheduleAnimation(this as any)
   }
 

@@ -189,6 +189,9 @@ importers:
 
   packages/core:
     dependencies:
+      '@oku-ui/primitives':
+        specifier: ^0.7.2
+        version: 0.7.2(@vue/shared@3.5.12)(vue@3.5.12(typescript@5.6.3))
       '@vue/shared':
         specifier: ^3.4.31
         version: 3.5.12

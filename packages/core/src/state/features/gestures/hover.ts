@@ -36,6 +36,9 @@ export class HoverGesture extends BaseGesture {
     super(state)
     this.subscribeEvents = () => {
       const element = this.state.getElement()
+      if (!element)
+        return () => {}
+
       const onEnter = mouseEvent(element, 'hoverstart', () => {
         this.state.setActive('hover', true)
       })

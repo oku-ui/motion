@@ -70,6 +70,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@oku-ui': fileURLToPath(new URL('./src', import.meta.url)),
+      '@/': fileURLToPath(new URL('./src', import.meta.url)),
+      'framer-motion/dist/es/animation/utils/create-visual-element.mjs': resolve(__dirname, 'node_modules/framer-motion/dist/es/animation/utils/create-visual-element.mjs'),
+      'framer-motion/dist/es/render/store.mjs': resolve(__dirname, 'node_modules/framer-motion/dist/es/render/store.mjs'),
     },
   },
   // resolve: {

@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'node:url'
+import { resolve } from 'node:path'
 import type { StorybookConfig } from '@storybook/vue3-vite'
 import type { UserConfig } from 'vite'
 import { mergeConfig } from 'vite'
@@ -30,6 +31,9 @@ const config: StorybookConfig = {
       resolve: {
         alias: {
           '@oku-ui/motion': fileURLToPath(new URL('../packages/core/src', import.meta.url)),
+          '@': fileURLToPath(new URL('../packages/core/src', import.meta.url)),
+          'framer-motion/dist/es/animation/utils/create-visual-element.mjs': resolve(__dirname, '..', 'node_modules/framer-motion/dist/es/animation/utils/create-visual-element.mjs'),
+          'framer-motion/dist/es/render/store.mjs': resolve(__dirname, '..', 'node_modules/framer-motion/dist/es/render/store.mjs'),
         },
       },
       css: {
