@@ -10,7 +10,7 @@ export abstract class BaseGesture extends Feature {
   ) {
     const isActive = this.isActive()
     if (isActive && !this.removeGestureSubscriptions) {
-      this.removeGestureSubscriptions = this.subscribeEvents()
+      this.removeGestureSubscriptions = this.subscribeEvents?.()
     }
     else if (!isActive && this.removeGestureSubscriptions) {
       this.removeGestureSubscriptions()

@@ -77,6 +77,8 @@
   "dependencies": {
     "@oku-ui/primitives": "^0.7.3",
     "defu": "^6.1.4",
+    "framer-motion": "^11.11.17",
+    "hey-listen": "^1.0.8",
     "motion": "^11.11.15"
   },
   "devDependencies": {

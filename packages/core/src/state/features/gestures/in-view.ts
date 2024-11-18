@@ -12,6 +12,8 @@ export class InViewGesture extends BaseGesture {
     super(state)
     this.subscribeEvents = () => {
       const element = this.state.getElement()
+      if (!element)
+        return () => {}
       const { once, ...viewOptions } = this.state.getOptions()?.inViewOptions || {}
       return inView(element, (enterEntry) => {
         this.state.setActive('inView', true)
@@ -30,7 +32,7 @@ export class InViewGesture extends BaseGesture {
     this.updateGestureSubscriptions()
   }
 
-  update() {
+  override update() {
     this.updateGestureSubscriptions()
   }
 }

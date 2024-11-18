@@ -58,7 +58,7 @@ export class HoverGesture extends BaseGesture {
     this.updateGestureSubscriptions()
   }
 
-  update() {
+  override update() {
     this.updateGestureSubscriptions()
   }
 }

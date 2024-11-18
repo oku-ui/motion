@@ -1,12 +1,6 @@
-import type { AnimationPlaybackControls } from 'motion/react'
 import { getStates } from '@/state'
 
-export function useAnimations(): {
-  animations: Map<string, { animations: AnimationPlaybackControls[] }>
-  stop: (key?: string) => void
-  play: (key: string) => void
-  getByID: (id?: string) => AnimationPlaybackControls[] | undefined
-} {
+export function useAnimations() {
   const { motionStatesIdElements } = getStates()
 
   if (!motionStatesIdElements)

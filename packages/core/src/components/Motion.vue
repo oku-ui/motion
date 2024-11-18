@@ -20,7 +20,7 @@ const { getSVGProps, getStyle } = useMotionHelper(props, currentElement)
     ref="primitiveElement"
     v-bind="getSVGProps()"
     :style="getStyle"
-    :as="props.as"
+    :as="props.as as any"
   >
     <slot />
   </Primitive>

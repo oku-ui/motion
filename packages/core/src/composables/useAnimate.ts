@@ -4,20 +4,7 @@ import { useMotionHelper } from '@/components/helper'
 import type { MotionProps } from '@/state/types'
 import { invariant } from '@/utils/errors'
 
-interface UseAnimate {
-  animate: (
-    el: any,
-    props: Omit<MotionProps, 'as' | 'transition'> & {
-      transition?: ((index: number) => Partial<MotionProps['transition']>)
-    },
-  ) => AnimationPlaybackControls[] | undefined | void
-  scope: {
-    el?: any
-    updateElement: (el?: any) => void
-  }
-}
-
-export function useAnimate(): UseAnimate {
+export function useAnimate() {
   const scope = reactive<{
     el?: any
     animations: {
@@ -32,7 +19,7 @@ export function useAnimate(): UseAnimate {
       })
 
   const animate = (
-    el: UseAnimate['scope']['el'],
+    el: any,
     props: Omit<MotionProps, 'as' | 'transition'> & {
       transition?: ((index: number) => MotionProps['transition']) | MotionProps['transition']
     },

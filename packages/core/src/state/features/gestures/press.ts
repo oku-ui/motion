@@ -12,6 +12,9 @@ export class PressGesture extends BaseGesture {
     this.subscribeEvents = () => {
       const element = this.state.getElement()
 
+      if (!element)
+        return () => {}
+
       const onPointerUp = (event: PointerEvent) => {
         this.state.setActive('press', false)
         dispatchPointerEvent(element, 'pressend', event)
@@ -37,7 +40,7 @@ export class PressGesture extends BaseGesture {
     this.updateGestureSubscriptions()
   }
 
-  update() {
+  override update() {
     this.updateGestureSubscriptions()
   }
 }
