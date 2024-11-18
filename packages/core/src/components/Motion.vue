@@ -16,6 +16,7 @@ const { getSVGProps, getStyle } = useMotionHelper(props, currentElement)
 
 <template>
   <Primitive
+    :id="props.id"
     ref="primitiveElement"
     v-bind="getSVGProps()"
     :style="getStyle"

@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@oku-ui/motion": "link:../packages/core",
-    "@oku-ui/primitives": "^0.7.2",
+    "@oku-ui/primitives": "^0.7.3",
     "@shikijs/vitepress-twoslash": "^1.22.2",
     "@stackblitz/sdk": "^1.11.0",
     "@vueuse/core": "^11.2.0",

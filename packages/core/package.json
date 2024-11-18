@@ -75,7 +75,7 @@
     "@vue/shared": "^3.4.31"
   },
   "dependencies": {
-    "@oku-ui/primitives": "^0.7.2",
+    "@oku-ui/primitives": "^0.7.3",
     "defu": "^6.1.4",
     "motion": "^11.11.15"
   },

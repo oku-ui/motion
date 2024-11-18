@@ -9,7 +9,7 @@ import type {
   ValueKeyframesDefinition,
 } from 'framer-motion'
 import { animate } from 'framer-motion/dom'
-import type { AnimationFactory, MotionStateContext, MountedStates, Options } from '@/state/types'
+import type { AnimationFactory, MotionStateContext, Options } from '@/state/types'
 import { getOptions, hasChanged, noop, resolveVariant } from '@/state/utils'
 import { FeatureManager } from '@/state/features'
 import { style } from '@/state/style'
@@ -21,17 +21,28 @@ import { motionEvent } from '@/state/event'
 const STATE_TYPES = ['initial', 'animate', 'inView', 'hover', 'press', 'exit'] as const
 type StateType = typeof STATE_TYPES[number]
 
-interface MountedState {
-  element: Element
+export const mountedStates = new WeakMap<Element, {
+  id: string
   state: MotionState
+}>()
+
+export const motionStatesIdElements = new Map<string, {
   animations: AnimationPlaybackControls[]
+  id: string
+  state: MotionState
+}>()
+
+export function getStates() {
+  return {
+    mountedStates,
+    motionStatesIdElements,
+  }
 }
 
 export class MotionState {
   private id: string
-  private element: Element | null = null
+  private element!: Element
   private context: MotionStateContext = {}
-  mountedStates: MountedStates
 
   private parent?: MotionState
   private options: Options
@@ -46,9 +57,8 @@ export class MotionState {
   private target!: DOMKeyframesDefinition
   private featureManager: FeatureManager
 
-  constructor(options: Options, mountedStates: MountedStates, parent?: MotionState) {
+  constructor(options: Options, parent?: MotionState) {
     this.id = options.id || Math.random().toString(36).substring(2, 9)
-    this.mountedStates = mountedStates
     if (!parent && options.initial === false)
       options.initial = 'animate'
 
@@ -99,11 +109,16 @@ export class MotionState {
     )
     this.element = element
 
-    this.mountedStates.set(this.id, {
-      element: this.element,
+    mountedStates.set(element, {
+      id: this.id,
       state: this,
-      animations: [],
     })
+    motionStatesIdElements.set(this.id, {
+      animations: [],
+      id: this.id,
+      state: this,
+    })
+
     if (!visualElementStore.get(element))
       createDOMVisualElement(element)
 
@@ -123,7 +138,9 @@ export class MotionState {
   }
 
   unmount(): void {
-    this.mountedStates.delete(this.id)
+    mountedStates.delete(this.element)
+    motionStatesIdElements.delete(this.id)
+
     unscheduleAnimation(this as any)
     visualElementStore.get(this.element)?.unmount()
     this.featureManager.unmount()
@@ -221,10 +238,17 @@ export class MotionState {
     if (!animations.length)
       return
 
-    this.mountedStates.set(this.id, {
-      ...this.mountedStates.get(this.id),
+    mountedStates.set(this.element, {
+      id: this.id,
+      state: this,
+      ...mountedStates.get(this.element),
+    })
+
+    motionStatesIdElements.set(this.id, {
       animations,
-    } as MountedState)
+      id: this.id,
+      state: this,
+    })
 
     const animationTarget = this.target
     this.element?.dispatchEvent(motionEvent('motionstart', animationTarget))
@@ -259,6 +283,10 @@ export class MotionState {
   }
 
   getAnimationControls(): AnimationPlaybackControls[] | undefined {
-    return this.mountedStates.get(this.id)?.animations
+    const checkId = motionStatesIdElements.get(this.id)
+    if (checkId)
+      return checkId?.animations
+
+    return undefined
   }
 }

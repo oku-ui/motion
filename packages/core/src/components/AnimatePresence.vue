@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { Transition, TransitionGroup, toRefs } from 'vue'
 
-// import { mountedStates } from '@/state'
 import { doneCallbacks, removeDoneCallback } from '@/components/presence'
-import { provideAnimatePresence, useMountedStates } from '@/share/context'
+import { provideAnimatePresence } from '@/share/context'
 import type { AnimatePresenceProps } from '@/types/index.ts'
+import { mountedStates } from '@/state'
 
 defineOptions({
   name: 'AnimatePresence',
@@ -23,15 +23,13 @@ provideAnimatePresence({
   initial,
 })
 
-const mountedStates = useMountedStates('AnimatePresence')
-
 function enter(el: Element) {
   const state = mountedStates.get(el)
   if (!state)
     return
 
   removeDoneCallback(el)
-  state.setActive('exit', false)
+  state.state.setActive('exit', false)
 }
 
 function exit(el: Element, done: VoidFunction) {
@@ -39,7 +37,7 @@ function exit(el: Element, done: VoidFunction) {
   if (!state)
     return done()
 
-  state.setActive('exit', true)
+  state.state.setActive('exit', true)
   removeDoneCallback(el)
   function doneCallback(e?: any) {
     if (e?.detail?.isExit)
@@ -57,6 +55,7 @@ function exit(el: Element, done: VoidFunction) {
     :css="false"
     :mode="mode === 'wait' ? 'out-in' : undefined"
     v-bind="$attrs"
+    appear
     @enter="enter"
     @leave="exit"
   >

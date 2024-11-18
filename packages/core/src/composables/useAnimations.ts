@@ -1,5 +1,5 @@
 import type { AnimationPlaybackControls } from 'motion/react'
-import { useMountedStates } from '../share'
+import { getStates } from '@/state'
 
 export function useAnimations(): {
   animations: Map<string, { animations: AnimationPlaybackControls[] }>
@@ -7,45 +7,50 @@ export function useAnimations(): {
   play: (key: string) => void
   getByID: (id?: string) => AnimationPlaybackControls[] | undefined
 } {
-  const animations = useMountedStates('useAnimations')
-  if (!animations)
+  const { motionStatesIdElements } = getStates()
+
+  if (!motionStatesIdElements)
     throw new Error('useAnimations() is called without provider.')
 
+  function animations() {
+    return motionStatesIdElements.entries()
+  }
+
   function stop(key?: string) {
-    if (animations.size === 0) {
+    if (motionStatesIdElements.size === 0) {
       console.warn('No animations to stop.')
       return
     }
 
-    if (key && animations.has(key)) {
-      animations.get(key)?.animations.forEach(animation => animation?.stop())
+    if (key && motionStatesIdElements.has(key)) {
+      motionStatesIdElements.get(key)?.animations.forEach(animation => animation?.stop())
     }
     else {
-      for (const value of animations.values())
-        value.animations.forEach(animation => animation?.stop())
+      for (const value of motionStatesIdElements.entries())
+        value[1].animations.forEach(animation => animation?.stop())
     }
   }
 
-  function play(key: string) {
-    if (animations.size === 0) {
+  function play(key?: string) {
+    if (motionStatesIdElements.size === 0) {
       console.warn('No animations to play.')
       return
     }
 
-    if (animations.has(key)) {
-      animations.get(key)?.animations.forEach(animation => animation?.play())
+    if (key && motionStatesIdElements.has(key)) {
+      motionStatesIdElements.get(key)?.animations.forEach(animation => animation?.play())
     }
     else {
-      for (const value of animations.values())
-        value.animations.forEach(animation => animation?.play())
+      for (const value of motionStatesIdElements.entries())
+        value[1].animations.forEach(animation => animation?.play())
     }
   }
 
   function getByID(id?: string) {
     if (!id)
-      return undefined
+      return
 
-    return animations.get(id)?.animations
+    return motionStatesIdElements.get(id)?.animations
   }
 
   return {

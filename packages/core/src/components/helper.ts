@@ -16,7 +16,6 @@ import {
   provideMotion,
   useAnimatePresence,
   useMotion,
-  useMountedStates,
 } from '@/share'
 import { transformProps } from '@/utils/undefinedDefu'
 
@@ -50,16 +49,14 @@ export function useMotionHelper(
 ) {
   const props = defaultTransition(_props)
 
-  const { initial: presenceInitial } = useAnimatePresence()
-  const parentState = useMotion()
-  const states = useMountedStates('motion')
+  const { initial: presenceInitial } = useAnimatePresence('useMotionHelper')
+  const parentState = useMotion('useMotionHelper')
   const id = props.id || unref(currentElement)?.id || useId()
   const state = new MotionState(
     {
       ...props,
       id,
     },
-    states,
     parentState!,
   )
 
