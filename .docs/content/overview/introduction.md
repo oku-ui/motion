@@ -72,7 +72,7 @@ To get involved with the Radix community, ask questions, and share tips, join ou
 
 To receive updates on new primitives, announcements, blog posts, and general Radix tips, follow along on Twitter.
 
-[Follow Radix on Twitter](https://twitter.com/oku-ui)
+[Follow Oku on Twitter](https://twitter.com/oku-ui)
 
 ### GitHub
 

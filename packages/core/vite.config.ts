@@ -1,5 +1,6 @@
-import path from 'node:path'
+import path, { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { execSync } from 'node:child_process'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -16,10 +17,15 @@ export default defineConfig({
         'src/test/**',
         '**/stories/**',
         'src/**/*.stories.vue',
-        '**/.docs/**', // .docs klasörünü hariç tut
+        '**/.docs/**',
         'src/components/stories/**',
       ],
       tsconfigPath: 'tsconfig.build.json',
+      afterBuild: async () => {
+        // pnpm build:plugins
+        execSync('pnpm build:plugins', { stdio: 'inherit', cwd: resolve(__dirname, '../plugins') })
+        execSync('pnpm lint:fix', { stdio: 'inherit', cwd: resolve(__dirname, '../..') })
+      },
     }),
 
   ],
@@ -33,7 +39,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     lib: {
-      formats: ['es', 'umd'],
+      formats: ['es'],
       fileName: (format, name) => {
         return `${name}.${format === 'es' ? 'js' : 'umd.cjs'}`
       },
@@ -42,6 +48,8 @@ export default defineConfig({
         index: path.resolve(__dirname, 'src/index.ts'),
       },
     },
+    minify: false,
+    sourcemap: true,
     target: 'esnext',
     rollupOptions: {
       output: {

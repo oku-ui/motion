@@ -19,18 +19,18 @@
   ],
   "sideEffects": false,
   "exports": {
-    "./": {
+    ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.js"
     },
     "./*": {
       "types": "./dist/*/index.d.ts",
-      "import": "./dist/*/index.mjs"
+      "import": "./dist/*/index.js"
     },
     "./nuxt": {
       "import": {
         "types": "./dist/nuxt/index.d.mts",
-        "default": "./dist/nuxt/index.mjs"
+        "default": "./dist/nuxt/index.js"
       },
       "require": {
         "types": "./dist/nuxt/index.d.cts",
@@ -38,7 +38,7 @@
       }
     }
   },
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {

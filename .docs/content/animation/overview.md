@@ -16,7 +16,7 @@ Motion for Vue offers a number of ways to animate your UI. Scaling from extremel
 
 Install the component from your command line.
 
-<InstallationTabs value="@oku-ui/motions" />
+<InstallationTabs value="@oku-ui/motion" />
 
 ## Basic animations
 You'll perform almost all animations on a <motion /> component. This is basically a DOM element with motion superpowers.
