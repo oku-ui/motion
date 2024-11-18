@@ -7,7 +7,7 @@ export function resolveVariant(
   variants?: AnimateOptions['variants'],
 ): Variant | undefined {
   if (typeof definition === 'object')
-    return definition
+    return definition as Variant
 
   else if (definition && variants)
     return variants[definition as string] as Variant

@@ -1,21 +1,18 @@
-import { onMounted, reactive, useId } from 'vue'
-import type { AnimationPlaybackControls, DynamicAnimationOptions, ValueAnimationOptions } from 'motion/react'
-import { animate as okuAnimate } from 'motion'
-import { type DirectiveValue, getDefaultTransition } from '../share'
-import { invariant } from '../utils/errors'
+import { reactive, useId } from 'vue'
+import type { AnimationPlaybackControls } from 'motion/react'
+import { useMotionHelper } from '@/components/helper'
+import type { MotionProps } from '@/state/types'
+import { invariant } from '@/utils/errors'
 
 interface UseAnimate {
   animate: (
-    el?: any,
-    keyframes?: DirectiveValue['keyframes'],
-    options?: DirectiveValue['options'] | ((index: number) => DirectiveValue['options']),
-    id?: string
-  ) => AnimationPlaybackControls | undefined | void
+    el: any,
+    props: Omit<MotionProps, 'as' | 'transition'> & {
+      transition?: ((index: number) => Partial<MotionProps['transition']>)
+    },
+  ) => AnimationPlaybackControls[] | undefined | void
   scope: {
     el?: any
-    animations: {
-      [key: string]: AnimationPlaybackControls
-    }
     updateElement: (el?: any) => void
   }
 }
@@ -24,7 +21,7 @@ export function useAnimate(): UseAnimate {
   const scope = reactive<{
     el?: any
     animations: {
-      [key: string]: AnimationPlaybackControls
+      [key: string]: AnimationPlaybackControls[]
     }
     updateElement: (el?: any) => void
   }>({
@@ -35,48 +32,52 @@ export function useAnimate(): UseAnimate {
       })
 
   const animate = (
-    el?: UseAnimate['scope']['el'],
-    keyframes?: DirectiveValue['keyframes'],
-    options?: DirectiveValue['options'] | ((index: number) => DirectiveValue['options']),
-    id?: string,
+    el: UseAnimate['scope']['el'],
+    props: Omit<MotionProps, 'as' | 'transition'> & {
+      transition?: ((index: number) => MotionProps['transition']) | MotionProps['transition']
+    },
   ) => {
     if (!el)
       return
 
     const data = resolveElement(el, scope.el)
 
-    const transition = keyframes ? getDefaultTransition(Object.keys(keyframes).join(','), options as Partial<ValueAnimationOptions>) : {}
-
-    const key = id || useId()
-
-    if (scope.animations[key])
-      scope.animations[key].complete()
+    const key = props.id ?? useId()
 
     if (!data.length)
       return
 
     if (data.length > 0) {
       data.forEach((el, index) => {
-        const animationOptions = options ? typeof options === 'function' ? options(index) : options : {}
+        const transition = props.transition
+          ? typeof props.transition === 'function'
+            ? props.transition(index)
+            : props.transition
+          : {}
 
-        const animationParams: DynamicAnimationOptions = {
-          ...transition,
-          ...animationOptions,
-        } as DynamicAnimationOptions
+        const { state, getSVGProps, getStyle } = useMotionHelper({
+          ...props,
+          transition,
+          as: el.tagName,
+        }, el, false)
 
-        const motion = okuAnimate(el, keyframes ?? {}, animationParams)
+        const svgProps = getSVGProps()
+        const style = getStyle()
 
-        scope.animations[key] = motion
+        if (svgProps) {
+          Object.entries(svgProps).forEach(([key, value]) => {
+            el.setAttribute(key, value as string)
+          })
+        }
+
+        if (style)
+          Object.assign((el as HTMLElement).style, style)
+
+        const motion = state.getAnimationControls()
+        scope.animations[key] = motion as any[]
       })
     }
   }
-
-  onMounted(() => {
-    if (!scope.el)
-      return
-
-    Object.values(scope.animations)?.forEach(animation => animation.stop())
-  })
 
   return {
     animate,

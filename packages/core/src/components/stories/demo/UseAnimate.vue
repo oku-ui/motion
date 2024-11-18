@@ -7,16 +7,21 @@ const { animate, scope } = useAnimate()
 onMounted(() => {
   animate(
     'li',
-    { opacity: 0, x: 10 },
-    (index) => {
-      return {
-        opacity: {
-          delay: index * 0.5,
-        },
-        x: {
-          delay: index * 0.5,
-        },
-      }
+    {
+      animate: {
+        opacity: 0,
+        x: 10,
+      },
+      transition(index) {
+        return {
+          opacity: {
+            delay: index * 0.5,
+          },
+          x: {
+            delay: index * 0.5,
+          },
+        }
+      },
     },
   )
 })
@@ -26,7 +31,9 @@ onMounted(() => {
 <template>
   <ul :ref="scope.updateElement">
     @oku/motion useAnimate Demo
-    <li>1</li>
+    <li class="bg-red-500">
+      1
+    </li>
     <li>2</li>
     <li>3</li>
     <li>4</li>

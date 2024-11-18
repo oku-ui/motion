@@ -1,66 +1,51 @@
-import { inject } from 'vue'
-import type { AnimationPlaybackControls, DOMKeyframesDefinition, DynamicAnimationOptions, ValueAnimationOptions } from 'motion/react'
-import { animate } from 'motion'
-import type { MotionElement, MotionProps, MotionSVGElement } from '../share'
-import { AnimationsKey, getDefaultTransition } from '../share'
+import type { AnimationPlaybackControls } from 'motion/react'
+import { useMountedStates } from '../share'
 
-export function useAnimations() {
-  const animations = inject(AnimationsKey)
-
+export function useAnimations(): {
+  animations: Map<string, { animations: AnimationPlaybackControls[] }>
+  stop: (key?: string) => void
+  play: (key: string) => void
+  getByID: (id?: string) => AnimationPlaybackControls[] | undefined
+} {
+  const animations = useMountedStates('useAnimations')
   if (!animations)
     throw new Error('useAnimations() is called without provider.')
 
   function stop(key?: string) {
-    if (!animations || Object.keys(animations).length === 0) {
+    if (animations.size === 0) {
       console.warn('No animations to stop.')
       return
     }
 
-    if (key && animations[key])
-      animations[key]?.motion_playback_instance?.stop()
-    else
-      Object.values(animations || {}).forEach(animation => animation?.motion_playback_instance?.stop())
+    if (key && animations.has(key)) {
+      animations.get(key)?.animations.forEach(animation => animation?.stop())
+    }
+    else {
+      for (const value of animations.values())
+        value.animations.forEach(animation => animation?.stop())
+    }
   }
 
   function play(key: string) {
-    if (!animations || Object.keys(animations).length === 0) {
+    if (animations.size === 0) {
       console.warn('No animations to play.')
       return
     }
 
-    if (animations[key])
-      animations[key]?.motion_playback_instance?.play()
-    else
-      console.warn(`No animation with key "${key}" found.`)
+    if (animations.has(key)) {
+      animations.get(key)?.animations.forEach(animation => animation?.play())
+    }
+    else {
+      for (const value of animations.values())
+        value.animations.forEach(animation => animation?.play())
+    }
   }
 
-  function getByID(id?: string, element?: MotionElement | MotionSVGElement): Partial<MotionProps> | undefined {
-    if (!animations)
-      return
-
+  function getByID(id?: string) {
     if (!id)
       return undefined
 
-    const animation: Partial<MotionProps> = {
-      ...animations[id],
-      motion_playback_instance: element?.motion_playback_instance,
-    }
-    return animation
-  }
-
-  function createAnimate(
-    el: MotionElement | MotionSVGElement,
-    keyframes: DOMKeyframesDefinition,
-    options?: DynamicAnimationOptions,
-  ): AnimationPlaybackControls {
-    const transition = keyframes ? getDefaultTransition(Object.keys(keyframes).join(','), options as Partial<ValueAnimationOptions>) : {}
-    // 'transition' ve 'options' birleşimini net bir türle sağlayalım
-    const animationParams: DynamicAnimationOptions = {
-      ...transition,
-      ...options,
-    } as DynamicAnimationOptions
-
-    return animate(el, keyframes, animationParams)
+    return animations.get(id)?.animations
   }
 
   return {
@@ -68,6 +53,5 @@ export function useAnimations() {
     stop,
     play,
     getByID,
-    createAnimate,
   }
 }

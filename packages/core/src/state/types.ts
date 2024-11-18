@@ -1,6 +1,9 @@
+import type { PrimitiveProps } from '@oku-ui/primitives'
 import type { DOMKeyframesDefinition, DynamicAnimationOptions } from 'framer-motion'
 import type { animate } from 'framer-motion/dom'
-import type { CSSProperties } from 'vue'
+import type { CSSProperties, Reactive } from 'vue'
+import type { MotionState } from './motion-state'
+import type { SvgElementName } from '@/components/utils'
 
 type AnimationPlaybackControls = ReturnType<typeof animate>
 
@@ -15,6 +18,7 @@ export interface InViewOptions {
   amount?: 'some' | 'all' | number
 }
 export interface Options {
+  id?: string
   inViewOptions?: InViewOptions & { once?: boolean }
   inView?: string | Variant
   press?: string | Variant
@@ -27,6 +31,7 @@ export interface Options {
   }
   transition?: DynamicAnimationOptions
   style?: CSSProperties
+  isDefaultTransition?: boolean | undefined
   onMotionStart?: (target: DOMKeyframesDefinition) => void
   onMotionComplete?: (target: DOMKeyframesDefinition) => void
   onHoverStart?: (e: PointerEvent) => void
@@ -55,3 +60,19 @@ export interface CssPropertyDefinition {
 }
 
 export type CssPropertyDefinitionMap = { [key: string]: CssPropertyDefinition }
+
+export interface MotionProps extends Options {
+  as?: PrimitiveProps['as'] | SvgElementName
+  style?: CSSProperties
+  hover?: Options['hover']
+  press?: Options['press']
+  inView?: Options['inView']
+  inViewOptions?: Options['inViewOptions']
+  id?: string
+}
+
+export type MountedStates = Reactive<Map<string, {
+  element: Element
+  state: MotionState
+  animations: AnimationPlaybackControls[]
+}>>

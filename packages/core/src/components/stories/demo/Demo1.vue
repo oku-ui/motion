@@ -10,7 +10,7 @@ onMounted(() => {
     animations.stop()
     // eslint-disable-next-line no-console
     console.log('motion stopped')
-  }, 500)
+  }, 1500)
 })
 
 const container = {

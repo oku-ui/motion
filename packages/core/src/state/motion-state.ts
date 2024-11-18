@@ -4,7 +4,7 @@ import { createDOMVisualElement } from 'framer-motion/dist/es/animation/utils/cr
 import { isDef } from '@vueuse/core'
 import type { DOMKeyframesDefinition, DynamicAnimationOptions } from 'framer-motion'
 import { animate } from 'framer-motion/dom'
-import type { AnimationFactory, MotionStateContext, Options } from '@/state/types'
+import type { AnimationFactory, MotionStateContext, MountedStates, Options } from '@/state/types'
 import { getOptions, hasChanged, noop, resolveVariant } from '@/state/utils'
 import { FeatureManager } from '@/state/features'
 import { style } from '@/state/style'
@@ -16,12 +16,11 @@ import { motionEvent } from '@/state/event'
 const STATE_TYPES = ['initial', 'animate', 'inView', 'hover', 'press', 'exit'] as const
 type StateType = typeof STATE_TYPES[number]
 
-// WeakMap to store mounted states
-export const mountedStates = new WeakMap<Element, MotionState>()
-
 export class MotionState {
+  private id: string
   private element: Element | null = null
   private context: MotionStateContext = {}
+  mountedStates: MountedStates
 
   private parent?: MotionState
   private options: Options
@@ -37,10 +36,26 @@ export class MotionState {
   private target: DOMKeyframesDefinition
   private featureManager: FeatureManager
 
-  constructor(options: Options, parent?: MotionState) {
+  constructor(options: Options, mountedStates: MountedStates, parent?: MotionState) {
+    this.id = options.id || Math.random().toString(36).substring(2, 9)
+    this.mountedStates = mountedStates
+    if (!parent && options.initial === false)
+      options.initial = 'animate'
+
     this.options = options
     this.parent = parent
-    this.depth = parent?.depth + 1 || 0
+    this.depth = parent ? parent.depth + 1 : 0
+    this.initContext()
+    const initialVariantSource = options.initial === false ? 'animate' : 'initial'
+    this.featureManager = new FeatureManager(this)
+    // Initialize baseTarget and target
+    this.initTarget(initialVariantSource)
+  }
+
+  reset(options: Options, parent?: MotionState) {
+    this.options = options
+    this.parent = parent
+    this.depth = parent ? parent.depth + 1 : 0
     this.initContext()
     const initialVariantSource = options.initial === false ? 'animate' : 'initial'
     this.featureManager = new FeatureManager(this)
@@ -75,19 +90,24 @@ export class MotionState {
       'Animation state must be mounted with valid Element',
     )
     this.element = element
-    mountedStates.set(element, this)
+
+    this.mountedStates.set(this.id, {
+      element: this.element,
+      state: this,
+      animations: [],
+    })
     if (!visualElementStore.get(element))
       createDOMVisualElement(element)
 
     const visualElement = visualElementStore.get(element)
-    visualElement.update(this.options as any, this.parent?.context as any)
+    visualElement?.update(this.options as any, this.parent?.context as any)
     if (typeof this.initial === 'object') {
       for (const key in this.initial)
-        visualElement.setStaticValue(key, this.initial[key])
+        visualElement?.setStaticValue(key, this.initial[key])
     }
     else if (typeof this.initial === 'string' && this.options.variants) {
       for (const key in this.options.variants[this.initial])
-        visualElement.setStaticValue(key, this.options.variants[this.initial][key])
+        visualElement?.setStaticValue(key, this.options.variants[this.initial][key])
     }
 
     // Mount features
@@ -95,14 +115,18 @@ export class MotionState {
   }
 
   unmount() {
-    mountedStates.delete(this.element)
+    this.mountedStates.delete(this.id)
     unscheduleAnimation(this as any)
     visualElementStore.get(this.element)?.unmount()
     // Unmount features
     this.featureManager.unmount()
   }
 
-  update(options: Options) {
+  update(
+    options: Options,
+    parent?: MotionState,
+  ) {
+    this.parent = parent
     this.options = options
     // Update features
     this.featureManager.update()
@@ -189,6 +213,11 @@ export class MotionState {
     if (!animations.length)
       return
 
+    this.mountedStates.set(this.id, {
+      ...this.mountedStates.get(this.id),
+      animations,
+    })
+
     const animationTarget = this.target
     this.element.dispatchEvent(motionEvent('motionstart', animationTarget))
     const isExit = this.activeStates.exit
@@ -219,5 +248,9 @@ export class MotionState {
 
   getTarget() {
     return this.target
+  }
+
+  getAnimationControls() {
+    return this.mountedStates.get(this.id)?.animations
   }
 }

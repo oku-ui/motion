@@ -1,15 +1,10 @@
 <script setup lang="ts">
 import { Transition, TransitionGroup, toRefs } from 'vue'
-import { mountedStates } from '@/state'
-import { doneCallbacks, removeDoneCallback } from '@/components/presence'
-import { provideAnimatePresence } from './context'
 
-export interface AnimatePresenceProps {
-  mode?: 'wait' | 'popLayout' | 'sync'
-  initial?: boolean
-  multiple?: boolean
-  as?: string
-}
+// import { mountedStates } from '@/state'
+import { doneCallbacks, removeDoneCallback } from '@/components/presence'
+import { provideAnimatePresence, useMountedStates } from '@/share/context'
+import type { AnimatePresenceProps } from '@/types/index.ts'
 
 defineOptions({
   name: 'AnimatePresence',
@@ -27,6 +22,8 @@ const { initial } = toRefs(props)
 provideAnimatePresence({
   initial,
 })
+
+const mountedStates = useMountedStates('AnimatePresence')
 
 function enter(el: Element) {
   const state = mountedStates.get(el)
