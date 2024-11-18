@@ -33,25 +33,31 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     lib: {
-      name: 'motion-vue',
+      formats: ['es', 'umd'],
       fileName: (format, name) => {
         return `${name}.${format === 'es' ? 'js' : 'umd.cjs'}`
       },
+      name: 'oku-ui-motion',
       entry: {
         index: path.resolve(__dirname, 'src/index.ts'),
       },
     },
+    target: 'esnext',
     rollupOptions: {
       output: {
+        esModule: true,
         globals: {
           'vue': 'Vue',
           '@oku-ui/primitives': '@oku-ui/primitives',
+          'motion': 'motion',
+          'framer-motion': 'framer-motion',
         },
       },
       external: [
         'vue',
         '@oku-ui/primitives',
-        '@oku-ui/motion', // Motion modülünü dışla
+        'motion',
+        'framer-motion',
         fileURLToPath(
           new URL(
             'src/components/stories',
