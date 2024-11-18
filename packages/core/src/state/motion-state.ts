@@ -2,7 +2,7 @@ import { invariant } from 'hey-listen'
 import { visualElementStore } from 'framer-motion/dist/es/render/store.mjs'
 import { createDOMVisualElement } from 'framer-motion/dist/es/animation/utils/create-visual-element.mjs'
 import { isDef } from '@vueuse/core'
-import type { DOMKeyframesDefinition, DynamicAnimationOptions } from 'framer-motion'
+import type { DOMKeyframesDefinition, DynamicAnimationOptions, ValueKeyframesDefinition } from 'framer-motion'
 import { animate } from 'framer-motion/dom'
 import type { AnimationFactory, MotionStateContext, MountedStates, Options } from '@/state/types'
 import { getOptions, hasChanged, noop, resolveVariant } from '@/state/utils'
@@ -159,17 +159,17 @@ export class MotionState {
       if (!variant)
         continue
 
-      resolvedVariants[name] = variant
+      resolvedVariants[name] = variant as DOMKeyframesDefinition
 
       const allTarget = { ...prevTarget, ...variant }
       for (const key in allTarget) {
-        if (key === 'transition')
+        if (key as string === 'transition')
           continue
 
         this.target[key] = variant[key]
 
         animationOptions[key] = getOptions(
-          variant.transition ?? this.options.transition ?? {},
+          (variant as any)?.transition ?? this.options.transition ?? {},
           key,
         )
 
@@ -185,16 +185,18 @@ export class MotionState {
     const animationFactories: AnimationFactory[] = []
     allTargetKeys.forEach((key: any) => {
       if (this.target[key] === undefined)
-        this.target[key] = this.baseTarget[key]
+        this.target[key] = this.baseTarget[key] as ValueKeyframesDefinition
 
       if (hasChanged(prevTarget[key], this.target[key])) {
-        this.baseTarget[key] ??= style.get(this.element, key) as string
+        if (this.element)
+          this.baseTarget[key] ??= style.get(this.element, key) as string
+
         animationFactories.push(
           () => {
             return animate(
-              this.element,
+              this.element!,
               {
-                [key]: this.target[key] === 'none' ? transformResetValue[key] : this.target[key],
+                [key as string]: this.target[key] === 'none' ? transformResetValue[key as keyof typeof transformResetValue] : this.target[key],
               },
               (animationOptions[key] || {}) as any,
             )
@@ -219,11 +221,11 @@ export class MotionState {
     })
 
     const animationTarget = this.target
-    this.element.dispatchEvent(motionEvent('motionstart', animationTarget))
+    this.element?.dispatchEvent(motionEvent('motionstart', animationTarget))
     const isExit = this.activeStates.exit
     Promise.all(animations)
       .then(() => {
-        this.element.dispatchEvent(motionEvent('motioncomplete', {
+        this.element?.dispatchEvent(motionEvent('motioncomplete', {
           ...animationTarget,
         }, isExit))
       })

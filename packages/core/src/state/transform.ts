@@ -43,10 +43,9 @@ const transforms = ['x', 'y', 'z']
 order.forEach((name) => {
   axes.forEach((axis) => {
     transforms.push(name + axis)
-    transformDefinitions.set(
-      name + axis,
-      baseTransformProperties[name],
-    )
+    const property = baseTransformProperties[name]
+    if (property)
+      transformDefinitions.set(name + axis, property)
   })
 })
 
