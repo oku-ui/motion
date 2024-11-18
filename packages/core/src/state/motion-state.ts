@@ -112,7 +112,7 @@ export class MotionState {
     else if (typeof this.initial === 'string' && this.options.variants) {
       const variant = this.options.variants[this.initial]
       for (const key in variant)
-        visualElement?.setStaticValue(key, variant[key])
+        visualElement?.setStaticValue(key, (variant as Record<string, any>)[key])
     }
 
     this.featureManager.mount()
@@ -167,7 +167,7 @@ export class MotionState {
         if (key === 'transition')
           continue
 
-        this.target[key as keyof typeof this.target] = variant[key as keyof typeof variant]
+        this.target[key as any] = variant[key as keyof typeof variant]
 
         animationOptions[key] = getOptions(
           (variant as any)?.transition ?? this.options.transition ?? {},
@@ -186,11 +186,11 @@ export class MotionState {
     const animationFactories: AnimationFactory[] = []
     allTargetKeys.forEach((key) => {
       if (this.target[key as keyof typeof this.target] === undefined)
-        this.target[key as keyof typeof this.target] = this.baseTarget[key as keyof typeof this.baseTarget] as ValueKeyframesDefinition
+        this.target[key as any] = this.baseTarget[key as keyof typeof this.baseTarget] as ValueKeyframesDefinition
 
       if (hasChanged(prevTarget[key as keyof typeof prevTarget], this.target[key as keyof typeof this.target])) {
         if (this.element)
-          this.baseTarget[key as keyof typeof this.baseTarget] ??= style.get(this.element, key) as string
+          this.baseTarget[key as any] ??= style.get(this.element, key) as string
 
         animationFactories.push(
           () => {
