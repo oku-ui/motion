@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import CodeSandbox from '../../components/CodeSandbox.vue'
-import Stackblitz from '../../components/Stackblitz.vue'
-import Storybook from '../../components/Storybook.vue'
-import Nuxt from '../../components/Nuxt.vue'
+import CodeSandbox from './CodeSandbox.vue'
+import Stackblitz from './Stackblitz.vue'
+// import Storybook from './Storybook.vue'
+// import Nuxt from './Nuxt.vue'
 import { Icon } from '@iconify/vue'
 import {Motion} from '@oku-ui/motion'
 import { ref } from 'vue'

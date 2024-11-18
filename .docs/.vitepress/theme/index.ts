@@ -35,6 +35,7 @@ export default {
     })
   },
   enhanceApp({ app }) {
+
     for (const path in baseModules)
       app.component(path.match(regex)?.[1] ?? '', (baseModules[path] as any)?.default)
 

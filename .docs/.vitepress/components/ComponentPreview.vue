@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useStorage } from '@vueuse/core'
-import HeroContainer from './NewHeroContainer.vue'
-import HeroCodeGroup from './NewHeroCodeGroup.vue'
-
+import HeroCodeGroup from '../../components/HeroCodeGroup.vue'
+import HeroContainer from '../../components/HeroContainer.vue'
 
 const props = defineProps<{
   name: string
