@@ -2,22 +2,24 @@
 import { Primitive } from '@oku-ui/primitives'
 import { useMotionHelper } from './helper'
 import type { MotionProps } from '@/state/types'
-import { usePrimitiveElement } from '@/composables/usePrimitiveElement'
+import { useTemplateEl } from '@/composables/useTemplateEl'
+import { shallowRef } from 'vue'
 
 const props = withDefaults(defineProps<MotionProps>(), {
   as: 'div',
   isDefaultTransition: false,
 })
 
-const { primitiveElement, currentElement } = usePrimitiveElement()
+const elRef = shallowRef<Element>()
+const templateRef = useTemplateEl(elRef)
 
-const { getSVGProps, getStyle } = useMotionHelper(props, currentElement)
+const { getSVGProps, getStyle } = useMotionHelper(props, elRef)
 </script>
 
 <template>
   <Primitive
     :id="props.id"
-    ref="primitiveElement"
+    :ref="templateRef"
     v-bind="getSVGProps()"
     :style="getStyle"
     :as="props.as as any"

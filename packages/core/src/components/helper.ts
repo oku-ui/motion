@@ -1,9 +1,9 @@
 import type { ComputedRef, Ref } from 'vue'
 import {
-  isRef,
   onBeforeUnmount,
   onMounted,
   onUpdated,
+  toValue,
   unref,
   useId,
 } from 'vue'
@@ -42,9 +42,11 @@ function defaultTransition(_props: MotionProps) {
   return props
 }
 
+type El = Element | null | undefined
+
 export function useMotionHelper(
   _props: MotionProps,
-  currentElement: Ref<Element> | Element | null | ComputedRef<HTMLElement | undefined>,
+  currentElement: Ref<El> | ComputedRef<El> | El,
   sfc: boolean = true,
 ) {
   const props = defaultTransition(_props)
@@ -62,15 +64,11 @@ export function useMotionHelper(
 
   provideMotion(state)
 
-  function isElementRef(el: any) {
-    return isRef(el) ? el.value : typeof el === 'function' ? el() : el
-  }
-
   let manuallyAppliedMotionStyles = false
 
   if (sfc) {
     onMounted(() => {
-      state.mount(isElementRef(currentElement))
+      state.mount(toValue(currentElement)!)
       state.update({
         ...props,
         style: { ...props.style, ...createStyles(state.getTarget()) },
@@ -83,7 +81,7 @@ export function useMotionHelper(
     })
   }
   else if (currentElement && typeof currentElement === 'object') {
-    state.mount(isElementRef(currentElement))
+    state.mount(toValue(currentElement)!)
     state.update({
       ...props,
       style: { ...props.style, ...createStyles(state.getTarget()) },
@@ -96,7 +94,7 @@ export function useMotionHelper(
   }
 
   onBeforeUnmount(() => {
-    const unmount = () => state.mount(isElementRef(currentElement))
+    const unmount = () => state.mount(toValue(currentElement)!)
     state.update({
       ...props,
       initial: presenceInitial.value === false
@@ -111,12 +109,12 @@ export function useMotionHelper(
   onUpdated(() => {
     const props = defaultTransition(_props)
 
-    if (!manuallyAppliedMotionStyles && isElementRef(currentElement)) {
+    if (!manuallyAppliedMotionStyles && toValue(currentElement)) {
       manuallyAppliedMotionStyles = true
 
       const styles = createStyles(state.getTarget())
       for (const key in styles)
-        style.set(isElementRef(currentElement), key, styles[key])
+        style.set(toValue(currentElement)!, key, styles[key])
     }
 
     state.update({
