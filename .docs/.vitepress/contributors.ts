@@ -45,14 +45,6 @@ function createLinks(tm: CoreTeam): CoreTeam {
 
 const plainTeamMembers: CoreTeam[] = [
   {
-    avatar: contributorsAvatars.teleskop150750,
-    name: 'Валентин Степанов',
-    github: 'teleskop150750',
-    twitter: 'teleskop150750',
-    desc: 'Core team member of Oku',
-    // sponsor: 'https://github.com/sponsors/teleskop150750',
-  },
-  {
     avatar: contributorsAvatars.productdevbook,
     name: 'Mehmet',
     github: 'productdevbook',

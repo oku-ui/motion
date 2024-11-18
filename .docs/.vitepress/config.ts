@@ -105,6 +105,13 @@ export default defineConfig({
         ],
       },
       {
+        text: 'Components',
+        collapsed: false,
+        items: [
+          { text: 'Motion', link: '/components/motion' },
+        ],
+      },
+      {
         text: 'Animation',
         collapsed: false,
         items: [
