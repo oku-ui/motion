@@ -1,29 +1,30 @@
 <script setup lang="ts">
 import type { DOMKeyframesDefinition } from 'framer-motion'
-import { AnimatePresence, Motion } from '@oku-ui/motion'
+import { MotionPresence, Motion } from '@oku-ui/motion'
 import { ref } from 'vue'
 
 const show = ref(true)
 </script>
 
 <template>
-  <div class="w-1/3">
-    <AnimatePresence>
+  <div class="w-1/3 items-center justify-center flex flex-col">
+    <MotionPresence>
       <Motion
         v-show="show"
-        class="bg-white  aspect-square rounded-2xl"
+        class="bg-white  aspect-square rounded-2xl w-40 h-40"
         :initial="{ scale: 0 }"
         :animate="{ rotate: 180, scale: 1 }"
         :exit="{ rotate: 0, scale: 0 }"
         :transition="{
-          // type: 'spring',
-          // stiffness: 260,
-          // damping: 20,
-          duration: 10,
+          type: 'spring',
+          damping: 20,
+          duration: 20,
         }"
       />
-    </AnimatePresence>
-    <button @click="show = !show">
+    </MotionPresence>
+    <button @click="show = !show"
+      class="bg-white  aspect-square rounded-xl p-2 mt-10"
+    >
       {{ show ? 'hide' : 'show' }}
     </button>
   </div>

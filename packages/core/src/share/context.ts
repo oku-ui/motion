@@ -5,7 +5,7 @@ import type { MotionState } from '@/state/motion-state'
 
 export const [provideMotion, useMotion, motionKey] = createContext<MotionState | null>('MotionContext', null)
 
-export const [provideAnimatePresence, useAnimatePresence, presenceKey] = createContext<PresenceContext>('AnimatePresenceContext', {
+export const [provideMotionPresence, useMotionPresence, presenceKey] = createContext<PresenceContext>('MotionPresenceContext', {
   initial: ref(false),
 })
 

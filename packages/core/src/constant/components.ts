@@ -1,6 +1,7 @@
 const components = {
   motion: [
     'Motion',
+    'MotionPresence',
   ],
 }
 

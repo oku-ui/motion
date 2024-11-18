@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { Transition, TransitionGroup, toRefs } from 'vue'
 
-import { doneCallbacks, removeDoneCallback } from '@/components/presence'
-import { provideAnimatePresence } from '@/share/context'
-import type { AnimatePresenceProps } from '@/types/index.ts'
+import { doneCallbacks, removeDoneCallback } from '@/components/presence.ts'
+import { provideMotionPresence } from '@/share/context.ts'
+import type { MotionPresenceProps } from '@/types/index.ts'
 import { mountedStates } from '@/state'
 
 defineOptions({
-  name: 'AnimatePresence',
+  name: 'MotionPresence',
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<AnimatePresenceProps>(), {
+const props = withDefaults(defineProps<MotionPresenceProps>(), {
   mode: 'sync',
   initial: true,
   multiple: false,
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<AnimatePresenceProps>(), {
 
 const { initial } = toRefs(props)
 
-provideAnimatePresence({
+provideMotionPresence({
   initial,
 })
 
@@ -55,7 +55,6 @@ function exit(el: Element, done: VoidFunction) {
     :css="false"
     :mode="mode === 'wait' ? 'out-in' : undefined"
     v-bind="$attrs"
-    appear
     @enter="enter"
     @leave="exit"
   >

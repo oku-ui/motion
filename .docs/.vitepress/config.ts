@@ -109,6 +109,16 @@ export default defineConfig({
         collapsed: false,
         items: [
           { text: 'Motion', link: '/components/motion' },
+          { text: 'MotionPresence', link: '/components/motion-presence' },
+        ],
+      },
+      {
+        text: 'Composables',
+        collapsed: false,
+        items: [
+          { text: 'useAnimate', link: '/composables/use-animate' },
+          { text: 'useAnimations', link: '/composables/use-animations' },
+          // { text: 'useMotionPresence', link: '/composables/use-motion-presence' },
         ],
       },
       {

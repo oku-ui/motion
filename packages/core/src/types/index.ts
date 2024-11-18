@@ -24,7 +24,7 @@ export type MotionEventNames =
   | 'viewenter'
   | 'viewleave'
 
-export interface AnimatePresenceProps {
+export interface MotionPresenceProps {
   mode?: 'wait' | 'popLayout' | 'sync'
   initial?: boolean
   multiple?: boolean

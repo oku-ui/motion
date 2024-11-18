@@ -5,11 +5,11 @@ import { reactive } from 'vue'
 
 import { motionKey, presenceKey } from '../share'
 import { MotionState } from '@/state'
-import type { AnimatePresenceProps } from '@/types'
+import type { MotionPresenceProps } from '@/types'
 
 export const motionPlugin: Plugin = {
   install(app) {
-    const animatePresenceProps = reactive<AnimatePresenceProps>({
+    const MotionPresenceProps = reactive<MotionPresenceProps>({
       mode: 'sync',
       initial: true,
       multiple: false,
@@ -18,6 +18,6 @@ export const motionPlugin: Plugin = {
     const state = reactive(new MotionState({}))
 
     app.provide(motionKey, state as any)
-    app.provide(presenceKey, animatePresenceProps as any)
+    app.provide(presenceKey, MotionPresenceProps as any)
   },
 }

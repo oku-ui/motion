@@ -42,6 +42,11 @@ export function useAnimate() {
             : props.transition
           : {}
 
+        if (!el?.tagName) {
+          console.warn('Element not found')
+          return
+        }
+
         const { state, getSVGProps, getStyle } = useMotionHelper({
           ...props,
           transition,

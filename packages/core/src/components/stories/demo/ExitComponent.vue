@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { AnimatePresence, Motion } from '../../../index.ts'
+import { Motion, MotionPresence } from '../../../index.ts'
 
 const show = ref(true)
 
@@ -15,7 +15,7 @@ const show = ref(true)
       wait-exit = false With Presence Component
     </p>
     <div class="w-1/3">
-      <AnimatePresence>
+      <MotionPresence>
         <Motion
           v-show="show"
           class="bg-blue-500  aspect-square rounded-2xl"
@@ -26,7 +26,7 @@ const show = ref(true)
             duration: 20,
           }"
         />
-      </AnimatePresence>
+      </MotionPresence>
       <button @click="show = !show">
         {{ show ? 'hide' : 'show' }}
       </button>

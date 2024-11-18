@@ -29,13 +29,9 @@ function refresh() {
     <slot />
    </div>
 
-
- 
-
     <template #codeSlot>
       <HeroCodeGroup v-model="cssFramework">
         <slot name="tailwind" />
-        <slot name="css" />
       </HeroCodeGroup>
     </template>
   </HeroContainer>
