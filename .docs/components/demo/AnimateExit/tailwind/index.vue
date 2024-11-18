@@ -11,7 +11,7 @@ const show = ref(true)
     <AnimatePresence>
       <Motion
         v-show="show"
-        class="bg-primary  aspect-square rounded-2xl"
+        class="bg-white  aspect-square rounded-2xl"
         :initial="{ scale: 0 }"
         :animate="{ rotate: 180, scale: 1 }"
         :exit="{ rotate: 0, scale: 0 }"

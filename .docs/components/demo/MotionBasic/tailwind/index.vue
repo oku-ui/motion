@@ -4,7 +4,7 @@ import { Motion } from '@oku-ui/motion'
 
 <template>
   <Motion
-    class="bg-primary w-1/3 aspect-square rounded-2xl"
+    class="bg-white w-1/3 aspect-square rounded-2xl"
     :initial="{ scale: 0 }"
     :animate="{ rotate: 180, scale: 1 }"
     :transition="{

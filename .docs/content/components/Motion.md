@@ -30,4 +30,28 @@ Install the component from your command line.
 
 ## Animation
 
-<ComponentPreview name="BasicAnimations" />
+<ComponentPreview name="MotionBasic" />
+
+
+## Variants
+
+<ComponentPreview name="MotionVariants" />
+
+
+## Keyframes
+
+<ComponentPreview name="MotionKeyframes" />
+
+## Gesture
+
+<ComponentPreview name="MotionGesture" />
+
+
+## InView
+
+<ComponentPreview name="MotionInview" />
+
+## Path
+
+<ComponentPreview name="MotionPath" />
+

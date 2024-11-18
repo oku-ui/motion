@@ -38,7 +38,7 @@ function refresh() {
       :class="{ 'overflow-x-auto': overflow }"
     >
       
-      <div class="w-full max-w-[700px] flex items-center py-12 sm:py-[100px] custom-justify-center ">
+      <div class="w-full h-full max-w-[700px] flex items-center py-12 sm:py-[100px] custom-justify-center ">
         <slot />
     
         <CodeSandbox

@@ -25,7 +25,7 @@ function refresh() {
     :css-framework="cssFramework"
     @reload="refresh"
   >
-   <div :key="key">
+   <div class="h-full w-full flex justify-center items-center" :key="key">
     <slot />
    </div>
 
