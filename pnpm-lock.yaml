@@ -229,6 +229,9 @@ importers:
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6
+      '@vue/tsconfig':
+        specifier: ^0.5.1
+        version: 0.5.1
       '@vueuse/core':
         specifier: ^11.2.0
         version: 11.2.0(vue@3.5.12(typescript@5.6.3))

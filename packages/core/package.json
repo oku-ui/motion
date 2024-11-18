@@ -19,7 +19,7 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": {
+    "./": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs"
     },
@@ -89,6 +89,7 @@
     "@vitejs/plugin-vue": "^5.2.0",
     "@vitejs/plugin-vue-jsx": "^4.1.0",
     "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "^0.5.1",
     "@vueuse/core": "^11.2.0",
     "filter-anything": "^4.0.2",
     "jsdom": "^25.0.1",
