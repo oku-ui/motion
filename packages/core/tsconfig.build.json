@@ -14,6 +14,10 @@
       "@vue/shared": ["node_modules/@vue/shared"]
     },
     "resolveJsonModule": true,
+    "types": [
+      "node"
+    ],
+    "allowImportingTsExtensions": true,
     "strict": true,
     "declaration": false,
     "outDir": "dist",
@@ -30,7 +34,7 @@
   ],
   "exclude": [
     "src/**/*.test.ts",
-    "src/**/stories/**",
+    "**/stories/**",
 
     "**/.docs/**"
   ]
