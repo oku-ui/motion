@@ -79,8 +79,12 @@ export class MotionState {
     }
   }
 
-  private initTarget(initialVariantSource: string): void {
-    this.baseTarget = resolveVariant(this.options[initialVariantSource] || this.context[initialVariantSource], this.options.variants) || {}
+  private initTarget(initialVariantSource: StateType): void {
+    this.baseTarget = resolveVariant(
+      this.options[initialVariantSource]
+      || this.context[initialVariantSource],
+      this.options.variants,
+    ) as DOMKeyframesDefinition || {}
     this.target = { ...this.baseTarget }
   }
 
@@ -163,7 +167,7 @@ export class MotionState {
       resolvedVariants[name] = variant as DOMKeyframesDefinition
 
       const allTarget = { ...prevTarget, ...variant }
-      for (const key in allTarget) {
+      for (const key in allTarget as Record<string, any>) {
         if (key === 'transition')
           continue
 
