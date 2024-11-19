@@ -1,4 +1,4 @@
-import { addComponent, addImports, defineNuxtModule } from '@nuxt/kit'
+import { addComponent, addImports, addPluginTemplate, defineNuxtModule } from '@nuxt/kit'
 
 import { components as allComponents, utilities as allUtiles } from '@oku-ui/motion'
 
@@ -19,8 +19,19 @@ export default defineNuxtModule<ModuleOptions>({
     prefix: '',
     components: true,
   },
-  setup(options, _nuxt) {
+  setup(options, _nuxtApp) {
     // nuxt.options.build.transpile.push('@oku-ui/motion')
+
+    addPluginTemplate({
+      filename: '001.okumotion.client.mjs',
+      getContents() {
+        return `import { motionPlugin } from '@oku-ui/motion'
+        
+       export default defineNuxtPlugin((nuxtApp) => {
+          nuxtApp.vueApp.use(motionPlugin)
+      })`
+      },
+    })
 
     function getComponents() {
       if (typeof options.components === 'object') {
