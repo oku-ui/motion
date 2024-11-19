@@ -49,7 +49,7 @@ Install the component from your command line.
 
 ## InView
 
-<ComponentPreview name="MotionInview" />
+<ComponentPreview name="MotionInView" />
 
 ## Path
 
