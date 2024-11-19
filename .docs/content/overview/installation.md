@@ -8,12 +8,14 @@ A quick tutorial to walk through installing the packages, as well as the support
 
 <InstallationTabs value="@oku-ui/motion" />
 
+## Adding the plugin
 ```ts
 import { createApp } from 'vue'
 import { motionPlugin } from '@oku-ui/motion'
 
 const app = createApp({})
 app.use(motionPlugin)
+app.mount('#app')
 ```
 
 ## Nuxt modules

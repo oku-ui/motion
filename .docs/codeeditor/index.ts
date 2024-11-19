@@ -119,10 +119,13 @@ function constructFiles(componentName: string, sources: Record<string, string>) 
     },
     'src/main.ts': {
       content: `import { createApp } from 'vue';
+import { motionPlugin } from '@oku-ui/motion'
 import App from './App.vue';
 import './global.css';
 
-createApp(App).mount('#app')`,
+const app = createApp(App)
+app.use(motionPlugin)
+app.mount('#app')`,
       isBinary: false,
     },
     'src/App.vue': {

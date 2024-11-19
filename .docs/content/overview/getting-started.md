@@ -22,6 +22,16 @@ Install the component from your command line.
 
 <InstallationTabs value="@oku-ui/motion" />
 
+## Adding the plugin
+```ts
+import { createApp } from 'vue'
+import { motionPlugin } from '@oku-ui/motion'
+
+const app = createApp({})
+app.use(motionPlugin)
+app.mount('#app')
+```
+
 ### 2. Import the parts
 
 Import and structure the parts.
