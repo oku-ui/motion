@@ -1,5 +1,12 @@
 <script setup lang="ts">
-import { ToastAction, ToastDescription, ToastRoot, ToastTitle, ToastViewport, useToastProvider } from '@oku-ui/primitives'
+import {
+  ToastAction,
+  ToastDescription,
+  ToastRoot,
+  ToastTitle,
+  ToastViewport,
+  useToastProvider,
+} from '@oku-ui/primitives'
 
 useToastProvider()
 

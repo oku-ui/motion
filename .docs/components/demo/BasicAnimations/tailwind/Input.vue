@@ -1,48 +1,28 @@
 <script setup lang="ts">
-const props = defineProps<{
-  children?: string
-  value: number
-  set: (newValue: number) => void
-  min?: number
-  max?: number
-}>()
+import { defineModel } from 'vue'
+import {
+  SliderRange,
+  SliderRoot,
+  SliderThumb,
+  SliderTrack,
+} from '@oku-ui/primitives'
 
-defineEmits<Emits>()
-
-type Emits = {
-  'update:value': [number]
-}
-
-const min = props.min ?? -200
-const max = props.max ?? 200
-
-function handleInput(event: Event) {
-  const target = event.target as HTMLInputElement
-  const newValue = Number.parseFloat(target.value) || 0
-  props.set(newValue)
-}
+const sliderValue = defineModel({ default: [50] })
 </script>
 
 <template>
-  <label>
-    <code>{{ children }}</code>
-    <input
-      type="range"
-      :value="value"
-      :min="min"
-      :max="max"
-      @input="handleInput"
-    >
-    <input
-      type="number"
-      :value="value"
-      :min="min"
-      :max="max"
-      @input="handleInput"
-    >
-  </label>
+  <SliderRoot
+    v-model:value="sliderValue"
+    class="relative flex items-center select-none touch-none w-[200px] h-5"
+    :max="400"
+    :step="1"
+  >
+    <SliderTrack class="bg-blackA10 relative grow rounded-full h-[3px]">
+      <SliderRange class="absolute bg-white rounded-full h-full" />
+    </SliderTrack>
+    <SliderThumb
+      class="block w-5 h-5 bg-white shadow-[0_2px_10px] shadow-blackA7 rounded-[10px] hover:bg-violet3 focus:outline-none focus:shadow-[0_0_0_5px] focus:shadow-blackA8"
+      aria-label="Volume"
+    />
+  </SliderRoot>
 </template>
-
-  <style scoped>
-  /* Add styles here if needed */
-  </style>
