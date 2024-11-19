@@ -13,12 +13,12 @@
     "typescript": "*"
   },
   "dependencies": {
-    "@oku-ui/motion": "link:../packages/core",
+    "@oku-ui/motion": "workspace:^",
     "@oku-ui/primitives": "^0.7.3",
-    "@shikijs/vitepress-twoslash": "^1.22.2",
+    "@shikijs/vitepress-twoslash": "^1.23.1",
     "@stackblitz/sdk": "^1.11.0",
     "@vueuse/core": "^11.2.0",
-    "vue": "^3.5.12",
+    "vue": "^3.5.13",
     "vue-sonner": "^1.2.5"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
     "fs-extra": "^11.2.0",
     "markdown-it": "^14.1.0",
     "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.14",
+    "tailwindcss": "^3.4.15",
     "tsx": "^4.19.2",
     "vitepress": "^1.5.0",
     "vue-component-meta": "^2.1.10"

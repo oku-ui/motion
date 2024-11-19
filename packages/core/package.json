@@ -93,7 +93,7 @@
     "defu": "^6.1.4",
     "framer-motion": "^11.11.17",
     "hey-listen": "^1.0.8",
-    "motion": "^11.11.15"
+    "motion": "^11.11.17"
   },
   "devDependencies": {
     "@oku/tsconfig": "workspace:*",
@@ -108,7 +108,7 @@
     "filter-anything": "^4.0.2",
     "jsdom": "^25.0.1",
     "npm-run-all2": "^7.0.1",
-    "storybook": "^8.4.3",
+    "storybook": "^8.4.4",
     "typescript": "^5.6.3",
     "unplugin-vue-components": "^0.27.4",
     "vite": "^5.4.11",
@@ -116,7 +116,7 @@
     "vite-plugin-externalize-deps": "^0.8.0",
     "vite-plugin-pages": "^0.32.3",
     "vitest": "^2.1.5",
-    "vue": "^3.5.12",
+    "vue": "^3.5.13",
     "vue-router": "^4.4.5",
     "vue-tsc": "^2.1.10"
   },

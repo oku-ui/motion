@@ -27,7 +27,7 @@
   "dependencies": {
     "@nuxt/kit": "^3.14.159",
     "@nuxt/schema": "^3.14.159",
-    "@oku-ui/motion": "latest",
+    "@oku-ui/motion": "workspace:^",
     "tsx": "^4.19.2",
     "unbuild": "^2.0.0",
     "unplugin-vue-components": "^0.27.4"
