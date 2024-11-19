@@ -11,7 +11,7 @@ titleTemplate: Game-changing, production-ready motion library that brings smooth
 hero:
   name: Oku Motion
   text: Unleash the Power of Animation in Your Vue Apps!
-  tagline: Game-changing, production-ready motion library that brings smooth, breathtaking animations to Vue like never before!
+  tagline: Game-changing, production-ready motion library that brings smooth, breathtaking animations to Vue like never before! Powered by Motion.
   image:
     src: /logo.svg
     alt: Oku Motion
