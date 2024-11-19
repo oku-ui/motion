@@ -108,7 +108,7 @@ export default defineConfig({
         text: 'Components',
         collapsed: false,
         items: [
-          { text: 'Motion', link: '/components/motion' },
+          { text: 'Motion', link: '/components/motion-component' },
           { text: 'MotionPresence', link: '/components/motion-presence' },
         ],
       },
