@@ -29,7 +29,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <ul :ref="scope.updateElement">
+  <ul :ref="scope.registerElement">
     @oku/motion useAnimate Demo
     <li class="bg-red-500">
       1

@@ -16,7 +16,7 @@ onMounted(() => {
 </script>
 
 <template>
- <ul :ref="scope.updateElement"
+ <ul :ref="scope.registerElement"
  class="grid grid-cols-4">
     <li
       v-for="i in 20"

@@ -27,7 +27,7 @@ onMounted(() => {
   <Toast
     v-model="open"
   ></Toast>
- <ul :ref="scope.updateElement"
+ <ul :ref="scope.registerElement"
  class="grid grid-cols-4">
     <li
     key="test"

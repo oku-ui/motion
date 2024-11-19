@@ -10,10 +10,10 @@ export function useAnimate() {
     animations: {
       [key: string]: AnimationPlaybackControls[]
     }
-    updateElement: (el?: any) => void
+    registerElement: (el?: any) => void
   }>({
         animations: {},
-        updateElement(el?: any) {
+        registerElement(el?: any) {
           scope.el = el
         },
       })

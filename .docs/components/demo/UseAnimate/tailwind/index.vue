@@ -18,7 +18,7 @@ onMounted(() => {
 
 <template>
   <div
-    :ref="scope.updateElement"
+    :ref="scope.registerElement"
     class="bg-white w-1/3 aspect-square rounded-2xl"
   />
 </template>
