@@ -7,9 +7,20 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
 
 ## useAnimate
 
+
 <Description>
 Motion for Vue offers a number of ways to animate your UI. Scaling from extremely simple prop-based animations, to more complex orchestration.
 </Description>
+
+## One Element
+
+<ComponentPreview name="UseAnimate" />
+
+## List
+
+<ComponentPreview name="UseAnimateList" />
+
+
 
 <Highlights
   :features="[
@@ -28,10 +39,3 @@ Install the component from your command line.
 
 <InstallationTabs value="@oku-ui/motion" />
 
-## One Element
-
-<ComponentPreview name="UseAnimate" />
-
-## List
-
-<ComponentPreview name="UseAnimateList" />

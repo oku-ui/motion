@@ -1,11 +1,15 @@
 ---
-title: MotionPresence
+title: Motion
 description: Motion for Vue offers a number of ways to animate your UI. Scaling from extremely simple prop-based animations, to more complex orchestration.
 name: accordion
 aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
 ---
 
-## Motion Presence
+## useAnimate
+
+
+<ComponentPreview name="UseAnimationList" />
+
 
 <Description>
 Motion for Vue offers a number of ways to animate your UI. Scaling from extremely simple prop-based animations, to more complex orchestration.
@@ -27,11 +31,3 @@ Motion for Vue offers a number of ways to animate your UI. Scaling from extremel
 Install the component from your command line.
 
 <InstallationTabs value="@oku-ui/motion" />
-
-## Animation
-
-<ComponentPreview name="MotionExit" />
-
-## Multiple Children Component
-
-<ComponentPreview name="MotionPresenceMultiple" />

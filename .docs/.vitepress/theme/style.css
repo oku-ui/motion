@@ -140,6 +140,15 @@ body {
   @apply  border border-neutral-700/40;
 }
 
+pre.shiki.material-theme-palenight.vp-code {
+  @apply !py-4;
+}
+
+.vp-doc div[class*='language-']:not(:where(.vp-raw, .vp-raw *)), .vp-block:not(:where(.vp-raw, .vp-raw *))
+{
+  @apply !p-0 !m-0;
+}
+
 .VPSidebarItem.is-active .indicator {
   @apply bg-[var(--vp-c-brand-1)]
 }
