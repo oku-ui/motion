@@ -25,9 +25,9 @@ function refresh() {
     :css-framework="cssFramework"
     @reload="refresh"
   >
-   <div class="h-full w-full flex justify-center items-center" :key="key">
-    <slot />
-   </div>
+    <div :key="key" class="h-full w-full flex justify-center items-center">
+      <slot />
+    </div>
 
     <template #codeSlot>
       <HeroCodeGroup v-model="cssFramework">

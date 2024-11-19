@@ -11,7 +11,6 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
 Motion for Vue offers a number of ways to animate your UI. Scaling from extremely simple prop-based animations, to more complex orchestration.
 </Description>
 
-
 ## Installation
 
 Install the component from your command line.
@@ -23,7 +22,7 @@ You'll perform almost all animations on a <motion /> component. This is basicall
 
 ```vue
 import { Motion } from "@oku-ui/motion"
-``` 
+```
 
 For basic animations, you can update values on the animate prop:
 
@@ -31,7 +30,6 @@ For basic animations, you can update values on the animate prop:
 <Motion :keyframes={ opacity: 1 } />
 ```
 When any value in its animate prop changes, the component will automatically animate to the new target.
-
 
 <ComponentPreview name="BasicAnimations" />
 
@@ -53,4 +51,3 @@ Motion can animate any CSS value, even those that can't be animated by browsers,
     'Can be controlled or uncontrolled.'
   ]"
 /> -->
-

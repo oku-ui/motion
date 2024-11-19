@@ -32,11 +32,9 @@ Install the component from your command line.
 
 <ComponentPreview name="MotionBasic" />
 
-
 ## Variants
 
 <ComponentPreview name="MotionVariants" />
-
 
 ## Keyframes
 
@@ -46,7 +44,6 @@ Install the component from your command line.
 
 <ComponentPreview name="MotionGesture" />
 
-
 ## InView
 
 <ComponentPreview name="MotionInView" />
@@ -54,4 +51,3 @@ Install the component from your command line.
 ## Path
 
 <ComponentPreview name="MotionPath" />
-

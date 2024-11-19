@@ -7,9 +7,7 @@ aria: https://www.w3.org/WAI/ARIA/apg/patterns/accordion
 
 ## useAnimate
 
-
 <ComponentPreview name="UseAnimationList" />
-
 
 <Description>
 Motion for Vue offers a number of ways to animate your UI. Scaling from extremely simple prop-based animations, to more complex orchestration.

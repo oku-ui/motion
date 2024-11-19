@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import type { DOMKeyframesDefinition } from 'framer-motion'
-import { MotionPresence, Motion } from '@oku-ui/motion'
+import { Motion, MotionPresence } from '@oku-ui/motion'
 import { ref } from 'vue'
 
 const show = ref(true)
@@ -22,8 +21,9 @@ const show = ref(true)
         }"
       />
     </MotionPresence>
-    <button @click="show = !show"
+    <button
       class="bg-white  aspect-square rounded-xl p-2 mt-10"
+      @click="show = !show"
     >
       {{ show ? 'hide' : 'show' }}
     </button>

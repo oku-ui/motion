@@ -34,7 +34,6 @@ function setRotate(value: number) {
           type: 'spring',
         }"
       />
-
     </div>
     <div class="grid">
       <Input :value="x" :set="setX">

@@ -1,12 +1,9 @@
 <script setup lang="ts">
 import { ToastAction, ToastDescription, ToastRoot, ToastTitle, ToastViewport, useToastProvider } from '@oku-ui/primitives'
-import { ref } from 'vue'
-
-const open = ref(false)
 
 useToastProvider()
 
-const model =defineModel()
+const model = defineModel({ type: Boolean, default: false })
 </script>
 
 <template>
@@ -15,12 +12,12 @@ const model =defineModel()
     class="bg-white rounded-md shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] p-[15px] grid [grid-template-areas:_'title_action'_'description_action'] grid-cols-[auto_max-content] gap-x-[15px] items-center data-[state=open]:animate-slideIn data-[state=closed]:animate-hide data-[swipe=move]:translate-x-[var(--radix-toast-swipe-move-x)] data-[swipe=cancel]:translate-x-0 data-[swipe=cancel]:transition-[transform_200ms_ease-out] data-[swipe=end]:animate-swipeOut"
   >
     <ToastTitle class="[grid-area:_title] mb-[5px] font-medium text-slate12 text-[15px]">
-       Stoped animation
+      Stoped animation
     </ToastTitle>
     <ToastDescription as="template">
-        <p class="text-slate11 text-[14px]">
-            The animation has been stoped.
-        </p>
+      <p class="text-slate11 text-[14px]">
+        The animation has been stoped.
+      </p>
     </ToastDescription>
     <ToastAction
       class="[grid-area:_action]"

@@ -20,7 +20,7 @@ const reloadKey = ref(0)
         {{ title }}
       </h2>
       <Motion
-        :as="'template'"
+        as="template"
         :initial="{ rotate: 0 }"
         :animate="{ rotate: 360 }"
         :transition="{

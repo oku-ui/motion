@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import BasicAnimations from './demo/BasicAnimations/tailwind/index.vue'
 import ReloadBox from './ReloadBox.vue'
-
-
 
 import { Motion } from '@oku-ui/motion'
 
@@ -148,7 +145,5 @@ const icon = {
         />
       </Motion>
     </ReloadBox>
-
-
   </div>
 </template>
