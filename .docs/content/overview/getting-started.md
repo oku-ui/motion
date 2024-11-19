@@ -60,10 +60,7 @@ import { Motion } from '@oku-ui/motion'
 
 Here's a complete demo.
 
-<HeroContainer>
-<DemoGettingStarted />
-
-</HeroContainer>
+<ComponentPreview name="MotionBasic" />
 
 ## Summary
 
