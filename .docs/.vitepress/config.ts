@@ -65,7 +65,7 @@ export default defineConfig({
       {
         'async': true,
         'defer': true,
-        'data-domain': 'primitives.oku-ui.com',
+        'data-domain': 'motion.oku-ui.com',
         'src': 'https://rapor.vucod.com/js/script.js',
       },
     ],
