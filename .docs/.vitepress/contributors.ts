@@ -53,9 +53,9 @@ const plainTeamMembers: CoreTeam[] = [
     sponsor: 'https://github.com/sponsors/productdevbook',
   },
   {
-    avatar: contributorsAvatars.suxiong,
+    avatar: contributorsAvatars.YeSuX,
     name: '苏雄',
-    github: 'suxiong',
+    github: 'YeSuX',
     twitter: '@suxiongye',
     desc: 'Core team member of Oku',
     // sponsor: 'https://github.com/sponsors/suxiong',
