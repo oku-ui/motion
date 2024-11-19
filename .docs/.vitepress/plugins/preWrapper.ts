@@ -10,7 +10,6 @@ export function preWrapperPlugin(md: MarkdownRenderer) {
     // remove title from info
     token.info = token.info.replace(/\[.*\]/, '')
 
-    // eslint-disable-next-line regexp/no-unused-capturing-group
     // const active = / active( |$)/.test(token.info) ? ' active' : ''
     token.info = token.info.replace(/ active$/, '').replace(/ active /, ' ')
 
@@ -38,7 +37,6 @@ function extractLang(info: string) {
   return info
     .trim()
     .replace(/=(\d*)/, '')
-    // eslint-disable-next-line regexp/optimal-quantifier-concatenation
     .replace(/:(no-)?line-numbers(\{| |$|=\d*).*/, '')
     .replace(/(-vue|\{| ).*$/, '')
     .replace(/^vue-html$/, 'template')

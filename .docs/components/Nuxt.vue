@@ -24,9 +24,11 @@ onMounted(() => {
 function handleClick() {
   const url = makeDemoParams(props.name, 'nuxt')
 
-  window.open
-    ? window.open(url, '_blank')
-    : window.location.assign
+  if (url) {
+    window.open
+      ? window.open(url, '_blank')
+      : window.location.assign(url)
+  }
 }
 </script>
 

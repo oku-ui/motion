@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import CodeSandbox from './CodeSandbox.vue'
 import Stackblitz from './Stackblitz.vue'
+
 // import Storybook from './Storybook.vue'
 // import Nuxt from './Nuxt.vue'
 import { Icon } from '@iconify/vue'
-import {Motion} from '@oku-ui/motion'
+import { Motion } from '@oku-ui/motion'
 import { ref } from 'vue'
 import Tooltip from './Tooltip.vue'
 
@@ -19,7 +20,7 @@ withDefaults(
 )
 
 const emit = defineEmits<{
-  'reload': [value: number]
+  reload: [value: number]
 }>()
 const key = ref(0)
 
@@ -31,16 +32,13 @@ function refresh() {
 
 <template>
   <div class="relative text-[15px] text-black">
- 
-  
     <div
       class="vp-raw p-4 rounded-t-lg bg-gradient-to-br from-indigo-800 via-purple-700 to-pink-600 w-full relative items-center justify-center flex"
       :class="{ 'overflow-x-auto': overflow }"
     >
-      
       <div class="w-full h-full max-w-[700px] flex items-center py-12 sm:py-[100px] custom-justify-center ">
         <slot />
-    
+
         <CodeSandbox
           v-if="folder"
           :key="cssFramework"
@@ -56,13 +54,13 @@ function refresh() {
           :files="files"
         />
 
-      <div
-      class="hidden sm:block absolute bottom-4 right-20"
-      >
-        <Tooltip
-          content="Refresh the preview"
+        <div
+          class="hidden sm:block absolute bottom-4 right-20"
         >
-         <button @click="refresh">
+          <Tooltip
+            content="Refresh the preview"
+          >
+            <button @click="refresh">
               <Motion
                 :key="`${key}-refresh`"
                 :as-child="true"
@@ -71,17 +69,15 @@ function refresh() {
                 :transition="{
                   type: 'spring',
                 }"
-
-            >
+              >
                 <Icon
                   icon="mdi:refresh"
                   class="w-6 h-6"
                 />
-          </Motion>
-        </button>
-
-      </Tooltip>
-      </div>
+              </Motion>
+            </button>
+          </Tooltip>
+        </div>
 
         <!-- <Storybook
           v-if="folder"

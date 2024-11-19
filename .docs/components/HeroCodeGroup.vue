@@ -16,8 +16,7 @@ const emits = defineEmits<{
 const cssFramework = useVModel(props, 'modelValue', emits)
 
 const slots = useSlots()
-const slotsFramework = computed(() => slots.default?.().map(slot => {
-  console.log(slot)
+const slotsFramework = computed(() => slots.default?.().map((slot) => {
   return slot.props?.key?.toString()?.replace('_', '')
 }) ?? [])
 

@@ -1,7 +1,7 @@
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client'
-import {motionPlugin} from '@oku-ui/motion'
+import { motionPlugin } from '@oku-ui/motion'
 import '@shikijs/twoslash/style-rich.css'
 import '@shikijs/vitepress-twoslash/style.css'
 import 'floating-vue/dist/style.css'
@@ -35,7 +35,6 @@ export default {
     })
   },
   enhanceApp({ app }) {
-
     for (const path in baseModules)
       app.component(path.match(regex)?.[1] ?? '', (baseModules[path] as any)?.default)
 

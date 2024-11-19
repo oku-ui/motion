@@ -14,7 +14,6 @@ import type { MarkdownEnv, MarkdownRenderer } from 'vitepress'
  *
  * captures: ['/path/to/file.extension', 'extension', '#region', '{meta}', '[title]']
  */
-/* eslint-disable regexp/no-super-linear-backtracking, regexp/no-misleading-capturing-group */
 export const rawPathRegexp = /^(.+?(?:\.([a-z0-9]+))?)(#[\w-]+)?(?: ?\{(\d+(?:[,-]\d+)*)? ?(\S+)? ?(\S+)?\})? ?(?:\[(.+)\])?$/
 
 export function rawPathToToken(rawPath: string) {

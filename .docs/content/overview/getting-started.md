@@ -10,13 +10,11 @@ import DemoGettingStarted from '../../components/demo/GettingStarted/index.vue'
 import HeroCodeGroup from '../../components/HeroCodeGroup.vue'
 </script>
 
-
 # Getting started
 
 <Description>
-A quick tutorial to get you up and running with 
+A quick tutorial to get you up and running with
 </Description>
-
 
 ### 1. Install the library
 

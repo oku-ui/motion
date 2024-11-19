@@ -15,8 +15,8 @@ const Component = defineAsyncComponent({
 </script>
 
 <template>
-  <Component 
-  :is="Component"
-  :key="props.reload"
+  <Component
+    :is="Component"
+    :key="props.reload"
   />
 </template>
