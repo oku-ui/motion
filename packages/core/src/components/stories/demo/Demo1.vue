@@ -82,7 +82,7 @@ const list = [0, 1, 2, 3, 4]
       damping: 20,
       delay: 0.3,
     }"
-    class="rounded-2xl overflow-hidden  list-none p-2  grid-cols-2 grid-rows-2 aspect-square bg-red-500/20 w-1/3  grid"
+    class="rounded-2xl overflow-hidden  list-none p-2  grid-cols-2 grid-rows-2 aspect-square bg-red-500/20 size-52  grid"
   >
     <Motion
       v-for="(item, i) in list"

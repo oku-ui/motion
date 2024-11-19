@@ -6,8 +6,8 @@ const show = ref(true)
 </script>
 
 <template>
-  <div class="w-1/3 items-center justify-center flex flex-col">
-    <div class="w-1/3 flex gap-4 items-center justify-center">
+  <div class="size-52 items-center justify-center flex flex-col">
+    <div class="size-52 flex gap-4 items-center justify-center">
       <MotionPresence multiple>
         <Motion
           v-show="show"

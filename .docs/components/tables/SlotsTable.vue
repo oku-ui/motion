@@ -23,7 +23,7 @@ const props = defineProps<SlotsTableProps>()
     </div>
     <thead class="">
       <ProseTr class="">
-        <ProseTh class="w-1/3">
+        <ProseTh class="size-52">
           <span>Slots (default)</span>
         </ProseTh>
         <ProseTh>

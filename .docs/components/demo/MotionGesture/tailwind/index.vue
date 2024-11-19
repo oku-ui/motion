@@ -17,6 +17,6 @@ import { Motion } from '@oku-ui/motion'
 
     }"
     as="button"
-    class="rounded-2xl overflow-hidden  list-none p-2  grid-cols-2 grid-rows-2 aspect-square bg-white w-1/3  grid"
+    class="rounded-2xl overflow-hidden  list-none p-2  grid-cols-2 grid-rows-2 aspect-square bg-white size-52  grid"
   />
 </template>

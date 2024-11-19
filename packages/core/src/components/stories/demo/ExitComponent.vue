@@ -14,7 +14,7 @@ const show = ref(true)
     <p>
       wait-exit = false With Presence Component
     </p>
-    <div class="w-1/3">
+    <div class="size-52">
       <MotionPresence>
         <Motion
           v-show="show"

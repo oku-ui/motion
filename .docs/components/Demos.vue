@@ -42,7 +42,7 @@ const icon = {
       style="background: linear-gradient(135deg,#f08,#d0e)"
     >
       <Motion
-        class="bg-white w-1/3 aspect-square rounded-2xl"
+        class="bg-white size-24 aspect-square rounded-2xl"
         :initial="{ scale: 0 }"
         :animate="{ rotate: 180, scale: 1 }"
         :transition="{
@@ -69,7 +69,7 @@ const icon = {
           stiffness: 260,
           damping: 20,
         }"
-        class="rounded-2xl overflow-hidden  list-none p-2  grid-cols-2 grid-rows-2 aspect-square bg-white/20 w-1/3  grid"
+        class="rounded-2xl overflow-hidden  list-none p-2  grid-cols-2 grid-rows-2 aspect-square bg-white/20 size-24  grid"
       >
         <Motion
           v-for="(item, i) in list"
@@ -99,7 +99,7 @@ const icon = {
           damping: 20,
         }"
         as="button"
-        class="rounded-2xl overflow-hidden  list-none p-2  grid-cols-2 grid-rows-2 aspect-square bg-white w-1/3  grid"
+        class="rounded-2xl overflow-hidden  list-none p-2  grid-cols-2 grid-rows-2 aspect-square bg-white size-24  grid"
         @hoverstart="console.log('hoverstart')"
         @hoverend="console.log('hoverend')"
         @pressstart="console.log('pressstart')"
@@ -118,7 +118,7 @@ const icon = {
           strokeLinejoin: 'round',
           strokeLinecap: 'round',
         }"
-        class="rounded-2xl overflow-hidden stroke-white stroke-2   list-none p-4  grid-cols-2 grid-rows-2 aspect-square bg-white/20 w-1/3  grid"
+        class="rounded-2xl overflow-hidden stroke-white stroke-2   list-none p-4  grid-cols-2 grid-rows-2 aspect-square bg-white/20 size-24  grid"
       >
         <Motion
           as="path"

@@ -23,7 +23,7 @@ const props = defineProps<EmitsTableProps>()
     </div>
     <thead class="">
       <ProseTr class="">
-        <ProseTh class="w-1/3">
+        <ProseTh class="size-52">
           <span>Methods</span>
         </ProseTh>
         <ProseTh>
