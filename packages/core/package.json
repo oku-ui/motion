@@ -2,6 +2,7 @@
   "name": "@oku-ui/motion",
   "type": "module",
   "version": "0.3.4",
+  "private": false,
   "description": "A tiny, performant animation library for VueJS",
   "author": "Mehmet productdevbook <hi@productdevbook.com>",
   "license": "MIT",
