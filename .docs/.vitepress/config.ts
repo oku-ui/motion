@@ -133,13 +133,15 @@ export default defineConfig({
     socialLinks: [
       { icon: 'discord', link: discord },
       { icon: 'github', link: github },
+      { icon: 'twitter', link: 'https://twitter.com/oku_ui' },
+      { icon: 'bluesky', link: 'https://bsky.app/profile/oku-ui.com' },
     ],
 
     search: {
       provider: 'local',
     },
     editLink: {
-      pattern: 'https://github.com/oku-ui/primitives/edit/main/docs/content/:path',
+      pattern: 'https://github.com/oku-ui/motion/edit/main/docs/content/:path',
     },
   },
   srcDir: 'content',

@@ -1,21 +1,22 @@
 {
   "name": "plugins",
   "type": "module",
-  "version": "0.3.0",
+  "version": "0.3.4",
+  "private": true,
   "description": "Plugins for Oku Motion",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oku-ui/primitives.git",
+    "url": "git+https://github.com/oku-ui/motion.git",
     "directory": "packages/plugins"
   },
   "keywords": [
-    "radix",
-    "@oku-ui/primitives",
+    "@oku-ui/motion",
     "nuxt-module",
     "nuxt",
     "nuxt3",
-    "vue3"
+    "vue3",
+    "framer-motion"
   ],
   "sideEffects": false,
   "scripts": {

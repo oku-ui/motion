@@ -9,7 +9,7 @@ We're so excited you're interested in helping with Oku! We are happy to help you
 ## Where to ask Questions?
 
 1. Check our [Github Issues](https://github.com/oku-ui/motion/issues) to see if someone has already answered your question.
-2. Join our community on [Discord](https://chat.productdevbook.com) and feel free to ask us your questions
+2. Join our community on [Discord](https://chat.oku-ui.com) and feel free to ask us your questions
 
 
 ### Prerequisites
@@ -99,5 +99,5 @@ pnpm oku # Run Oku CLI (packages/cli) // pnpm oku publish (publish packages)
 Oku is made possible by a passionate team and a strong community of developers. If you have any questions or would like to get more involved in the Oku community you can check out:
 
 -   [Github Issues](https://github.com/oku-ui/motion/issues)
--   [Discord](https://discord.gg/RCGzQQPtAh)
+-   [Discord](https://chat.oku-ui.com)
 -   [Twitter](https://twitter.com/oku_ui)

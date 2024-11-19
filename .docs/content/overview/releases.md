@@ -9,4 +9,4 @@ description: Discover the latest release of Oku Motion.
 Discover the latest release of Oku Motion.
 </Description>
 
-[Latest releases on github](https://github.com/oku-ui/primitives/releases)
+[Latest releases on github](https://github.com/oku-ui/motion/releases)

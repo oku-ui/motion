@@ -1,11 +1,13 @@
 {
-  "name": "motion",
+  "name": "@oku-ui/motion",
   "type": "module",
-  "version": "0.3.1",
+  "version": "0.3.4",
+  "private": true,
   "packageManager": "pnpm@9.12.2",
   "license": "MIT",
+  "repository": "oku-ui/motion",
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "build": "pnpm turbo build",
@@ -17,7 +19,11 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test:vue": "vitest --config ./packages/vue/vitest.config.ts",
-    "prepare": "npx simple-git-hooks"
+    "prepare": "npx simple-git-hooks",
+    "bumpp": "bumpp package.json packages/*/package.json .docs/package.json",
+    "pub:release": "cd packages/core && pnpm release",
+    "pub:beta": "cd packages/core && pnpm release:beta",
+    "pub:alpha": "cd packages/core && pnpm release:alpha"
   },
   "devDependencies": {
     "@antfu/eslint-config": "2.6.1",

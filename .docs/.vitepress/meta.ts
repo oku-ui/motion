@@ -19,7 +19,7 @@ export const ogImage = `${ogUrl}oku-og.png`
 export const github = 'https://github.com/oku-ui/motion'
 export const releases = 'https://github.com/oku-ui/motion/releases'
 export const contributing = 'https://github.com/oku-ui/motion/blob/main/CONTRIBUTING.md'
-export const discord = 'https://discord.gg/RCGzQQPtAh'
+export const discord = 'https://chat.oku-ui.com'
 // export const mastodon = "https://elk.zone/m.webtoo.ls/@vitest";
 // export const twitter = "https://twitter.com/vitest_dev";
 

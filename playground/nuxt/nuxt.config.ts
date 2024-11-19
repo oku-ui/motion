@@ -4,6 +4,6 @@ export default defineNuxtConfig({
     link: [],
   },
   modules: [
-    '@oku-ui/motion-nuxt',
+    '@oku-ui/motion/nuxt',
   ],
 })

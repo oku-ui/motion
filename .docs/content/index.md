@@ -7,7 +7,7 @@ aside: false
 editLink: false
 markdownStyles: false
 
-titleTemplate: Unlock seamless, high-performance Vue apps with accessible, customizable components designed for modern, intuitive web experiences.”
+titleTemplate: Game-changing, production-ready motion library that brings smooth, breathtaking animations to Vue like never before!
 hero:
   name: Oku Motion
   text: Unleash the Power of Animation in Your Vue Apps!
