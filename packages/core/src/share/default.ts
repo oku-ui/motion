@@ -1,4 +1,5 @@
 import type { ValueAnimationOptions } from 'motion/react'
+import type { MotionProps } from '@/state/types'
 
 /**
  * Generate a list of every possible transform key.
@@ -61,13 +62,13 @@ const ease: Partial<ValueAnimationOptions> = {
 
 export function getDefaultTransition(
   valueKey: string,
-  value?: Partial<ValueAnimationOptions>,
+  value?: Partial<MotionProps['transition']>,
 ): Partial<ValueAnimationOptions> {
   // valueKey birden fazla key içerebilir, bu yüzden virgülle ayırıyoruz
   const keys = valueKey.split(',')
 
   // Eğer keyframes varsa ve uzunluğu 2'den büyükse, keyframesTransition kullanılır
-  if (value?.keyframes && value?.keyframes.length > 2) {
+  if (value?.times && value?.times.length > 2) {
     return keyframesTransition
   }
 
@@ -75,8 +76,8 @@ export function getDefaultTransition(
   else if (keys.some(key => transformProps.has(key))) {
     // Eğer bir 'scale' key varsa, criticallyDampedSpring kullanıyoruz
     if (keys.some(key => key.startsWith('scale'))) {
-      return value?.keyframes && value?.keyframes.length
-        ? criticallyDampedSpring(value?.keyframes[1]) // 'scale' varsa, kritik yay geçişi
+      return value?.times && value?.times.length
+        ? criticallyDampedSpring(value?.times[1]) // 'scale' varsa, kritik yay geçişi
         : underDampedSpring
     }
     // Aksi takdirde, genel bir yay geçişi kullanılır

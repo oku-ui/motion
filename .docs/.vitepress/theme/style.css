@@ -65,8 +65,7 @@
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #11b981 30%, #6ff4cc);
 
-  --vp-home-hero-image-background-image: linear-gradient(180deg, #8600c5 0%, #00f0ff 100%);
-  --vp-home-hero-image-filter: blur(50px);
+
 }
 
 @media (min-width: 640px) {
@@ -141,6 +140,15 @@ body {
   @apply  border border-neutral-700/40;
 }
 
+pre.shiki.material-theme-palenight.vp-code {
+  @apply !py-4;
+}
+
+.vp-doc div[class*='language-']:not(:where(.vp-raw, .vp-raw *)), .vp-block:not(:where(.vp-raw, .vp-raw *))
+{
+  @apply !p-0 !m-0;
+}
+
 .VPSidebarItem.is-active .indicator {
   @apply bg-[var(--vp-c-brand-1)]
 }
@@ -154,7 +162,7 @@ li > span {
 }
 
 .image-bg {
-  @apply scale-75 !transform !-translate-x-1/2 !-translate-y-1/2;
+  @apply scale-75 !transform !-translate-x-1/2 !-translate-y-1/2 bg-transparent;
 }
 
 .custom-justify-center:before,

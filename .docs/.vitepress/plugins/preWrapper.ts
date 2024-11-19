@@ -11,14 +11,14 @@ export function preWrapperPlugin(md: MarkdownRenderer) {
     token.info = token.info.replace(/\[.*\]/, '')
 
     // eslint-disable-next-line regexp/no-unused-capturing-group
-    const active = / active( |$)/.test(token.info) ? ' active' : ''
+    // const active = / active( |$)/.test(token.info) ? ' active' : ''
     token.info = token.info.replace(/ active$/, '').replace(/ active /, ' ')
 
-    const lang = extractLang(token.info)
+    // const lang = extractLang(token.info)
 
     return (
-      `<div title=${title} class="language-${lang}${active}">`
-      + `<span id=${title} class="lang">${lang}</span>${
+      `<div title=${title}>`
+      + `${
       fence(...args)
       }</div>`
     )

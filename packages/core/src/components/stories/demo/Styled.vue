@@ -5,24 +5,23 @@ import { Motion } from '../../index.ts'
 <template>
   <Motion
     class="box"
-    :keyframes="{
+    :animate="{
       x: 10,
       backgroundColor: '#000',
       boxShadow: '10px 10px 0 rgba(0, 2, 0, 0.2)',
       position: 'fixed',
-      // transitionEnd: { display: 'none' },
     }"
   />
 
   <Motion
-    tag="ul"
+    as="ul"
     :initial="{
       '--rotate': '0deg',
     }"
-    :keyframes="{
+    :animate="{
       '--rotate': '360deg',
     }"
-    :options="{
+    :transition="{
       duration: 2,
       repeat: Infinity,
     }"

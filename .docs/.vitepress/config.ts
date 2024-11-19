@@ -65,7 +65,7 @@ export default defineConfig({
       {
         'async': true,
         'defer': true,
-        'data-domain': 'primitives.oku-ui.com',
+        'data-domain': 'motion.oku-ui.com',
         'src': 'https://rapor.vucod.com/js/script.js',
       },
     ],
@@ -105,6 +105,23 @@ export default defineConfig({
         ],
       },
       {
+        text: 'Components',
+        collapsed: false,
+        items: [
+          { text: 'Motion', link: '/components/motion' },
+          { text: 'MotionPresence', link: '/components/motion-presence' },
+        ],
+      },
+      {
+        text: 'Composables',
+        collapsed: false,
+        items: [
+          { text: 'useAnimate', link: '/composables/use-animate' },
+          { text: 'useAnimations', link: '/composables/use-animations' },
+          // { text: 'useMotionPresence', link: '/composables/use-motion-presence' },
+        ],
+      },
+      {
         text: 'Animation',
         collapsed: false,
         items: [
@@ -116,13 +133,15 @@ export default defineConfig({
     socialLinks: [
       { icon: 'discord', link: discord },
       { icon: 'github', link: github },
+      { icon: 'twitter', link: 'https://twitter.com/oku_ui' },
+      { icon: 'bluesky', link: 'https://bsky.app/profile/oku-ui.com' },
     ],
 
     search: {
       provider: 'local',
     },
     editLink: {
-      pattern: 'https://github.com/oku-ui/primitives/edit/main/docs/content/:path',
+      pattern: 'https://github.com/oku-ui/motion/edit/main/docs/content/:path',
     },
   },
   srcDir: 'content',

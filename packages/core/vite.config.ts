@@ -1,80 +1,79 @@
-import process from 'node:process'
-
-// import { externalizeDeps } from 'vite-plugin-externalize-deps'
-
-import { execSync } from 'node:child_process'
-import { resolve } from 'node:path'
+import path, { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { execSync } from 'node:child_process'
+import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { globbySync } from 'globby'
-import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  define: {
-    __DEV__: process.env.NODE_ENV !== 'production',
-  },
   plugins: [
-    // externalizeDeps(),
-    vue(),
-    vueJsx(),
+    vue() as any,
+    vueJsx() as any,
     dts({
+      cleanVueFileName: true,
       outDir: 'dist',
-      exclude: ['src/**/__tests__/*', 'src/**/stories/*'],
-      compilerOptions: {
-        composite: false,
-        declaration: true,
-        declarationMap: true,
-      },
-      tsconfigPath: 'tsconfig.app.json',
+      exclude: [
+        'src/test/**',
+        '**/stories/**',
+        'src/**/*.stories.vue',
+        '**/.docs/**',
+        'src/components/stories/**',
+      ],
+      tsconfigPath: 'tsconfig.build.json',
       afterBuild: async () => {
         // pnpm build:plugins
         execSync('pnpm build:plugins', { stdio: 'inherit', cwd: resolve(__dirname, '../plugins') })
-        // execSync('pnpm lint:fix', { stdio: 'inherit', cwd: resolve(__dirname, '../..') })
+        execSync('pnpm lint:fix', { stdio: 'inherit', cwd: resolve(__dirname, '../..') })
       },
     }),
+
   ],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      'framer-motion/dist/es/animation/utils/create-visual-element.mjs': path.resolve(__dirname, 'node_modules/framer-motion/dist/es/animation/utils/create-visual-element.mjs'),
+      'framer-motion/dist/es/render/store.mjs': path.resolve(__dirname, 'node_modules/framer-motion/dist/es/render/store.mjs'),
+    },
+  },
   build: {
-    copyPublicDir: false,
+    outDir: 'dist',
+    lib: {
+      formats: ['es'],
+      fileName: (format, name) => {
+        return `${name}.${format === 'es' ? 'js' : 'umd.cjs'}`
+      },
+      name: 'oku-ui-motion',
+      entry: {
+        index: path.resolve(__dirname, 'src/index.ts'),
+      },
+    },
     minify: false,
     sourcemap: true,
-    lib: {
-      name: 'oku-ui-primitives',
-      formats: ['es'],
-      entry: [
-        ...globbySync('src/**/*.ts', { ignore: [
-          '**/__tests__/**',
-          '**/stories/**',
-          '**/*.stories.ts',
-        ] }),
-        'src/index.ts',
-      ],
-    },
     target: 'esnext',
     rollupOptions: {
       output: {
         esModule: true,
-        preserveModules: true,
-        preserveModulesRoot: 'src',
-        entryFileNames: '[name].mjs',
+        globals: {
+          'vue': 'Vue',
+          '@oku-ui/primitives': '@oku-ui/primitives',
+          'motion': 'motion',
+          'framer-motion': 'framer-motion',
+        },
       },
       external: [
         'vue',
-        '@vue/shared',
+        '@oku-ui/primitives',
         'motion',
+        'framer-motion',
+        fileURLToPath(
+          new URL(
+            'src/components/stories',
+            import.meta.url,
+          ),
+        ),
       ],
     },
   },
-  resolve: {
-    alias: {
-      '@oku-ui': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
-  // resolve: {
-  //   alias: {
-  //     '~': fileURLToPath(new URL('./src', import.meta.url)),
-  //   },
-  // },
+
 })

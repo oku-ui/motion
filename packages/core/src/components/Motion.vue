@@ -1,44 +1,27 @@
 <script setup lang="ts">
-import { type MotionPropsVue, presenceId } from '../share'
+import { Primitive } from '@oku-ui/primitives'
+import { useMotionHelper } from './helper'
+import type { MotionProps } from '@/state/types'
+import { usePrimitiveElement } from '@/composables/usePrimitiveElement'
 
-import {
-  inject,
-  useAttrs,
-  useId,
-} from 'vue'
-
-defineOptions({
-  name: 'Motion',
-  inheritAttrs: false,
-})
-
-const props = withDefaults(defineProps<MotionPropsVue>(), {
+const props = withDefaults(defineProps<MotionProps>(), {
   as: 'div',
-  waitExit: false,
+  isDefaultTransition: false,
 })
-const data = inject(presenceId)
 
-const attrs = useAttrs()
-const id = props.id || useId()
+const { primitiveElement, currentElement } = usePrimitiveElement()
 
+const { getSVGProps, getStyle } = useMotionHelper(props, currentElement)
 </script>
 
 <template>
-  <component
-    :is="as"
-    :id="id"
-    :key="id"
-    v-animate="{
-      keyframes: props.keyframes,
-      options: props.options,
-      initial: props.initial,
-      exit: props.exit,
-      waitExit: data?.waitExit,
-      index: props.index,
-    }"
-    :data-index="props.index"
-    v-bind="attrs"
+  <Primitive
+    :id="props.id"
+    ref="primitiveElement"
+    v-bind="getSVGProps()"
+    :style="getStyle"
+    :as="props.as as any"
   >
     <slot />
-  </component>
+  </Primitive>
 </template>

@@ -10,7 +10,7 @@ const props = defineProps<{
 defineEmits<Emits>()
 
 type Emits = {
-  'update:value': (value: number) => void
+  'update:value': [number]
 }
 
 const min = props.min ?? -200

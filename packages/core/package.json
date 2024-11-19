@@ -21,24 +21,34 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.js"
     },
     "./*": {
       "types": "./dist/*/index.d.ts",
-      "import": "./dist/*/index.mjs"
+      "import": "./dist/*/index.js"
     },
     "./nuxt": {
       "import": {
         "types": "./dist/nuxt/index.d.mts",
-        "default": "./dist/nuxt/index.mjs"
+        "default": "./dist/nuxt/index.js"
       },
       "require": {
         "types": "./dist/nuxt/index.d.cts",
         "default": "./dist/nuxt/index.cjs"
       }
+    },
+    "./resolver": {
+      "import": {
+        "types": "./dist/resolver/index.d.mts",
+        "default": "./dist/resolver/index.mjs"
+      },
+      "require": {
+        "types": "./dist/resolver/index.d.cts",
+        "default": "./dist/resolver/index.cjs"
+      }
     }
   },
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "typesVersions": {
     "*": {
@@ -49,6 +59,10 @@
       "nuxt": [
         "./dist/nuxt/index.d.mts",
         "./dist/nuxt/index.d.ts"
+      ],
+      "resolver": [
+        "./dist/resolver/index.d.mts",
+        "./dist/resolver/index.d.ts"
       ]
     }
   },
@@ -61,21 +75,24 @@
     "preview": "vite preview",
     "test:unit": "vitest",
     "build-only": "vite build",
-    "type-check": "vue-tsc --build --force",
+    "type-check": "vue-tsc --build tsconfig.build.json --force",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "eslint": "eslint .",
     "eslint:fix": "eslint . --fix",
-    "release": "pnpm build && pnpm bumpp --commit='version(primitives): release %s' --push --tag && pnpm publish --no-git-checks",
-    "release:beta": "pnpm release --tag beta",
-    "release:alpha": "pnpm release --tag alpha",
+    "release": "pnpm build && pnpm publish --no-git-checks --access public",
+    "release:beta": "pnpm release --tag beta --access public",
+    "release:alpha": "pnpm release --tag alpha --access public",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "@vue/shared": "^3.4.31"
   },
   "dependencies": {
+    "@oku-ui/primitives": "^0.7.3",
     "defu": "^6.1.4",
+    "framer-motion": "^11.11.17",
+    "hey-listen": "^1.0.8",
     "motion": "^11.11.15"
   },
   "devDependencies": {
@@ -86,6 +103,7 @@
     "@vitejs/plugin-vue": "^5.2.0",
     "@vitejs/plugin-vue-jsx": "^4.1.0",
     "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "^0.5.1",
     "@vueuse/core": "^11.2.0",
     "filter-anything": "^4.0.2",
     "jsdom": "^25.0.1",

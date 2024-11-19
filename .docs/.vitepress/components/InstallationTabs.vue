@@ -31,7 +31,7 @@ defineProps<{
     </div>
 
     <div
-      class="[&_>div]:!m-0 custom"
+      class="[&_>div]:!m-0 [&_>div]:!p-0 custom"
     >
       <TabsContent
         v-for="pkg in PACKAGE_MANAGERS"

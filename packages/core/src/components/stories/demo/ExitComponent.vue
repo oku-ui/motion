@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Motion, Presence } from '../../../index.ts'
+import { Motion, MotionPresence } from '../../../index.ts'
 
 const show = ref(true)
 
@@ -14,19 +14,23 @@ const show = ref(true)
     <p>
       wait-exit = false With Presence Component
     </p>
-    <Presence
-      wait-exit
-    >
-      <Motion
-        v-show="show"
-        id="deneme"
-        :initial="{ opacity: 0, scale: 0 }"
-        :keyframes="{ opacity: 1, scale: 1 }"
-        :exit="{ opacity: 0.5, scale: 0.6 }"
-        class="bg-blue-500 w-20 h-20"
-        wait-exit
-      />
-    </Presence>
+    <div class="w-1/3">
+      <MotionPresence>
+        <Motion
+          v-show="show"
+          class="bg-blue-500  aspect-square rounded-2xl"
+          :initial="{ scale: 0 }"
+          :animate="{ rotate: 180, scale: 1 }"
+          :exit="{ rotate: 0, scale: 0 }"
+          :transition="{
+            duration: 20,
+          }"
+        />
+      </MotionPresence>
+      <button @click="show = !show">
+        {{ show ? 'hide' : 'show' }}
+      </button>
+    </div>
   </div>
 
   <div>
@@ -35,7 +39,13 @@ const show = ref(true)
       <Motion
         v-show="show"
         :initial="{ opacity: 0, scale: 0 }"
-        :keyframes="{ opacity: 1, scale: 1 }"
+        :transition="{ opacity: {
+                         delay: 0.5,
+                       },
+                       scale: {
+                         delay: 0.5,
+
+                       } }"
         :exit="{ opacity: 0.5, scale: 0.6 }"
         :options="{
           scale: {

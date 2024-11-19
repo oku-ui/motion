@@ -16,7 +16,10 @@ const emits = defineEmits<{
 const cssFramework = useVModel(props, 'modelValue', emits)
 
 const slots = useSlots()
-const slotsFramework = computed(() => slots.default?.().map(slot => slot.props?.key?.toString()?.replace('_', '')) ?? [])
+const slotsFramework = computed(() => slots.default?.().map(slot => {
+  console.log(slot)
+  return slot.props?.key?.toString()?.replace('_', '')
+}) ?? [])
 
 const cssFrameworkOptions = computed(() => [
   { label: 'UnoCSS', value: 'unocss' },

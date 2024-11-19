@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import CodeSandbox from '../../components/CodeSandbox.vue'
-import Stackblitz from '../../components/Stackblitz.vue'
-import Storybook from '../../components/Storybook.vue'
-import Nuxt from '../../components/Nuxt.vue'
+import CodeSandbox from './CodeSandbox.vue'
+import Stackblitz from './Stackblitz.vue'
+// import Storybook from './Storybook.vue'
+// import Nuxt from './Nuxt.vue'
+import { Icon } from '@iconify/vue'
+import {Motion} from '@oku-ui/motion'
+import { ref } from 'vue'
+import Tooltip from './Tooltip.vue'
 
 withDefaults(
   defineProps<{
@@ -13,17 +17,30 @@ withDefaults(
   }>(),
   { folder: '', files: () => [] },
 )
+
+const emit = defineEmits<{
+  'reload': [value: number]
+}>()
+const key = ref(0)
+
+function refresh() {
+  key.value++
+  emit('reload', key.value)
+}
 </script>
 
 <template>
   <div class="relative text-[15px] text-black">
+ 
+  
     <div
       class="vp-raw p-4 rounded-t-lg bg-gradient-to-br from-indigo-800 via-purple-700 to-pink-600 w-full relative items-center justify-center flex"
       :class="{ 'overflow-x-auto': overflow }"
     >
-      <div class="w-full max-w-[700px] flex items-center py-12 sm:py-[100px] custom-justify-center ">
+      
+      <div class="w-full h-full max-w-[700px] flex items-center py-12 sm:py-[100px] custom-justify-center ">
         <slot />
-
+    
         <CodeSandbox
           v-if="folder"
           :key="cssFramework"
@@ -39,7 +56,34 @@ withDefaults(
           :files="files"
         />
 
-        <Storybook
+      <div
+      class="hidden sm:block absolute bottom-4 right-20"
+      >
+        <Tooltip
+          content="Refresh the preview"
+        >
+         <button @click="refresh">
+              <Motion
+                :key="`${key}-refresh`"
+                :as-child="true"
+                :initial="{ rotate: 0 }"
+                :animate="{ rotate: 360 }"
+                :transition="{
+                  type: 'spring',
+                }"
+
+            >
+                <Icon
+                  icon="mdi:refresh"
+                  class="w-6 h-6"
+                />
+          </Motion>
+        </button>
+
+      </Tooltip>
+      </div>
+
+        <!-- <Storybook
           v-if="folder"
           :key="cssFramework"
           class="hidden sm:block absolute bottom-4 left-4"
@@ -53,7 +97,7 @@ withDefaults(
           class="hidden sm:block absolute bottom-4 left-12"
           :name="folder"
           :files="files"
-        />
+        /> -->
       </div>
     </div>
     <slot name="codeSlot" />

@@ -1,9 +1,14 @@
-import type { InjectionKey } from 'vue'
-import type { AnimationInstance } from '../share'
-import type { PresenceState } from './types'
+import { createContext } from '@oku-ui/primitives/hooks'
+import type { Ref } from 'vue'
+import { ref } from 'vue'
+import type { MotionState } from '@/state/motion-state'
 
-export const contextId = 'motion-state'
-export const prefix = 'oku-motion'
-export const presenceId = Symbol('motion-presence') as InjectionKey<PresenceState>
+export const [provideMotion, useMotion, motionKey] = createContext<MotionState | null>('MotionContext', null)
 
-export const AnimationsKey = Symbol('animations') as InjectionKey<AnimationInstance>
+export const [provideMotionPresence, useMotionPresence, presenceKey] = createContext<PresenceContext>('MotionPresenceContext', {
+  initial: ref(false),
+})
+
+export interface PresenceContext {
+  initial: Ref<boolean>
+}
