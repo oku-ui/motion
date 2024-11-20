@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { VPTeamMembers } from 'vitepress/theme-without-fonts'
-import { teamMembers } from '../contributors'
 import Contributors from './Contributors.vue'
 </script>
 
@@ -10,22 +8,10 @@ import Contributors from './Contributors.vue'
       <main class="w-full">
         <div class="vp-doc flex flex-col items-center mt-10">
           <h2
-            id="meet-the-team"
-            class="font-medium pt-10 pb-2"
-          >
-            Meet The Team
-          </h2>
-          <div class="w-full">
-            <VPTeamMembers
-              size="small"
-              :members="teamMembers"
-            />
-          </div>
-          <h2
             id="the-team"
-            class="op50 font-medium pt-5 pb-2"
+            class="font-medium pt-5 pb-2"
           >
-            Contributors
+            Crafted with passion by Vue enthusiasts 💚
           </h2>
           <p class="text-lg max-w-200 text-center leading-7">
             <Contributors />
