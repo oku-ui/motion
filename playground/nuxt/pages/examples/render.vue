@@ -1,16 +1,18 @@
-<script lang="ts">
+<script lang="ts" setup>
 import { Motion } from '@oku-ui/motion'
 
-export default {
-  components: {
-    Motion,
-  },
-}
 </script>
 
 <template>
-  <Motion
-    :initial="{ opacity: 0.6 }"
-    style="width: 200px; background-color: red; height: 200px"
-  />
+  <div>
+    <Motion
+      :initial="{ opacity: 0.6 }"
+      :animate="{ opacity: 1 }"
+      :style="{
+        width: '200px',
+        backgroundColor: '#000',
+        height: '200px',
+      }"
+    />
+  </div>
 </template>

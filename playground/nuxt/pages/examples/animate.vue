@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { spring } from '@motionone/dom'
 import { Motion } from '@oku-ui/motion'
 </script>
 
@@ -8,11 +7,10 @@ import { Motion } from '@oku-ui/motion'
     <Motion
       class="motion-one-box"
       :initial="{ opacity: 0, y: 100 }"
-      :keyframes="{ opacity: 5, y: 0 }"
-      :hover="{ scale: 1.2, backgroundColor: `#00ffdb`, rotate: 90 }"
+      :hover="{ scale: 1.2, backgroundColor: `#00ffdb`, rotate: 90, opacity: 1 }"
       :press="{ scale: 0.9 }"
+      :animate="{ opacity: 1, y: 0 }"
       :transition="{
-        easing: spring(),
         // duration: 1,
         // easing: [0.7, -0.46, 0.24, 1.31],
       }"
@@ -84,5 +82,6 @@ body {
   border-radius: 20px;
   width: 200px;
   height: 200px;
+  background-color: aliceblue;
 }
 </style>

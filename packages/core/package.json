@@ -31,7 +31,7 @@
     "./nuxt": {
       "import": {
         "types": "./dist/nuxt/index.d.mts",
-        "default": "./dist/nuxt/index.js"
+        "default": "./dist/nuxt/index.mjs"
       },
       "require": {
         "types": "./dist/nuxt/index.d.cts",
@@ -100,7 +100,7 @@
     "@oku/tsconfig": "workspace:*",
     "@tsconfig/node20": "^20.1.4",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.9.1",
     "@vitejs/plugin-vue": "^5.2.0",
     "@vitejs/plugin-vue-jsx": "^4.1.0",
     "@vue/test-utils": "^2.4.6",
