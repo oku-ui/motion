@@ -11,7 +11,7 @@ import Contributors from './Contributors.vue'
         <div class="vp-doc flex flex-col items-center mt-10">
           <h2
             id="meet-the-team"
-            class="opacity-50 font-medium pt-10 pb-2"
+            class="font-medium pt-10 pb-2"
           >
             Meet The Team
           </h2>
