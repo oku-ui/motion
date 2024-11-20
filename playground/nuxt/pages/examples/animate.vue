@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { animate, spring } from 'motion'
 import { Motion } from '@oku-ui/motion'
 </script>
 
