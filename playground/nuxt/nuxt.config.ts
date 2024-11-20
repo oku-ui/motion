@@ -3,7 +3,10 @@ export default defineNuxtConfig({
   head: {
     link: [],
   },
+
   modules: [
     '@oku-ui/motion/nuxt',
   ],
+
+  compatibilityDate: '2024-11-20',
 })

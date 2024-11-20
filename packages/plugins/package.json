@@ -25,8 +25,8 @@
     "stub": "unbuild --stub"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.14.159",
-    "@nuxt/schema": "^3.14.159",
+    "@nuxt/kit": "^3.14.1592",
+    "@nuxt/schema": "^3.14.1592",
     "@oku-ui/motion": "workspace:^",
     "tsx": "^4.19.2",
     "unbuild": "^2.0.0",
