@@ -1,7 +1,7 @@
 {
   "name": "@oku-ui/motion",
   "type": "module",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "private": false,
   "description": "A tiny, performant animation library for VueJS",
   "author": "Mehmet productdevbook <hi@productdevbook.com>",
