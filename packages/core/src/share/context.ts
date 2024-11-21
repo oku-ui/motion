@@ -1,4 +1,4 @@
-import { createContext } from '@oku-ui/primitives/hooks'
+import { createContext } from '@oku-ui/primitives'
 import type { Ref } from 'vue'
 import { ref } from 'vue'
 import type { MotionState } from '@/state/motion-state'
