@@ -10,7 +10,7 @@ export interface ModuleOptions {
 export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: '@oku-ui/motion',
-    configKey: 'motion',
+    configKey: 'okuMotion',
     compatibility: {
       nuxt: '>=3.14',
     },
