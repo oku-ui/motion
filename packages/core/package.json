@@ -90,7 +90,7 @@
     "@vue/shared": "^3.4.31"
   },
   "dependencies": {
-    "@oku-ui/primitives": "^0.7.3",
+    "@oku-ui/primitives": "^0.7.5",
     "defu": "^6.1.4",
     "framer-motion": "^11.11.17",
     "hey-listen": "^1.0.8",
