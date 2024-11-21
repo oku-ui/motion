@@ -21,7 +21,7 @@ export default function (options: ResolverOptions = {}): ComponentResolver {
         if (Object.values(components).flat().includes(componentName)) {
           return {
             name: componentName,
-            from: '@oku-ui/primitives',
+            from: '@oku-ui/motion',
           }
         }
       }
