@@ -50,7 +50,7 @@ export default defineNuxtModule<ModuleOptions>({
       addComponent({
         name: `${options.prefix}${component}`,
         export: component,
-        filePath: '@oku-ui/primitives',
+        filePath: '@oku-ui/motion',
       })
     }
 
